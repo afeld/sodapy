@@ -1,8 +1,6 @@
 [![PyPI version](https://badge.fury.io/py/sodapy.svg)](http://badge.fury.io/py/sodapy) [![Build Status](https://travis-ci.com/xmunoz/sodapy.svg?branch=master)](https://travis-ci.com/xmunoz/sodapy) [![Code Coverage](https://codecov.io/github/xmunoz/sodapy/coverage.svg?branch=master)](https://codecov.io/github/xmunoz/sodapy)
 
-# sodapy - UNMAINTAINED
-
-:rotating_light: NOTICE: sodapy still works well, but is unmaintained as of Aug 31, 2022. No new features or bugfixes will be added. Use at your own risk.
+# sodapy
 
 sodapy is a python client for the [Socrata Open Data API](https://dev.socrata.com/).
 
@@ -265,6 +263,10 @@ pytest
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/xmunoz/sodapy/blob/master/CONTRIBUTING.md).
+
+## History
+
+This package was initially created and maintained by [**@xmunoz**](https://github.com/xmunoz). On March 8, 2025, ownership was transferred to [**@afeld**](https://github.com/xmunoz).
 
 ## Meta
 
