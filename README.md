@@ -7,6 +7,7 @@
 sodapy is a python client for the [Socrata Open Data API](https://dev.socrata.com/).
 
 ## Installation
+
 You can install with `pip install sodapy`.
 
 If you want to install from source, then clone this repository and run `python setup.py install` from the project root.
@@ -77,31 +78,31 @@ Retrieve datasets associated with a particular domain. The optional `limit` and 
     >>> client.datasets()
     [{"resource" : {"name" : "Approved Building Permits", "id" : "msk6-43c6", "parent_fxf" : null, "description" : "Data of approved building/construction permits",...}, {resource : {...}}, ...]
 
-### get(dataset_identifier, content_type="json", **kwargs)
+### get(dataset_identifier, content_type="json", \*\*kwargs)
 
 Retrieve data from the requested resources. Filter and query data by field name, id, or using [SoQL keywords](https://dev.socrata.com/docs/queries/).
 
     >>> client.get("nimj-3ivp", limit=2)
-	[{u'geolocation': {u'latitude': u'41.1085', u'needs_recoding': False, u'longitude': u'-117.6135'}, u'version': u'9', u'source': u'nn', u'region': u'Nevada', u'occurred_at': u'2012-09-14T22:38:01', u'number_of_stations': u'15', u'depth': u'7.60', u'magnitude': u'2.7', u'earthquake_id': u'00388610'}, {...}]
+    [{u'geolocation': {u'latitude': u'41.1085', u'needs_recoding': False, u'longitude': u'-117.6135'}, u'version': u'9', u'source': u'nn', u'region': u'Nevada', u'occurred_at': u'2012-09-14T22:38:01', u'number_of_stations': u'15', u'depth': u'7.60', u'magnitude': u'2.7', u'earthquake_id': u'00388610'}, {...}]
 
-	>>> client.get("nimj-3ivp", where="depth > 300", order="magnitude DESC", exclude_system_fields=False)
-	[{u'geolocation': {u'latitude': u'-15.563', u'needs_recoding': False, u'longitude': u'-175.6104'}, u'version': u'9', u':updated_at': 1348778988, u'number_of_stations': u'275', u'region': u'Tonga', u':created_meta': u'21484', u'occurred_at': u'2012-09-13T21:16:43', u':id': 132, u'source': u'us', u'depth': u'328.30', u'magnitude': u'4.8', u':meta': u'{\n}', u':updated_meta': u'21484', u'earthquake_id': u'c000cnb5', u':created_at': 1348778988}, {...}]
+    >>> client.get("nimj-3ivp", where="depth > 300", order="magnitude DESC", exclude_system_fields=False)
+    [{u'geolocation': {u'latitude': u'-15.563', u'needs_recoding': False, u'longitude': u'-175.6104'}, u'version': u'9', u':updated_at': 1348778988, u'number_of_stations': u'275', u'region': u'Tonga', u':created_meta': u'21484', u'occurred_at': u'2012-09-13T21:16:43', u':id': 132, u'source': u'us', u'depth': u'328.30', u'magnitude': u'4.8', u':meta': u'{\n}', u':updated_meta': u'21484', u'earthquake_id': u'c000cnb5', u':created_at': 1348778988}, {...}]
 
     >>> client.get("nimj-3ivp/193", exclude_system_fields=False)
     {u'geolocation': {u'latitude': u'21.6711', u'needs_recoding': False, u'longitude': u'142.9236'}, u'version': u'C', u':updated_at': 1348778988, u'number_of_stations': u'136', u'region': u'Mariana Islands region', u':created_meta': u'21484', u'occurred_at': u'2012-09-13T11:19:07', u':id': 193, u'source': u'us', u'depth': u'300.70', u'magnitude': u'4.4', u':meta': u'{\n}', u':updated_meta': u'21484', u':position': 193, u'earthquake_id': u'c000cmsq', u':created_at': 1348778988}
 
     >>> client.get("nimj-3ivp", region="Kansas")
-	[{u'geolocation': {u'latitude': u'38.10', u'needs_recoding': False, u'longitude': u'-100.6135'}, u'version': u'9', u'source': u'nn', u'region': u'Kansas', u'occurred_at': u'2010-09-19T20:52:09', u'number_of_stations': u'15', u'depth': u'300.0', u'magnitude': u'1.9', u'earthquake_id': u'00189621'}, {...}]
+    [{u'geolocation': {u'latitude': u'38.10', u'needs_recoding': False, u'longitude': u'-100.6135'}, u'version': u'9', u'source': u'nn', u'region': u'Kansas', u'occurred_at': u'2010-09-19T20:52:09', u'number_of_stations': u'15', u'depth': u'300.0', u'magnitude': u'1.9', u'earthquake_id': u'00189621'}, {...}]
 
-### get_all(dataset_identifier, content_type="json", **kwargs)
+### get_all(dataset_identifier, content_type="json", \*\*kwargs)
 
 Read data from the requested resource, paginating over all results. Accepts the same arguments as [`get()`](#getdataset_identifier-content_typejson-kwargs). Returns a generator.
 
     >>> client.get_all("nimj-3ivp")
-	<generator object Socrata.get_all at 0x7fa0dc8be7b0>
+    <generator object Socrata.get_all at 0x7fa0dc8be7b0>
 
     >>> for item in client.get_all("nimj-3ivp"):
-	...     print(item)
+    ...     print(item)
     ...
     {'geolocation': {'latitude': '-15.563', 'needs_recoding': False, 'longitude': '-175.6104'}, 'version': '9', ':updated_at': 1348778988, 'number_of_stations': '275', 'region': 'Tonga', ':created_meta': '21484', 'occurred_at': '2012-09-13T21:16:43', ':id': 132, 'source': 'us', 'depth': '328.30', 'magnitude': '4.8', ':meta': '{\n}', ':updated_meta': '21484', 'earthquake_id': 'c000cnb5', ':created_at': 1348778988}
     ...
@@ -135,7 +136,7 @@ Download all attachments associated with a dataset. Return a list of paths to th
     >>> client.download_attachments("nimj-3ivp", download_dir="~/Desktop")
         ['/Users/xmunoz/Desktop/nimj-3ivp/FireIncident_Codes.PDF', '/Users/xmunoz/Desktop/nimj-3ivp/AccidentReport.jpg']
 
-### create(name, **kwargs)
+### create(name, \*\*kwargs)
 
 Create a new dataset. Optionally, specify keyword args such as:
 
@@ -148,24 +149,24 @@ Create a new dataset. Optionally, specify keyword args such as:
 
 Example usage:
 
-	>>> columns = [{"fieldName": "delegation", "name": "Delegation", "dataTypeName": "text"}, {"fieldName": "members", "name": "Members", "dataTypeName": "number"}]
-	>>> tags = ["politics", "geography"]
-	>>> client.create("Delegates", description="List of delegates", columns=columns, row_identifier="delegation", tags=tags, category="Transparency")
-	{u'id': u'2frc-hyvj', u'name': u'Foo Bar', u'description': u'test dataset', u'publicationStage': u'unpublished', u'columns': [ { u'name': u'Foo', u'dataTypeName': u'text', u'fieldName': u'foo', ... }, { u'name': u'Bar', u'dataTypeName': u'number', u'fieldName': u'bar', ... } ], u'metadata': { u'rowIdentifier': 230641051 }, ... }
+    >>> columns = [{"fieldName": "delegation", "name": "Delegation", "dataTypeName": "text"}, {"fieldName": "members", "name": "Members", "dataTypeName": "number"}]
+    >>> tags = ["politics", "geography"]
+    >>> client.create("Delegates", description="List of delegates", columns=columns, row_identifier="delegation", tags=tags, category="Transparency")
+    {u'id': u'2frc-hyvj', u'name': u'Foo Bar', u'description': u'test dataset', u'publicationStage': u'unpublished', u'columns': [ { u'name': u'Foo', u'dataTypeName': u'text', u'fieldName': u'foo', ... }, { u'name': u'Bar', u'dataTypeName': u'number', u'fieldName': u'bar', ... } ], u'metadata': { u'rowIdentifier': 230641051 }, ... }
 
 ### publish(dataset_identifier, content_type="json")
 
 Publish a dataset after creating it, i.e. take it out of 'working copy' mode. The dataset id `id` returned from `create` will be used to publish.
 
-	>>> client.publish("2frc-hyvj")
-	{u'id': u'2frc-hyvj', u'name': u'Foo Bar', u'description': u'test dataset', u'publicationStage': u'unpublished', u'columns': [ { u'name': u'Foo', u'dataTypeName': u'text', u'fieldName': u'foo', ... }, { u'name': u'Bar', u'dataTypeName': u'number', u'fieldName': u'bar', ... } ], u'metadata': { u'rowIdentifier': 230641051 }, ... }
+    >>> client.publish("2frc-hyvj")
+    {u'id': u'2frc-hyvj', u'name': u'Foo Bar', u'description': u'test dataset', u'publicationStage': u'unpublished', u'columns': [ { u'name': u'Foo', u'dataTypeName': u'text', u'fieldName': u'foo', ... }, { u'name': u'Bar', u'dataTypeName': u'number', u'fieldName': u'bar', ... } ], u'metadata': { u'rowIdentifier': 230641051 }, ... }
 
 ### set_permission(dataset_identifier, permission="private", content_type="json")
 
 Set the permissions of a dataset to public or private.
 
-	>>> client.set_permission("2frc-hyvj", "public")
-	<Response [200]>
+    >>> client.set_permission("2frc-hyvj", "public")
+    <Response [200]>
 
 ### upsert(dataset_identifier, payload, content_type="json")
 
@@ -173,32 +174,32 @@ Create a new row in an existing dataset.
 
     >>> data = [{'Delegation': 'AJU', 'Name': 'Alaska', 'Key': 'AL', 'Entity': 'Juneau'}]
     >>> client.upsert("eb9n-hr43", data)
-	{u'Errors': 0, u'Rows Deleted': 0, u'Rows Updated': 0, u'By SID': 0, u'Rows Created': 1, u'By RowIdentifier': 0}
+    {u'Errors': 0, u'Rows Deleted': 0, u'Rows Updated': 0, u'By SID': 0, u'Rows Created': 1, u'By RowIdentifier': 0}
 
 Update/Delete rows in a dataset.
 
     >>> data = [{'Delegation': 'sfa', ':id': 8, 'Name': 'bar', 'Key': 'doo', 'Entity': 'dsfsd'}, {':id': 7, ':deleted': True}]
-	>>> client.upsert("eb9n-hr43", data)
-	{u'Errors': 0, u'Rows Deleted': 1, u'Rows Updated': 1, u'By SID': 2, u'Rows Created': 0, u'By RowIdentifier': 0}
+    >>> client.upsert("eb9n-hr43", data)
+    {u'Errors': 0, u'Rows Deleted': 1, u'Rows Updated': 1, u'By SID': 2, u'Rows Created': 0, u'By RowIdentifier': 0}
 
 `upsert`'s can even be performed with a csv file.
 
-	>>> data = open("upsert_test.csv")
-	>>> client.upsert("eb9n-hr43", data)
-	{u'Errors': 0, u'Rows Deleted': 0, u'Rows Updated': 1, u'By SID': 1, u'Rows Created': 0, u'By RowIdentifier': 0}
+    >>> data = open("upsert_test.csv")
+    >>> client.upsert("eb9n-hr43", data)
+    {u'Errors': 0, u'Rows Deleted': 0, u'Rows Updated': 1, u'By SID': 1, u'Rows Created': 0, u'By RowIdentifier': 0}
 
 ### replace(dataset_identifier, payload, content_type="json")
 
 Similar in usage to `upsert`, but overwrites existing data.
 
-	>>> data = open("replace_test.csv")
-	>>> client.replace("eb9n-hr43", data)
-	{u'Errors': 0, u'Rows Deleted': 0, u'Rows Updated': 0, u'By SID': 0, u'Rows Created': 12, u'By RowIdentifier': 0}
+    >>> data = open("replace_test.csv")
+    >>> client.replace("eb9n-hr43", data)
+    {u'Errors': 0, u'Rows Deleted': 0, u'Rows Updated': 0, u'By SID': 0, u'Rows Created': 12, u'By RowIdentifier': 0}
 
 ### create_non_data_file(params, file_obj)
 
 Creates a new file-based dataset with the name provided in the files
-tuple.  A valid file input would be:
+tuple. A valid file input would be:
 
 ```
 files = (
@@ -215,7 +216,7 @@ files = (
 ### replace_non_data_file(dataset_identifier, params, file_obj)
 
 Same as create_non_data_file, but replaces a file that already exists in a
-file-based dataset.  
+file-based dataset.
 
 Note: a table-based dataset cannot be replaced by a file-based dataset. Use create_non_data_file in order to replace.
 
@@ -225,24 +226,23 @@ Note: a table-based dataset cannot be replaced by a file-based dataset. Use crea
     >>>      )
     >>>      response = client.replace_non_data_file(DATASET_IDENTIFIER, {}, files)
 
-
 ### delete(dataset_identifier, row_id=None, content_type="json")
 
 Delete an individual row.
 
-	>>> client.delete("nimj-3ivp", row_id=2)
-	<Response [200]>
+    >>> client.delete("nimj-3ivp", row_id=2)
+    <Response [200]>
 
 Delete the entire dataset.
 
-	>>> client.delete("nimj-3ivp")
-	<Response [200]>
+    >>> client.delete("nimj-3ivp")
+    <Response [200]>
 
 ### close()
 
 Close the session when you're finished.
 
-	>>> client.close()
+    >>> client.close()
 
 ## Run tests
 
