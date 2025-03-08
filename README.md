@@ -24,7 +24,7 @@ This library supports writing directly to datasets with the Socrata Open Data AP
 
 ## Examples
 
-There are some [jupyter](https://jupyter.org/) notebooks in the [examples directory](examples) with usage examples of sodapy in action.
+There are some [Jupyter](https://jupyter.org/) notebooks in the [examples directory](examples) with usage examples of sodapy in action.
 
 ## Interface
 
@@ -51,23 +51,29 @@ There are some [jupyter](https://jupyter.org/) notebooks in the [examples direct
 
 Import the library and set up a connection to get started.
 
-    >>> from sodapy import Socrata
-    >>> client = Socrata(
-            "sandbox.demo.socrata.com",
-            "FakeAppToken",
-            username="fakeuser@somedomain.com",
-            password="mypassword",
-            timeout=10
-        )
+```python
+from sodapy import Socrata
+client = Socrata(
+    "sandbox.demo.socrata.com",
+    "FakeAppToken",
+    username="fakeuser@somedomain.com",
+    password="mypassword",
+    timeout=10
+)
+```
 
 `username` and `password` are only required for creating or modifying data. An application token isn't strictly required (can be `None`), but queries executed from a client without an application token will be subjected to strict throttling limits. You may want to increase the `timeout` seconds when making large requests. To create a bare-bones client:
 
-    >>> client = Socrata("sandbox.demo.socrata.com", None)
+```python
+client = Socrata("sandbox.demo.socrata.com", None)
+```
 
 A client can also be created with a context manager to obviate the need for teardown:
 
-    >>> with Socrata("sandbox.demo.socrata.com", None) as client:
-    >>>    # do some stuff
+```python
+with Socrata("sandbox.demo.socrata.com", None) as client:
+    # do some stuff
+```
 
 The client, by default, makes requests over HTTPS. To modify this behavior, or to make requests through a proxy, take a look [here](https://github.com/xmunoz/sodapy/issues/31#issuecomment-302176628).
 
@@ -201,17 +207,19 @@ Similar in usage to `upsert`, but overwrites existing data.
 Creates a new file-based dataset with the name provided in the files
 tuple. A valid file input would be:
 
-```
+```python
 files = (
     {'file': ("gtfs2", open('myfile.zip', 'rb'))}
 )
 ```
 
-    >>> with open(nondatafile_path, 'rb') as f:
-    >>>     files = (
-    >>>         {'file': ("nondatafile.zip", f)}
-    >>>     )
-    >>>     response = client.create_non_data_file(params, files)
+```python
+with open(nondatafile_path, 'rb') as f:
+    files = (
+        {'file': ("nondatafile.zip", f)}
+    )
+    response = client.create_non_data_file(params, files)
+```
 
 ### replace_non_data_file(dataset_identifier, params, file_obj)
 
@@ -220,11 +228,13 @@ file-based dataset.
 
 Note: a table-based dataset cannot be replaced by a file-based dataset. Use create_non_data_file in order to replace.
 
-    >>>  with open(nondatafile_path, 'rb') as f:
-    >>>      files = (
-    >>>          {'file': ("nondatafile.zip", f)}
-    >>>      )
-    >>>      response = client.replace_non_data_file(DATASET_IDENTIFIER, {}, files)
+```python
+with open(nondatafile_path, 'rb') as f:
+    files = (
+        {'file': ("nondatafile.zip", f)}
+    )
+response = client.replace_non_data_file(DATASET_IDENTIFIER, {}, files)
+```
 
 ### delete(dataset_identifier, row_id=None, content_type="json")
 
@@ -242,11 +252,15 @@ Delete the entire dataset.
 
 Close the session when you're finished.
 
-    >>> client.close()
+```python
+client.close()
+```
 
 ## Run tests
 
-    $ pytest
+```sh
+pytest
+```
 
 ## Contributing
 
@@ -258,6 +272,8 @@ This package uses [semantic versioning](https://semver.org/).
 
 Source and wheel distributions are available on PyPI. Here is how I create those releases.
 
-    python3 setup.py bdist_wheel
-    python3 setup.py sdist
-    twine upload dist/*
+```sh
+python3 setup.py bdist_wheel
+python3 setup.py sdist
+twine upload dist/*
+```

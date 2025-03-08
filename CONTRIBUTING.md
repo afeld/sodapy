@@ -6,16 +6,20 @@ This project adheres to the [Contributor Covenant Code of Conduct](http://contri
 
 The best way to start developing this project is to set up a [virtualenv](https://virtualenv.pypa.io/en/stable/) and install the requirements.
 
-    git clone <my remote url/sodapy.git>
-    cd sodapy
-    virtualenv venv
-    source venv/bin/activate
-    pip install -r requirements-dev.txt
+```sh
+git clone <my remote url/sodapy.git>
+cd sodapy
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements-dev.txt
+```
 
 Install the package, and run tests to confirm that everything is set up properly.
 
-    pip install .
-    pytest
+```sh
+pip install .
+pytest
+```
 
 ## Submitting a pull request
 
