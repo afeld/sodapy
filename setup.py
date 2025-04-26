@@ -25,7 +25,7 @@ kwargs = {
     "license": "MIT",
     "install_requires": required,
     "url": "https://github.com/xmunoz/sodapy",
-    "download_url": "https://github.com/xmunoz/sodapy/archive/master.tar.gz",
+    "download_url": "https://github.com/xmunoz/sodapy/archive/main.tar.gz",
     "keywords": "soda socrata opendata api",
     "classifiers": [
         "Programming Language :: Python :: 3",
