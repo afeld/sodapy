@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/sodapy.svg)](http://badge.fury.io/py/sodapy) [![Build Status](https://travis-ci.com/xmunoz/sodapy.svg?branch=master)](https://travis-ci.com/xmunoz/sodapy) [![Code Coverage](https://codecov.io/github/xmunoz/sodapy/coverage.svg?branch=master)](https://codecov.io/github/xmunoz/sodapy)
+[![PyPI version](https://badge.fury.io/py/sodapy.svg)](http://badge.fury.io/py/sodapy) [![Build Status](https://travis-ci.com/xmunoz/sodapy.svg?branch=main)](https://travis-ci.com/xmunoz/sodapy) [![Code Coverage](https://codecov.io/github/xmunoz/sodapy/coverage.svg?branch=main)](https://codecov.io/github/xmunoz/sodapy)
 
 # sodapy
 
@@ -12,7 +12,7 @@ If you want to install from source, then clone this repository and run `python s
 
 ## Requirements
 
-At its core, this library depends heavily on the [Requests](http://docs.python-requests.org/en/latest/) package. All other requirements can be found in [requirements.txt](https://github.com/xmunoz/sodapy/blob/master/requirements.txt). `sodapy` is currently compatible with Python 3.5, 3.6, 3.7, 3.8, 3.9, and 3.10.
+At its core, this library depends heavily on the [Requests](http://docs.python-requests.org/en/latest/) package. All other requirements can be found in [requirements.txt](https://github.com/xmunoz/sodapy/blob/main/requirements.txt). `sodapy` is currently compatible with Python 3.5, 3.6, 3.7, 3.8, 3.9, and 3.10.
 
 ## Documentation
 
@@ -262,7 +262,7 @@ pytest
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/xmunoz/sodapy/blob/master/CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/xmunoz/sodapy/blob/main/CONTRIBUTING.md).
 
 ## History
 
