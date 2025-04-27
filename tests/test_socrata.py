@@ -11,11 +11,16 @@ from sodapy.constants import DEFAULT_API_PATH, OLD_API_PATH, DATASETS_PATH
 
 
 PREFIX = "https://"
-DOMAIN = "fakedomain.com"
-DATASET_IDENTIFIER = "songs"
+FAKE_DOMAIN = "fakedomain.com"
+FAKE_DATASET_IDENTIFIER = "songs"
+REAL_DOMAIN = "data.cityofnewyork.us"
+# https://data.cityofnewyork.us/Transportation/Bicycle-Counts/uczf-rk3c/about_data
+REAL_DATASET_IDENTIFIER = "uczf-rk3c"
+
 APPTOKEN = "FakeAppToken"
 USERNAME = "fakeuser"
 PASSWORD = "fakepassword"
+
 TEST_DATA_PATH = os.path.join(os.path.dirname(__file__), "test_data")
 LOGGER = logging.getLogger(__name__)
 
@@ -27,20 +32,20 @@ def vcr_config():
 
 
 def test_client():
-    client = Socrata(DOMAIN, APPTOKEN)
+    client = Socrata(FAKE_DOMAIN, APPTOKEN)
     assert isinstance(client, Socrata)
     client.close()
 
 
 def test_client_warning(caplog):
     with caplog.at_level(logging.WARNING):
-        client = Socrata(DOMAIN, None)
+        client = Socrata(FAKE_DOMAIN, None)
     assert "strict throttling limits" in caplog.text
     client.close()
 
 
 def test_context_manager():
-    with Socrata(DOMAIN, APPTOKEN) as client:
+    with Socrata(FAKE_DOMAIN, APPTOKEN) as client:
         assert isinstance(client, Socrata)
 
 
@@ -52,42 +57,34 @@ def test_context_manager_no_domain_exception():
 
 def test_context_manager_timeout_exception():
     with pytest.raises(TypeError):
-        with Socrata(DOMAIN, APPTOKEN, timeout="fail"):
+        with Socrata(FAKE_DOMAIN, APPTOKEN, timeout="fail"):
             pass
 
 
 def test_client_oauth():
-    client = Socrata(DOMAIN, APPTOKEN, access_token="AAAAAAAAAAAA")
+    client = Socrata(FAKE_DOMAIN, APPTOKEN, access_token="AAAAAAAAAAAA")
     assert client.session.headers.get("Authorization") == "OAuth AAAAAAAAAAAA"
 
 
 @pytest.mark.vcr
 def test_get():
-    client = Socrata("data.cityofnewyork.us", None)
-    # https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Community-Districts/xi7c-iiu2/about_data
-    response = client.get("xi7c-iiu2")
+    client = Socrata(REAL_DOMAIN, None)
+    response = client.get(REAL_DATASET_IDENTIFIER)
     assert isinstance(response, list)
-    assert len(response) == 59
+    assert len(response) == client.DEFAULT_LIMIT
 
     client.close()
 
 
+@pytest.mark.vcr
 def test_get_all():
-    mock_adapter = {}
-    mock_adapter["prefix"] = PREFIX
-    adapter = requests_mock.Adapter()
-    mock_adapter["adapter"] = adapter
-    client = Socrata(DOMAIN, APPTOKEN, session_adapter=mock_adapter)
-
-    setup_mock(adapter, "GET", "bike_counts_page_1.json", 200, query="$offset=0")
-    setup_mock(adapter, "GET", "bike_counts_page_2.json", 200, query="$offset=1000")
-    response = client.get_all(DATASET_IDENTIFIER)
-
+    client = Socrata(REAL_DOMAIN, None)
+    response = client.get_all(REAL_DATASET_IDENTIFIER)
     assert inspect.isgenerator(response)
-    data = list(response)
-    assert len(data) == 1001
-    assert data[0]["date"] == "2016-09-21T15:45:00.000"
-    assert data[-1]["date"] == "2016-10-02T01:45:00.000"
+
+    desired_count = client.DEFAULT_LIMIT + 1
+    list_responses = [item for _, item in zip(range(desired_count), response)]
+    assert len(list_responses) == desired_count
 
     client.close()
 
@@ -97,12 +94,12 @@ def test_get_unicode():
     mock_adapter["prefix"] = PREFIX
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
-    client = Socrata(DOMAIN, APPTOKEN, session_adapter=mock_adapter)
+    client = Socrata(FAKE_DOMAIN, APPTOKEN, session_adapter=mock_adapter)
 
     response_data = "get_songs_unicode.txt"
     setup_mock(adapter, "GET", response_data, 200)
 
-    response = client.get(DATASET_IDENTIFIER)
+    response = client.get(FAKE_DATASET_IDENTIFIER)
 
     assert isinstance(response, list)
     assert len(response) == 10
@@ -115,7 +112,7 @@ def test_get_datasets():
     mock_adapter["prefix"] = PREFIX
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
-    client = Socrata(DOMAIN, APPTOKEN, session_adapter=mock_adapter)
+    client = Socrata(FAKE_DOMAIN, APPTOKEN, session_adapter=mock_adapter)
 
     setup_datasets_mock(adapter, "get_datasets.txt", 200, params={"limit": "7"})
     response = client.datasets(limit=7)
@@ -129,17 +126,17 @@ def test_get_metadata_and_attachments():
     mock_adapter["prefix"] = PREFIX
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
-    client = Socrata(DOMAIN, APPTOKEN, session_adapter=mock_adapter)
+    client = Socrata(FAKE_DOMAIN, APPTOKEN, session_adapter=mock_adapter)
 
     response_data = "get_song_metadata.txt"
     setup_old_api_mock(adapter, "GET", response_data, 200)
-    response = client.get_metadata(DATASET_IDENTIFIER)
+    response = client.get_metadata(FAKE_DATASET_IDENTIFIER)
 
     assert isinstance(response, dict)
     assert "newBackend" in response
     assert "attachments" in response["metadata"]
 
-    response = client.download_attachments(DATASET_IDENTIFIER)
+    response = client.download_attachments(FAKE_DATASET_IDENTIFIER)
 
     assert isinstance(response, list)
     assert len(response) == 0
@@ -152,13 +149,13 @@ def test_update_metadata():
     mock_adapter["prefix"] = PREFIX
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
-    client = Socrata(DOMAIN, APPTOKEN, session_adapter=mock_adapter)
+    client = Socrata(FAKE_DOMAIN, APPTOKEN, session_adapter=mock_adapter)
 
     response_data = "update_song_metadata.txt"
     setup_old_api_mock(adapter, "PUT", response_data, 200)
     data = {"category": "Education", "attributionLink": "https://testing.updates"}
 
-    response = client.update_metadata(DATASET_IDENTIFIER, data)
+    response = client.update_metadata(FAKE_DATASET_IDENTIFIER, data)
 
     assert isinstance(response, dict)
     assert response.get("category") == data["category"]
@@ -172,7 +169,7 @@ def test_upsert_exception():
     mock_adapter["prefix"] = PREFIX
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
-    client = Socrata(DOMAIN, APPTOKEN, session_adapter=mock_adapter)
+    client = Socrata(FAKE_DOMAIN, APPTOKEN, session_adapter=mock_adapter)
 
     response_data = "403_response_json.txt"
     setup_mock(adapter, "POST", response_data, 403, reason="Forbidden")
@@ -186,7 +183,7 @@ def test_upsert_exception():
         }
     ]
     try:
-        client.upsert(DATASET_IDENTIFIER, data)
+        client.upsert(FAKE_DATASET_IDENTIFIER, data)
     except Exception as e:
         assert isinstance(e, requests.exceptions.HTTPError)
     else:
@@ -199,7 +196,7 @@ def test_upsert():
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
     client = Socrata(
-        DOMAIN,
+        FAKE_DOMAIN,
         APPTOKEN,
         username=USERNAME,
         password=PASSWORD,
@@ -216,7 +213,7 @@ def test_upsert():
         }
     ]
     setup_mock(adapter, "POST", response_data, 200)
-    response = client.upsert(DATASET_IDENTIFIER, data)
+    response = client.upsert(FAKE_DATASET_IDENTIFIER, data)
 
     assert isinstance(response, dict)
     assert response.get("Rows Created") == 1
@@ -229,7 +226,7 @@ def test_replace():
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
     client = Socrata(
-        DOMAIN,
+        FAKE_DOMAIN,
         APPTOKEN,
         username=USERNAME,
         password=PASSWORD,
@@ -252,7 +249,7 @@ def test_replace():
         },
     ]
     setup_mock(adapter, "PUT", response_data, 200)
-    response = client.replace(DATASET_IDENTIFIER, data)
+    response = client.replace(FAKE_DATASET_IDENTIFIER, data)
 
     assert isinstance(response, dict)
     assert response.get("Rows Created") == 2
@@ -265,16 +262,16 @@ def test_delete():
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
     client = Socrata(
-        DOMAIN,
+        FAKE_DOMAIN,
         APPTOKEN,
         username=USERNAME,
         password=PASSWORD,
         session_adapter=mock_adapter,
     )
 
-    uri = "{}{}{}/{}.json".format(PREFIX, DOMAIN, OLD_API_PATH, DATASET_IDENTIFIER)
+    uri = "{}{}{}/{}.json".format(PREFIX, FAKE_DOMAIN, OLD_API_PATH, FAKE_DATASET_IDENTIFIER)
     adapter.register_uri("DELETE", uri, status_code=200)
-    response = client.delete(DATASET_IDENTIFIER)
+    response = client.delete(FAKE_DATASET_IDENTIFIER)
     assert response.status_code == 200
 
     try:
@@ -291,7 +288,7 @@ def test_create():
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
     client = Socrata(
-        DOMAIN,
+        FAKE_DOMAIN,
         APPTOKEN,
         username=USERNAME,
         password=PASSWORD,
@@ -336,7 +333,7 @@ def test_set_permission():
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
     client = Socrata(
-        DOMAIN,
+        FAKE_DOMAIN,
         APPTOKEN,
         username=USERNAME,
         password=PASSWORD,
@@ -347,7 +344,7 @@ def test_set_permission():
     setup_old_api_mock(adapter, "PUT", response_data, 200)
 
     # Test response
-    response = client.set_permission(DATASET_IDENTIFIER, "public")
+    response = client.set_permission(FAKE_DATASET_IDENTIFIER, "public")
     assert response.status_code == 200
 
     # Test request
@@ -368,7 +365,7 @@ def test_publish():
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
     client = Socrata(
-        DOMAIN,
+        FAKE_DOMAIN,
         APPTOKEN,
         username=USERNAME,
         password=PASSWORD,
@@ -378,7 +375,7 @@ def test_publish():
     response_data = "create_foobar.txt"
     setup_publish_mock(adapter, "POST", response_data, 200)
 
-    response = client.publish(DATASET_IDENTIFIER)
+    response = client.publish(FAKE_DATASET_IDENTIFIER)
     assert isinstance(response, dict)
     assert len(response.get("id")) == 9
     client.close()
@@ -390,7 +387,7 @@ def test_import_non_data_file():
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
     client = Socrata(
-        DOMAIN,
+        FAKE_DOMAIN,
         APPTOKEN,
         username=USERNAME,
         password=PASSWORD,
@@ -417,7 +414,7 @@ def test_replace_non_data_file():
     adapter = requests_mock.Adapter()
     mock_adapter["adapter"] = adapter
     client = Socrata(
-        DOMAIN,
+        FAKE_DOMAIN,
         APPTOKEN,
         username=USERNAME,
         password=PASSWORD,
@@ -431,7 +428,7 @@ def test_replace_non_data_file():
 
     with open(nondatasetfile_path, "rb") as fin:
         file = {"file": ("nondatasetfile.zip", fin)}
-        response = client.replace_non_data_file(DATASET_IDENTIFIER, {}, file)
+        response = client.replace_non_data_file(FAKE_DATASET_IDENTIFIER, {}, file)
 
     assert isinstance(response, dict)
     assert response.get("blobFileSize") == 496
@@ -444,7 +441,7 @@ def setup_publish_mock(
     response,
     response_code,
     reason="OK",
-    dataset_identifier=DATASET_IDENTIFIER,
+    dataset_identifier=FAKE_DATASET_IDENTIFIER,
     content_type="json",
 ):
     path = os.path.join(TEST_DATA_PATH, response)
@@ -452,7 +449,7 @@ def setup_publish_mock(
         body = json.load(response_body)
 
     uri = "{}{}{}/{}/publication.{}".format(
-        PREFIX, DOMAIN, OLD_API_PATH, dataset_identifier, content_type
+        PREFIX, FAKE_DOMAIN, OLD_API_PATH, dataset_identifier, content_type
     )
 
     headers = {"content-type": "application/json; charset=utf-8"}
@@ -473,14 +470,14 @@ def setup_import_non_data_file(
     response,
     response_code,
     reason="OK",
-    dataset_identifier=DATASET_IDENTIFIER,
+    dataset_identifier=FAKE_DATASET_IDENTIFIER,
     content_type="json",
 ):
     path = os.path.join(TEST_DATA_PATH, response)
     with open(path, "r") as response_body:
         body = json.load(response_body)
 
-    uri = "{}{}/api/imports2/?method=blob".format(PREFIX, DOMAIN)
+    uri = "{}{}/api/imports2/?method=blob".format(PREFIX, FAKE_DOMAIN)
 
     headers = {"content-type": "application/json; charset=utf-8"}
 
@@ -500,7 +497,7 @@ def setup_replace_non_data_file(
     response,
     response_code,
     reason="OK",
-    dataset_identifier=DATASET_IDENTIFIER,
+    dataset_identifier=FAKE_DATASET_IDENTIFIER,
     content_type="json",
 ):
     path = os.path.join(TEST_DATA_PATH, response)
@@ -509,7 +506,7 @@ def setup_replace_non_data_file(
 
     uri = "{}{}{}/{}.{}?method=replaceBlob&id={}".format(
         PREFIX,
-        DOMAIN,
+        FAKE_DOMAIN,
         OLD_API_PATH,
         dataset_identifier,
         "txt",
@@ -534,7 +531,7 @@ def setup_old_api_mock(
     response,
     response_code,
     reason="OK",
-    dataset_identifier=DATASET_IDENTIFIER,
+    dataset_identifier=FAKE_DATASET_IDENTIFIER,
     content_type="json",
 ):
     path = os.path.join(TEST_DATA_PATH, response)
@@ -544,7 +541,7 @@ def setup_old_api_mock(
         except ValueError:
             body = None
 
-    uri = "{}{}{}/{}.{}".format(PREFIX, DOMAIN, OLD_API_PATH, dataset_identifier, content_type)
+    uri = "{}{}{}/{}.{}".format(PREFIX, FAKE_DOMAIN, OLD_API_PATH, dataset_identifier, content_type)
 
     headers = {"content-type": "application/json; charset=utf-8"}
 
@@ -563,7 +560,7 @@ def setup_datasets_mock(adapter, response, response_code, reason="OK", params={}
     with open(path, "r") as response_body:
         body = json.load(response_body)
 
-    uri = "{}{}{}".format(PREFIX, DOMAIN, DATASETS_PATH)
+    uri = "{}{}{}".format(PREFIX, FAKE_DOMAIN, DATASETS_PATH)
 
     if "offset" not in params:
         params["offset"] = 0
@@ -581,7 +578,7 @@ def setup_mock(
     response,
     response_code,
     reason="OK",
-    dataset_identifier=DATASET_IDENTIFIER,
+    dataset_identifier=FAKE_DATASET_IDENTIFIER,
     content_type="json",
     query=None,
 ):
@@ -590,10 +587,10 @@ def setup_mock(
         body = json.load(response_body)
 
     if dataset_identifier is None:  # for create endpoint
-        uri = "{}{}{}.{}".format(PREFIX, DOMAIN, OLD_API_PATH, "json")
+        uri = "{}{}{}.{}".format(PREFIX, FAKE_DOMAIN, OLD_API_PATH, "json")
     else:  # most cases
         uri = "{}{}{}{}.{}".format(
-            PREFIX, DOMAIN, DEFAULT_API_PATH, dataset_identifier, content_type
+            PREFIX, FAKE_DOMAIN, DEFAULT_API_PATH, dataset_identifier, content_type
         )
 
     if query:
