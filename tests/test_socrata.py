@@ -31,6 +31,11 @@ def vcr_config():
     return {"record_mode": "new_episodes"}
 
 
+@pytest.fixture
+def real_client():
+    return Socrata(REAL_DOMAIN, None)
+
+
 def test_client():
     client = Socrata(FAKE_DOMAIN, APPTOKEN)
     assert isinstance(client, Socrata)
@@ -67,26 +72,24 @@ def test_client_oauth():
 
 
 @pytest.mark.vcr
-def test_get():
-    client = Socrata(REAL_DOMAIN, None)
-    response = client.get(REAL_DATASET_IDENTIFIER)
+def test_get(real_client):
+    response = real_client.get(REAL_DATASET_IDENTIFIER)
     assert isinstance(response, list)
-    assert len(response) == client.DEFAULT_LIMIT
+    assert len(response) == real_client.DEFAULT_LIMIT
 
-    client.close()
+    real_client.close()
 
 
 @pytest.mark.vcr
-def test_get_all():
-    client = Socrata(REAL_DOMAIN, None)
-    response = client.get_all(REAL_DATASET_IDENTIFIER)
+def test_get_all(real_client):
+    response = real_client.get_all(REAL_DATASET_IDENTIFIER)
     assert inspect.isgenerator(response)
 
-    desired_count = client.DEFAULT_LIMIT + 1
+    desired_count = real_client.DEFAULT_LIMIT + 1
     list_responses = [item for _, item in zip(range(desired_count), response)]
     assert len(list_responses) == desired_count
 
-    client.close()
+    real_client.close()
 
 
 def test_get_unicode():
@@ -122,9 +125,8 @@ def test_get_datasets():
 
 
 @pytest.mark.vcr
-def test_get_metadata_and_attachments():
-    client = Socrata(REAL_DOMAIN, None)
-    response = client.get_metadata(REAL_DATASET_IDENTIFIER)
+def test_get_metadata_and_attachments(real_client):
+    response = real_client.get_metadata(REAL_DATASET_IDENTIFIER)
 
     assert isinstance(response, dict)
     assert response["newBackend"]
@@ -136,13 +138,13 @@ def test_get_metadata_and_attachments():
     assert len(attachments) == expected_attachments
     filename = attachments[0]["filename"]
 
-    response = client.download_attachments(REAL_DATASET_IDENTIFIER)
+    response = real_client.download_attachments(REAL_DATASET_IDENTIFIER)
 
     assert isinstance(response, list)
     assert len(response) == expected_attachments
     assert response[0].endswith(f"/{REAL_DATASET_IDENTIFIER}/{filename}")
 
-    client.close()
+    real_client.close()
 
 
 def test_update_metadata():
