@@ -35,11 +35,20 @@ jobs:
         run: uv run flake8 sodapy/ tests/
 
       - name: Run tests and generate coverage report
-        run: uv run pytest --cov --cov-branch --cov-report=xml
+        run: |
+          uv run pytest \
+            --cov --cov-branch --cov-report=xml \
+            --junitxml=junit.xml -o junit_family=legacy
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
           env_vars: PYTHON_VERSION
           fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
           token: ${{ secrets.CODECOV_TOKEN }}
