@@ -17,7 +17,10 @@ readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.9"
-dependencies = ["requests>=2.28.2"]  # Verified for Python 3.9+ compatibility
+dependencies = [
+    # verified Python 3.9+ compatibility
+    "requests>=2.28.2",
+]
 
 [project.urls]
 repository = "https://github.com/afeld/sodapy.git"
