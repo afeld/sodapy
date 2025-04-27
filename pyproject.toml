@@ -52,4 +52,10 @@ packages = ["sodapy"]
 version = { attr = "sodapy.__version__" }
 
 [tool.vulture]
-ignore_names = ["LOGGER", "auth", "vcr_config"]
+ignore_names = [
+    "LOGGER",
+    "auth",
+    # https://github.com/jendrikseipp/vulture/issues/382
+    "pytest_runtest_setup",
+    "vcr_config",
+]
