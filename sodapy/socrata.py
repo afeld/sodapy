@@ -90,7 +90,7 @@ class Socrata:
         """
         return self
 
-    def __exit__(self, exc_type=None, exc_value=None, traceback=None):
+    def __exit__(self, _exc_type=None, _exc_value=None, _traceback=None):
         """
         This runs at the end of a with block. It simply closes the client.
 

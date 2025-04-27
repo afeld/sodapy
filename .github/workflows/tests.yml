@@ -18,6 +18,10 @@ jobs:
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
+
+      - name: Check for unused code
+        run: uv run vulture sodapy tests examples
+
       # not technically static analysis, but doesn't need to run across Python versions
       - name: Confirm that package builds
         run: uv build
