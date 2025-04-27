@@ -8,6 +8,8 @@ sodapy is a python client for the [Socrata Open Data API](https://dev.socrata.co
 
 You can install with `pip install sodapy`.
 
+This package uses [semantic versioning](https://semver.org/).
+
 ## Documentation
 
 The [official Socrata Open Data API docs](http://dev.socrata.com/) provide thorough documentation of the available methods, as well as [other client libraries](https://dev.socrata.com/libraries/). A quick list of eligible domains to use with this API is available via the [Socrata Discovery API](https://socratadiscovery.docs.apiary.io/#reference/0/count-by-domain/count-by-domain?console=1) or [Socrata's Open Data Network](https://www.opendatanetwork.com/).
@@ -248,12 +250,6 @@ Close the session when you're finished.
 client.close()
 ```
 
-## Run tests
-
-```sh
-pytest
-```
-
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -261,15 +257,3 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 ## History
 
 This package was initially created and maintained by [**@xmunoz**](https://github.com/xmunoz). On March 8, 2025, ownership was transferred to [**@afeld**](https://github.com/afeld).
-
-## Meta
-
-This package uses [semantic versioning](https://semver.org/).
-
-Source and wheel distributions are available on PyPI. Here is how I create those releases.
-
-```sh
-python3 setup.py bdist_wheel
-python3 setup.py sdist
-twine upload dist/*
-```
