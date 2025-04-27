@@ -14,7 +14,7 @@ cd sodapy
 Run tests, which will also install packages:
 
 ```sh
-uv run pytest --cov=sodapy
+uv run pytest --cov
 ```
 
 ## Submitting a pull request
