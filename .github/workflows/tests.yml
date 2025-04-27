@@ -28,9 +28,6 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
 
-      - name: Run flake8
-        run: uv run flake8 sodapy/ tests/
-
       - name: Run tests and generate coverage report
         run: |
           uv run pytest \
@@ -39,6 +36,12 @@ jobs:
 
       - name: Confirm that package builds
         run: uv build
+
+      - uses: astral-sh/ruff-action@v3
+      - name: Run linting
+        run: ruff check
+      - name: Check formatting
+        run: ruff format --check --diff
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5

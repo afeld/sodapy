@@ -74,11 +74,7 @@ meta_amount["cachedContents"]["average"]
 
 # Use the 'where' argument to filter the data before downloading it
 results = client.get(socrata_dataset_identifier, where="amount >= 2433")
-print(
-    "Total number of non-null results: {}".format(
-        meta_amount["cachedContents"]["non_null"]
-    )
-)
+print("Total number of non-null results: {}".format(meta_amount["cachedContents"]["non_null"]))
 print("Number of results downloaded: {}".format(len(results)))
 results[:3]
 

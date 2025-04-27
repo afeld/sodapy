@@ -11,14 +11,10 @@ def raise_for_status(response):
     http_error_msg = ""
 
     if 400 <= response.status_code < 500:
-        http_error_msg = "{} Client Error: {}".format(
-            response.status_code, response.reason
-        )
+        http_error_msg = "{} Client Error: {}".format(response.status_code, response.reason)
 
     elif 500 <= response.status_code < 600:
-        http_error_msg = "{} Server Error: {}".format(
-            response.status_code, response.reason
-        )
+        http_error_msg = "{} Server Error: {}".format(response.status_code, response.reason)
 
     if http_error_msg:
         try:
@@ -42,7 +38,6 @@ def clear_empty_values(args):
 
 
 def format_old_api_request(dataid=None, content_type=None):
-
     if dataid is not None:
         if content_type is not None:
             return "{}/{}.{}".format(OLD_API_PATH, dataid, content_type)
@@ -58,9 +53,7 @@ def format_new_api_request(dataid=None, row_id=None, content_type=None):
     if dataid is not None:
         if content_type is not None:
             if row_id is not None:
-                return "{}{}/{}.{}".format(
-                    DEFAULT_API_PATH, dataid, row_id, content_type
-                )
+                return "{}{}/{}.{}".format(DEFAULT_API_PATH, dataid, row_id, content_type)
             return "{}{}.{}".format(DEFAULT_API_PATH, dataid, content_type)
 
     raise Exception("This method requires at least a dataset_id or content_type.")
@@ -71,7 +64,7 @@ def authentication_validation(username, password, access_token):
     Only accept one form of authentication.
     """
     if bool(username) is not bool(password):
-        raise Exception("Basic authentication requires a username AND" " password.")
+        raise Exception("Basic authentication requires a username AND password.")
     if (username and access_token) or (password and access_token):
         raise Exception(
             "Cannot use both Basic Authentication and"

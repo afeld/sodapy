@@ -450,7 +450,6 @@ def setup_publish_mock(
     dataset_identifier=DATASET_IDENTIFIER,
     content_type="json",
 ):
-
     path = os.path.join(TEST_DATA_PATH, response)
     with open(path, "r") as response_body:
         body = json.load(response_body)
@@ -480,7 +479,6 @@ def setup_import_non_data_file(
     dataset_identifier=DATASET_IDENTIFIER,
     content_type="json",
 ):
-
     path = os.path.join(TEST_DATA_PATH, response)
     with open(path, "r") as response_body:
         body = json.load(response_body)
@@ -508,7 +506,6 @@ def setup_replace_non_data_file(
     dataset_identifier=DATASET_IDENTIFIER,
     content_type="json",
 ):
-
     path = os.path.join(TEST_DATA_PATH, response)
     with open(path, "r") as response_body:
         body = json.load(response_body)
@@ -543,7 +540,6 @@ def setup_old_api_mock(
     dataset_identifier=DATASET_IDENTIFIER,
     content_type="json",
 ):
-
     path = os.path.join(TEST_DATA_PATH, response)
     with open(path, "r") as response_body:
         try:
@@ -551,9 +547,7 @@ def setup_old_api_mock(
         except ValueError:
             body = None
 
-    uri = "{}{}{}/{}.{}".format(
-        PREFIX, DOMAIN, OLD_API_PATH, dataset_identifier, content_type
-    )
+    uri = "{}{}{}/{}.{}".format(PREFIX, DOMAIN, OLD_API_PATH, dataset_identifier, content_type)
 
     headers = {"content-type": "application/json; charset=utf-8"}
 
@@ -576,9 +570,7 @@ def setup_datasets_mock(adapter, response, response_code, reason="OK", params={}
 
     if "offset" not in params:
         params["offset"] = 0
-        uri = "{}?{}".format(
-            uri, "&".join(["{}={}".format(k, v) for k, v in params.items()])
-        )
+        uri = "{}?{}".format(uri, "&".join(["{}={}".format(k, v) for k, v in params.items()]))
 
     headers = {"content-type": "application/json; charset=utf-8"}
     adapter.register_uri(
@@ -596,7 +588,6 @@ def setup_mock(
     content_type="json",
     query=None,
 ):
-
     path = os.path.join(TEST_DATA_PATH, response)
     with open(path, "r") as response_body:
         body = json.load(response_body)

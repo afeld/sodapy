@@ -61,8 +61,7 @@ class Socrata:
         self.session = requests.Session()
         if not app_token:
             logging.warning(
-                "Requests made without an app_token will be"
-                " subject to strict throttling limits."
+                "Requests made without an app_token will be subject to strict throttling limits."
             )
         else:
             self.session.headers.update({"X-App-token": app_token})
@@ -73,9 +72,7 @@ class Socrata:
         if username and password:
             self.session.auth = (username, password)
         elif access_token:
-            self.session.headers.update(
-                {"Authorization": "OAuth {}".format(access_token)}
-            )
+            self.session.headers.update({"Authorization": "OAuth {}".format(access_token)})
 
         if session_adapter:
             self.session.mount(session_adapter["prefix"], session_adapter["adapter"])
@@ -211,9 +208,7 @@ class Socrata:
         if order:
             params.append(("order", order))
 
-        results = self._perform_request(
-            "get", DATASETS_PATH, params=params + [("offset", offset)]
-        )
+        results = self._perform_request("get", DATASETS_PATH, params=params + [("offset", offset)])
         num_results = results["resultSetSize"]
         # no more results to fetch, or limit reached
         if (
@@ -226,9 +221,7 @@ class Socrata:
         if limit != 0:
             raise Exception(
                 "Unexpected number of results returned from endpoint.\
-                    Expected {}, got {}.".format(
-                    limit, len(results["results"])
-                )
+                    Expected {}, got {}.".format(limit, len(results["results"]))
             )
 
         # get all remaining results
@@ -269,9 +262,7 @@ class Socrata:
 
         return self._perform_update("post", resource, payload)
 
-    def set_permission(
-        self, dataset_identifier, permission="private", content_type="json"
-    ):
+    def set_permission(self, dataset_identifier, permission="private", content_type="json"):
         """
         Set a dataset's permissions to private or public
         Options are private, public
@@ -324,9 +315,7 @@ class Socrata:
             logging.info("No attachments were found or downloaded.")
             return files
 
-        download_dir = os.path.join(
-            os.path.expanduser(download_dir), dataset_identifier
-        )
+        download_dir = os.path.join(os.path.expanduser(download_dir), dataset_identifier)
         if not os.path.exists(download_dir):
             os.makedirs(download_dir)
 
@@ -407,9 +396,7 @@ class Socrata:
         params.update(kwargs)
         params = utils.clear_empty_values(params)
 
-        response = self._perform_request(
-            "get", resource, headers=headers, params=params
-        )
+        response = self._perform_request("get", resource, headers=headers, params=params)
         return response
 
     def get_all(self, *args, **kwargs):
@@ -479,9 +466,7 @@ class Socrata:
         WARNING: a table-based dataset cannot be replaced by a file-based dataset.
                  Use create_non_data_file in order to replace.
         """
-        resource = utils.format_old_api_request(
-            dataid=dataset_identifier, content_type="txt"
-        )
+        resource = utils.format_old_api_request(dataid=dataset_identifier, content_type="txt")
 
         if not params.get("method", None):
             params["method"] = "replaceBlob"
@@ -501,9 +486,7 @@ class Socrata:
             headers = {
                 "content-type": "text/csv",
             }
-            response = self._perform_request(
-                method, resource, data=payload, headers=headers
-            )
+            response = self._perform_request(method, resource, data=payload, headers=headers)
         else:
             raise Exception(
                 "Unrecognized payload {}. Currently only list-, dictionary-,"
@@ -537,8 +520,9 @@ class Socrata:
         request_type_methods = set(["get", "post", "put", "delete"])
         if request_type not in request_type_methods:
             raise Exception(
-                "Unknown request type. Supported request types are"
-                ": {}".format(", ".join(request_type_methods))
+                "Unknown request type. Supported request types are: {}".format(
+                    ", ".join(request_type_methods)
+                )
             )
 
         uri = "{}{}{}".format(self.uri_prefix, self.domain, resource)

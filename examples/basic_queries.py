@@ -56,11 +56,7 @@ socrata_token = os.environ.get("SODAPY_APPTOKEN")
 
 
 client = Socrata(socrata_domain, socrata_token)
-print(
-    "Domain: {domain:}\nSession: {session:}\nURI Prefix: {uri_prefix:}".format(
-        **client.__dict__
-    )
-)
+print("Domain: {domain:}\nSession: {session:}\nURI Prefix: {uri_prefix:}".format(**client.__dict__))
 
 
 # In[6]:
@@ -82,9 +78,7 @@ df["amount"] = df["amount"].astype(float)
 # In[8]:
 
 
-by_candidate = (
-    df.groupby("recipient").amount.aggregate([np.sum, np.mean, np.size]).round(0)
-)
+by_candidate = df.groupby("recipient").amount.aggregate([np.sum, np.mean, np.size]).round(0)
 by_candidate.sort_values("sum", ascending=False).head()
 
 

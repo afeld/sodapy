@@ -55,9 +55,7 @@ def test_format_old_api_request_exception():
     ],
 )
 def test_format_old_api_request(dataid, content_type, path):
-    assert (
-        utils.format_old_api_request(dataid=dataid, content_type=content_type) == path
-    )
+    assert utils.format_old_api_request(dataid=dataid, content_type=content_type) == path
 
 
 @pytest.mark.parametrize(
@@ -69,9 +67,7 @@ def test_format_old_api_request(dataid, content_type, path):
 )
 def test_format_new_api_request(dataid, row_id, content_type, path):
     assert (
-        utils.format_new_api_request(
-            dataid=dataid, row_id=row_id, content_type=content_type
-        )
+        utils.format_new_api_request(dataid=dataid, row_id=row_id, content_type=content_type)
         == path
     )
 
