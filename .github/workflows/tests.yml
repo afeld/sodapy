@@ -16,6 +16,8 @@ jobs:
           - "3.11"
           - "3.12"
           - "3.13"
+    env:
+      PYTHON_VERSION: ${{ matrix.python-version }}
 
     steps:
       - name: Checkout code
@@ -38,5 +40,6 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
+          env_vars: PYTHON_VERSION
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
