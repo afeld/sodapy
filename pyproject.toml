@@ -3,7 +3,7 @@
 [project]
 name = "sodapy"
 dynamic = ["version"]
-description = "Python library for the Socrata Open Data API"
+description = "Python client for the Socrata Open Data API (SODA)"
 keywords = ["soda", "socrata", "opendata", "api"]
 classifiers = [
     "Programming Language :: Python :: 3",
