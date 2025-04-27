@@ -127,13 +127,20 @@ def test_get_metadata_and_attachments():
     response = client.get_metadata(REAL_DATASET_IDENTIFIER)
 
     assert isinstance(response, dict)
-    assert "newBackend" in response
-    assert "attachments" in response["metadata"]
+    assert response["newBackend"]
+    assert response["name"] == "Bicycle Counts"
+    assert response["attribution"] == "Department of Transportation (DOT)"
+
+    expected_attachments = 1
+    attachments = response["metadata"]["attachments"]
+    assert len(attachments) == expected_attachments
+    filename = attachments[0]["filename"]
 
     response = client.download_attachments(REAL_DATASET_IDENTIFIER)
 
     assert isinstance(response, list)
-    assert len(response) == 1
+    assert len(response) == expected_attachments
+    assert response[0].endswith(f"/{REAL_DATASET_IDENTIFIER}/{filename}")
 
     client.close()
 
