@@ -6,7 +6,7 @@ import requests_mock
 import pytest
 
 from sodapy import Socrata
-from sodapy.constants import DEFAULT_API_PATH, OLD_API_PATH
+from sodapy.constants import DEFAULT_API_PATH
 
 
 PREFIX = "https://"
@@ -136,36 +136,6 @@ def test_get_metadata_and_attachments(real_client):
     real_client.close()
 
 
-def setup_old_api_mock(
-    adapter,
-    method,
-    response,
-    response_code,
-    reason="OK",
-    dataset_identifier=FAKE_DATASET_IDENTIFIER,
-    content_type="json",
-):
-    path = os.path.join(TEST_DATA_PATH, response)
-    with open(path, "r") as response_body:
-        try:
-            body = json.load(response_body)
-        except ValueError:
-            body = None
-
-    uri = "{}{}{}/{}.{}".format(PREFIX, FAKE_DOMAIN, OLD_API_PATH, dataset_identifier, content_type)
-
-    headers = {"content-type": "application/json; charset=utf-8"}
-
-    adapter.register_uri(
-        method,
-        uri,
-        status_code=response_code,
-        json=body,
-        reason=reason,
-        headers=headers,
-    )
-
-
 def setup_mock(
     adapter,
     method,
@@ -180,12 +150,9 @@ def setup_mock(
     with open(path, "r") as response_body:
         body = json.load(response_body)
 
-    if dataset_identifier is None:  # for create endpoint
-        uri = "{}{}{}.{}".format(PREFIX, FAKE_DOMAIN, OLD_API_PATH, "json")
-    else:  # most cases
-        uri = "{}{}{}{}.{}".format(
-            PREFIX, FAKE_DOMAIN, DEFAULT_API_PATH, dataset_identifier, content_type
-        )
+    uri = "{}{}{}{}.{}".format(
+        PREFIX, FAKE_DOMAIN, DEFAULT_API_PATH, dataset_identifier, content_type
+    )
 
     if query:
         uri += "?" + query
