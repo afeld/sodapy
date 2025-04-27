@@ -121,25 +121,19 @@ def test_get_datasets():
     assert len(response) == 7
 
 
+@pytest.mark.vcr
 def test_get_metadata_and_attachments():
-    mock_adapter = {}
-    mock_adapter["prefix"] = PREFIX
-    adapter = requests_mock.Adapter()
-    mock_adapter["adapter"] = adapter
-    client = Socrata(FAKE_DOMAIN, APPTOKEN, session_adapter=mock_adapter)
-
-    response_data = "get_song_metadata.txt"
-    setup_old_api_mock(adapter, "GET", response_data, 200)
-    response = client.get_metadata(FAKE_DATASET_IDENTIFIER)
+    client = Socrata(REAL_DOMAIN, None)
+    response = client.get_metadata(REAL_DATASET_IDENTIFIER)
 
     assert isinstance(response, dict)
     assert "newBackend" in response
     assert "attachments" in response["metadata"]
 
-    response = client.download_attachments(FAKE_DATASET_IDENTIFIER)
+    response = client.download_attachments(REAL_DATASET_IDENTIFIER)
 
     assert isinstance(response, list)
-    assert len(response) == 0
+    assert len(response) == 1
 
     client.close()
 
