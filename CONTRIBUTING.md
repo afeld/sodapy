@@ -6,27 +6,26 @@ This project adheres to the [Contributor Covenant Code of Conduct](http://contri
 
 This project uses [uv](https://docs.astral.sh/uv/) for packaging. To get set up:
 
-```sh
-git clone <my remote url/sodapy.git>
-cd sodapy
-```
+1. [Fork the repository.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+1. [Clone the repository.](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+1. [Install uv.](https://docs.astral.sh/uv/getting-started/installation/)
+1. From the repository directory, run tests, which will also install packages:
 
-Run tests, which will also install packages:
-
-```sh
-uv run pytest --cov
-```
+   ```sh
+   uv run pytest --cov
+   ```
 
 ## Submitting a pull request
 
 1. Fork this repository
-2. Create a branch: `git checkout -b my_feature`
-3. Make changes
-4. Run `uv run black sodapy tests` to ensure that your changes conform to the coding style of this project
-5. Commit: `git commit -am "Great new feature that closes #3"`. Reference any related issues in the first line of the commit message.
-6. Push: `git push origin my_feature`
-7. Open a pull request
-8. Pat yourself on the back for making an open source contribution :)
+1. Create a branch: `git checkout -b my_feature`
+1. Make changes
+1. Run `uvx ruff check` to run static analysis.
+1. Run `uvx ruff format` to ensure that your changes conform to the coding style of this project.
+1. Commit: `git commit -am "Great new feature that closes #3"`. Reference any related issues in the first line of the commit message.
+1. Push: `git push origin my_feature`
+1. Open a pull request
+1. Pat yourself on the back for making an open source contribution :)
 
 ## Other considerations
 

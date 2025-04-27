@@ -32,13 +32,10 @@ requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [dependency-groups]
-dev = [
-    "black",
-    "flake8>=5.0.4",
-    "pytest-cov",
-    "pytest>=7.1.2",
-    "requests-mock>=1.9.3",
-]
+dev = ["pytest-cov", "pytest>=7.1.2", "requests-mock>=1.9.3"]
+
+[tool.ruff]
+line-length = 100
 
 [tool.setuptools]
 include-package-data = false
