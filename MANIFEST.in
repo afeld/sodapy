@@ -1,2 +1,2 @@
-include LICENSE requirements.txt
+include LICENSE
 recursive-include tests *

@@ -514,7 +514,12 @@ def setup_replace_non_data_file(
         body = json.load(response_body)
 
     uri = "{}{}{}/{}.{}?method=replaceBlob&id={}".format(
-        PREFIX, DOMAIN, OLD_API_PATH, dataset_identifier, "txt", dataset_identifier,
+        PREFIX,
+        DOMAIN,
+        OLD_API_PATH,
+        dataset_identifier,
+        "txt",
+        dataset_identifier,
     )
 
     headers = {"content-type": "text/plain; charset=utf-8"}

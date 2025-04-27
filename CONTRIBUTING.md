@@ -4,21 +4,17 @@ This project adheres to the [Contributor Covenant Code of Conduct](http://contri
 
 ## Getting started
 
-The best way to start developing this project is to set up a [virtualenv](https://virtualenv.pypa.io/en/stable/) and install the requirements.
+This project uses [uv](https://docs.astral.sh/uv/) for packaging. To get set up:
 
 ```sh
 git clone <my remote url/sodapy.git>
 cd sodapy
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements-dev.txt
 ```
 
-Install the package, and run tests to confirm that everything is set up properly.
+Run tests, which will also install packages:
 
 ```sh
-pip install .
-pytest
+uv run pytest
 ```
 
 ## Submitting a pull request
@@ -26,7 +22,7 @@ pytest
 1. Fork this repository
 2. Create a branch: `git checkout -b my_feature`
 3. Make changes
-4. Run `black sodapy tests` to ensure that your changes conform to the coding style of this project
+4. Run `uv run black sodapy tests` to ensure that your changes conform to the coding style of this project
 5. Commit: `git commit -am "Great new feature that closes #3"`. Reference any related issues in the first line of the commit message.
 6. Push: `git push origin my_feature`
 7. Open a pull request

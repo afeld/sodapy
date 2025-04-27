@@ -348,9 +348,7 @@ class Socrata:
             utils.download_file(uri, file_path)
             files.append(file_path)
 
-        logging.info(
-            "The following files were downloaded:\n\t%s", "\n\t".join(files)
-        )
+        logging.info("The following files were downloaded:\n\t%s", "\n\t".join(files))
         return files
 
     def publish(self, dataset_identifier, content_type="json"):

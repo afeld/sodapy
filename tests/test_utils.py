@@ -91,7 +91,8 @@ def test_authentication_validation_exceptions(username, password, token):
 
 
 @pytest.mark.parametrize(
-    ("username", "password", "token"), [("me", "pass", None), (None, None, "93738")],
+    ("username", "password", "token"),
+    [("me", "pass", None), (None, None, "93738")],
 )
 def test_authentication_validation(username, password, token):
     utils.authentication_validation(username, password, token)

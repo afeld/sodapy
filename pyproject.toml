@@ -1,0 +1,44 @@
+# https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+
+[project]
+name = "sodapy"
+dynamic = ["version"]
+description = "Python library for the Socrata Open Data API"
+keywords = ["soda", "socrata", "opendata", "api"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: OS Independent",
+    "Development Status :: 5 - Production/Stable",
+]
+authors = [{ name = "Cristina Muñoz", email = "hi@xmunoz.com" }]
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.7"
+dependencies = ["requests>=2.28.1"]
+
+[project.urls]
+repository = "https://github.com/xmunoz/sodapy.git"
+issues = "https://github.com/xmunoz/sodapy/issues"
+changelog = "https://github.com/xmunoz/sodapy/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "flake8>=5.0.4",
+    "pytest>=7.1.2",
+    "requests-mock>=1.9.3",
+    "black; python_version > '3.5'",
+    "coverage>=6.4.4",
+]
+
+[tool.setuptools]
+include-package-data = false
+packages = ["sodapy"]
+
+[tool.setuptools.dynamic]
+version = { attr = "sodapy.__version__" }

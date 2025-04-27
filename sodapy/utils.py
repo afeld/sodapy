@@ -51,9 +51,7 @@ def format_old_api_request(dataid=None, content_type=None):
     if content_type is not None:
         return "{}.{}".format(OLD_API_PATH, content_type)
 
-    raise Exception(
-        "This method requires at least a dataset_id or content_type."
-    )
+    raise Exception("This method requires at least a dataset_id or content_type.")
 
 
 def format_new_api_request(dataid=None, row_id=None, content_type=None):
