@@ -8,9 +8,6 @@ jobs:
     strategy:
       matrix:
         python-version:
-          # "The version '3.7' with architecture 'x64' was not found for Ubuntu 24.04. The list of all available versions can be found here: https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json"
-          # - "3.7"
-          - "3.8"
           - "3.9"
           - "3.10"
           - "3.11"

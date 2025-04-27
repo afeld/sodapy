@@ -16,7 +16,7 @@ maintainers = [{ name = "Aidan Feldman", email = "aidan.feldman@gmail.com" }]
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 dependencies = ["requests>=2.28.1"]
 
 [project.urls]
