@@ -24,7 +24,6 @@ develop-eggs
 .installed.cfg
 lib
 lib64
-uv.lock
 
 # Installer logs
 pip-log.txt

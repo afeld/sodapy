@@ -16,8 +16,8 @@ maintainers = [{ name = "Aidan Feldman", email = "aidan.feldman@gmail.com" }]
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
-requires-python = ">=3.7"
-dependencies = ["requests>=2.28.1"]
+requires-python = ">=3.9"
+dependencies = ["requests>=2.28.2"]  # Verified for Python 3.9+ compatibility
 
 [project.urls]
 repository = "https://github.com/afeld/sodapy.git"
@@ -30,11 +30,11 @@ build-backend = "setuptools.build_meta"
 
 [dependency-groups]
 dev = [
+    "black",
     "flake8>=5.0.4",
+    "pytest-cov",
     "pytest>=7.1.2",
     "requests-mock>=1.9.3",
-    "black; python_version > '3.5'",
-    "coverage>=6.4.4",
 ]
 
 [tool.setuptools]

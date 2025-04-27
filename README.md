@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/sodapy.svg)](http://badge.fury.io/py/sodapy) [![Build Status](https://travis-ci.com/xmunoz/sodapy.svg?branch=main)](https://travis-ci.com/xmunoz/sodapy) [![Code Coverage](https://codecov.io/github/xmunoz/sodapy/coverage.svg?branch=main)](https://codecov.io/github/xmunoz/sodapy)
+[![PyPI version](https://badge.fury.io/py/sodapy.svg)](http://badge.fury.io/py/sodapy) [![Build Status](https://github.com/afeld/sodapy/actions/workflows/tests.yml/badge.svg)](https://github.com/afeld/sodapy/actions/workflows/tests.yml) [![Code Coverage](https://codecov.io/gh/afeld/sodapy/graph/badge.svg?token=64R1LqdV8I)](https://codecov.io/gh/afeld/sodapy)
 
 # sodapy
 
