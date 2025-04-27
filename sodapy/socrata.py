@@ -206,7 +206,7 @@ class Socrata:
         if order:
             params.append(("order", order))
 
-        results = self._perform_request("get", DATASETS_PATH, params=params + [("offset", offset)])
+        results = self._perform_request(DATASETS_PATH, params=params + [("offset", offset)])
         num_results = results["resultSetSize"]
         # no more results to fetch, or limit reached
         if (
@@ -226,9 +226,7 @@ class Socrata:
         all_results = results["results"]
         while len(all_results) != num_results:
             offset += len(results["results"])
-            results = self._perform_request(
-                "get", DATASETS_PATH, params=params + [("offset", offset)]
-            )
+            results = self._perform_request(DATASETS_PATH, params=params + [("offset", offset)])
             all_results.extend(results["results"])
 
         return all_results
@@ -240,7 +238,7 @@ class Socrata:
         resource = utils.format_old_api_request(
             dataid=dataset_identifier, content_type=content_type
         )
-        return self._perform_request("get", resource)
+        return self._perform_request(resource)
 
     def download_attachments(
         self, dataset_identifier, content_type="json", download_dir="~/sodapy_downloads"
@@ -327,7 +325,7 @@ class Socrata:
         params.update(kwargs)
         params = utils.clear_empty_values(params)
 
-        response = self._perform_request("get", resource, headers=headers, params=params)
+        response = self._perform_request(resource, headers=headers, params=params)
         return response
 
     def get_all(self, *args, **kwargs):
@@ -350,31 +348,23 @@ class Socrata:
                 return
             params["offset"] += limit
 
-    def _perform_request(self, request_type, resource, **kwargs):
+    def _perform_request(self, resource, **kwargs):
         """
-        Utility method that performs all requests.
+        Utility method that performs GET requests.
         """
-        request_type_methods = set(["get", "post", "put", "delete"])
-        if request_type not in request_type_methods:
-            raise Exception(
-                "Unknown request type. Supported request types are: {}".format(
-                    ", ".join(request_type_methods)
-                )
-            )
 
         uri = "{}{}{}".format(self.uri_prefix, self.domain, resource)
 
         # set a timeout, just to be safe
         kwargs["timeout"] = self.timeout
 
-        response = getattr(self.session, request_type)(uri, **kwargs)
+        response = self.session.get(uri, **kwargs)
 
         # handle errors
         if response.status_code not in (200, 202):
             utils.raise_for_status(response)
 
-        # when responses have no content body (ie. delete, set_permission),
-        # simply return the whole response
+        # when responses have no content body, simply return the whole response
         if not response.text:
             return response
 
