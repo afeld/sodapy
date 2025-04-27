@@ -31,5 +31,5 @@ uv run pytest
 ## Other considerations
 
 - Please review the open issues before opening a PR.
-- Significant changes or new features should be documented in [`README.md`](https://github.com/xmunoz/sodapy/blob/main/README.md).
+- Significant changes or new features should be documented in [the README](README.md).
 - Writing tests is never a bad idea. Make sure all tests are passing before opening a PR.

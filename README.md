@@ -8,12 +8,6 @@ sodapy is a python client for the [Socrata Open Data API](https://dev.socrata.co
 
 You can install with `pip install sodapy`.
 
-If you want to install from source, then clone this repository and run `python setup.py install` from the project root.
-
-## Requirements
-
-At its core, this library depends heavily on the [Requests](http://docs.python-requests.org/en/latest/) package. All other requirements can be found in [requirements.txt](https://github.com/xmunoz/sodapy/blob/main/requirements.txt). `sodapy` is currently compatible with Python 3.5, 3.6, 3.7, 3.8, 3.9, and 3.10.
-
 ## Documentation
 
 The [official Socrata Open Data API docs](http://dev.socrata.com/) provide thorough documentation of the available methods, as well as [other client libraries](https://dev.socrata.com/libraries/). A quick list of eligible domains to use with this API is available via the [Socrata Discovery API](https://socratadiscovery.docs.apiary.io/#reference/0/count-by-domain/count-by-domain?console=1) or [Socrata's Open Data Network](https://www.opendatanetwork.com/).
@@ -73,7 +67,7 @@ with Socrata("sandbox.demo.socrata.com", None) as client:
     # do some stuff
 ```
 
-The client, by default, makes requests over HTTPS. To modify this behavior, or to make requests through a proxy, take a look [here](https://github.com/xmunoz/sodapy/issues/31#issuecomment-302176628).
+The client, by default, makes requests over HTTPS. To modify this behavior, or to make requests through a proxy, take a look [here](https://github.com/afeld/sodapy/issues/31#issuecomment-302176628).
 
 ### datasets(limit=0, offset=0)
 
@@ -128,7 +122,7 @@ Retrieve the metadata associated with a particular dataset.
 
 Update the metadata for a particular dataset. `update_fields` should be a dictionary containing only the metadata keys that you wish to overwrite.
 
-Note: Invalid payloads to this method could corrupt the dataset or visualization. See [this comment](https://github.com/xmunoz/sodapy/issues/22#issuecomment-249971379) for more information.
+Note: Invalid payloads to this method could corrupt the dataset or visualization. See [this comment](https://github.com/afeld/sodapy/issues/22#issuecomment-249971379) for more information.
 
     >>> client.update_metadata("nimj-3ivp", {"attributionLink": "https://anothertest.com"})
     {"newBackend": false, "licenseId": "CC0_10", "publicationDate": 1436655117, "viewLastModified": 1451289003, "owner": {"roleName": "administrator", "rights": [], "displayName": "Brett", "id": "cdqe-xcn5", "screenName": "Brett"}, "query": {}, "id": "songs", "createdAt": 1398014181, "category": "Public Safety", "publicationAppendEnabled": true, "publicationStage": "published", "rowsUpdatedBy": "cdqe-xcn5", "publicationGroup": 1552205, "displayType": "table", "state": "normal", "attributionLink": "https://anothertest.com", "tableId": 3523378, "columns": [], "metadata": {"rdfSubject": "0", "renderTypeConfig": {"visible": {"table": true}}, "availableDisplayTypes": ["table", "fatrow", "page"], "attachments": ... }}
@@ -262,11 +256,11 @@ pytest
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/xmunoz/sodapy/blob/main/CONTRIBUTING.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## History
 
-This package was initially created and maintained by [**@xmunoz**](https://github.com/xmunoz). On March 8, 2025, ownership was transferred to [**@afeld**](https://github.com/xmunoz).
+This package was initially created and maintained by [**@xmunoz**](https://github.com/xmunoz). On March 8, 2025, ownership was transferred to [**@afeld**](https://github.com/afeld).
 
 ## Meta
 

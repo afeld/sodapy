@@ -12,6 +12,7 @@ classifiers = [
     "Development Status :: 5 - Production/Stable",
 ]
 authors = [{ name = "Cristina Muñoz", email = "hi@xmunoz.com" }]
+maintainers = [{ name = "Aidan Feldman", email = "aidan.feldman@gmail.com" }]
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -19,9 +20,9 @@ requires-python = ">=3.7"
 dependencies = ["requests>=2.28.1"]
 
 [project.urls]
-repository = "https://github.com/xmunoz/sodapy.git"
-issues = "https://github.com/xmunoz/sodapy/issues"
-changelog = "https://github.com/xmunoz/sodapy/blob/main/CHANGELOG.md"
+repository = "https://github.com/afeld/sodapy.git"
+issues = "https://github.com/afeld/sodapy/issues"
+changelog = "https://github.com/afeld/sodapy/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["setuptools >= 77.0.3"]
