@@ -30,11 +30,11 @@ build-backend = "setuptools.build_meta"
 
 [dependency-groups]
 dev = [
+    "black",
     "flake8>=5.0.4",
+    "pytest-cov",
     "pytest>=7.1.2",
     "requests-mock>=1.9.3",
-    "black; python_version > '3.5'",
-    "coverage>=6.4.4",
 ]
 
 [tool.setuptools]
