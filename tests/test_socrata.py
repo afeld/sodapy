@@ -16,11 +16,14 @@ DATASET_IDENTIFIER = "songs"
 APPTOKEN = "FakeAppToken"
 USERNAME = "fakeuser"
 PASSWORD = "fakepassword"
-TEST_DATA_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))),
-    "test_data",
-)
+TEST_DATA_PATH = os.path.join(os.path.dirname(__file__), "test_data")
 LOGGER = logging.getLogger(__name__)
+
+
+@pytest.fixture(scope="module")
+def vcr_config():
+    # https://vcrpy.readthedocs.io/en/latest/usage.html#record-modes
+    return {"record_mode": "new_episodes"}
 
 
 def test_client():
@@ -58,19 +61,13 @@ def test_client_oauth():
     assert client.session.headers.get("Authorization") == "OAuth AAAAAAAAAAAA"
 
 
+@pytest.mark.vcr
 def test_get():
-    mock_adapter = {}
-    mock_adapter["prefix"] = PREFIX
-    adapter = requests_mock.Adapter()
-    mock_adapter["adapter"] = adapter
-    client = Socrata(DOMAIN, APPTOKEN, session_adapter=mock_adapter)
-
-    response_data = "get_songs.txt"
-    setup_mock(adapter, "GET", response_data, 200)
-    response = client.get(DATASET_IDENTIFIER)
-
+    client = Socrata("data.cityofnewyork.us", None)
+    # https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Community-Districts/xi7c-iiu2/about_data
+    response = client.get("xi7c-iiu2")
     assert isinstance(response, list)
-    assert len(response) == 10
+    assert len(response) == 59
 
     client.close()
 

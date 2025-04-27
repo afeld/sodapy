@@ -32,7 +32,14 @@ requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [dependency-groups]
-dev = ["pytest-cov", "pytest>=7.1.2", "requests-mock>=1.9.3", "vulture"]
+dev = [
+    "pytest-cov",
+    "pytest-recording>=0.13.3",
+    "pytest>=7.1.2",
+    "requests-mock>=1.9.3",
+    "types-requests",
+    "vulture",
+]
 
 [tool.ruff]
 line-length = 100
@@ -45,4 +52,4 @@ packages = ["sodapy"]
 version = { attr = "sodapy.__version__" }
 
 [tool.vulture]
-ignore_names = ["LOGGER", "auth"]
+ignore_names = ["LOGGER", "auth", "vcr_config"]
