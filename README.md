@@ -2,7 +2,9 @@
 
 # sodapy
 
-sodapy is a python client for the [Socrata Open Data API](https://dev.socrata.com/).
+sodapy is a Python client for the [Socrata Open Data API (SODA)](https://dev.socrata.com/). It provides read-only access to data and metadata.
+
+Data publishers, see [Socrata's official SDKs and Libraries](https://dev.socrata.com/publishers/) — specifically [socrata-py](https://github.com/socrata/socrata-py?tab=readme-ov-file#readme) — for managing datasets.
 
 ## Installation
 
@@ -29,16 +31,7 @@ There are some [Jupyter](https://jupyter.org/) notebooks in the [examples direct
 - [`get`](#getdataset_identifier-content_typejson-kwargs)
 - [`get_all`](#get_alldataset_identifier-content_typejson-kwargs)
 - [`get_metadata`](#get_metadatadataset_identifier-content_typejson)
-- [`update_metadata`](#update_metadatadataset_identifier-update_fields-content_typejson)
 - [`download_attachments`](#download_attachmentsdataset_identifier-content_typejson-download_dirsodapy_downloads)
-- [`create`](#createname-kwargs)
-- [`publish`](#publishdataset_identifier-content_typejson)
-- [`set_permission`](#set_permissiondataset_identifier-permissionprivate-content_typejson)
-- [`upsert`](#upsertdataset_identifier-payload-content_typejson)
-- [`replace`](#replacedataset_identifier-payload-content_typejson)
-- [`create_non_data_file`](#create_non_data_fileparams-file_obj)
-- [`replace_non_data_file`](#replace_non_data_filedataset_identifier-params-file_obj)
-- [`delete`](#deletedataset_identifier-row_idnone-content_typejson)
 - [`close`](#close)
 
 ### client
@@ -120,127 +113,12 @@ Retrieve the metadata associated with a particular dataset.
     >>> client.get_metadata("nimj-3ivp")
     {"newBackend": false, "licenseId": "CC0_10", "publicationDate": 1436655117, "viewLastModified": 1451289003, "owner": {"roleName": "administrator", "rights": [], "displayName": "Brett", "id": "cdqe-xcn5", "screenName": "Brett"}, "query": {}, "id": "songs", "createdAt": 1398014181, "category": "Public Safety", "publicationAppendEnabled": true, "publicationStage": "published", "rowsUpdatedBy": "cdqe-xcn5", "publicationGroup": 1552205, "displayType": "table", "state": "normal", "attributionLink": "http://foo.bar.com", "tableId": 3523378, "columns": [], "metadata": {"rdfSubject": "0", "renderTypeConfig": {"visible": {"table": true}}, "availableDisplayTypes": ["table", "fatrow", "page"], "attachments": ... }}
 
-### update_metadata(dataset_identifier, update_fields, content_type="json")
-
-Update the metadata for a particular dataset. `update_fields` should be a dictionary containing only the metadata keys that you wish to overwrite.
-
-Note: Invalid payloads to this method could corrupt the dataset or visualization. See [this comment](https://github.com/afeld/sodapy/issues/22#issuecomment-249971379) for more information.
-
-    >>> client.update_metadata("nimj-3ivp", {"attributionLink": "https://anothertest.com"})
-    {"newBackend": false, "licenseId": "CC0_10", "publicationDate": 1436655117, "viewLastModified": 1451289003, "owner": {"roleName": "administrator", "rights": [], "displayName": "Brett", "id": "cdqe-xcn5", "screenName": "Brett"}, "query": {}, "id": "songs", "createdAt": 1398014181, "category": "Public Safety", "publicationAppendEnabled": true, "publicationStage": "published", "rowsUpdatedBy": "cdqe-xcn5", "publicationGroup": 1552205, "displayType": "table", "state": "normal", "attributionLink": "https://anothertest.com", "tableId": 3523378, "columns": [], "metadata": {"rdfSubject": "0", "renderTypeConfig": {"visible": {"table": true}}, "availableDisplayTypes": ["table", "fatrow", "page"], "attachments": ... }}
-
 ### download_attachments(dataset_identifier, content_type="json", download_dir="~/sodapy_downloads")
 
 Download all attachments associated with a dataset. Return a list of paths to the downloaded files.
 
     >>> client.download_attachments("nimj-3ivp", download_dir="~/Desktop")
         ['/Users/xmunoz/Desktop/nimj-3ivp/FireIncident_Codes.PDF', '/Users/xmunoz/Desktop/nimj-3ivp/AccidentReport.jpg']
-
-### create(name, \*\*kwargs)
-
-Create a new dataset. Optionally, specify keyword args such as:
-
-- `description` description of the dataset
-- `columns` list of fields
-- `category` dataset category (must exist in /admin/metadata)
-- `tags` list of tag strings
-- `row_identifier` field name of primary key
-- `new_backend` whether to create the dataset in the new backend
-
-Example usage:
-
-    >>> columns = [{"fieldName": "delegation", "name": "Delegation", "dataTypeName": "text"}, {"fieldName": "members", "name": "Members", "dataTypeName": "number"}]
-    >>> tags = ["politics", "geography"]
-    >>> client.create("Delegates", description="List of delegates", columns=columns, row_identifier="delegation", tags=tags, category="Transparency")
-    {u'id': u'2frc-hyvj', u'name': u'Foo Bar', u'description': u'test dataset', u'publicationStage': u'unpublished', u'columns': [ { u'name': u'Foo', u'dataTypeName': u'text', u'fieldName': u'foo', ... }, { u'name': u'Bar', u'dataTypeName': u'number', u'fieldName': u'bar', ... } ], u'metadata': { u'rowIdentifier': 230641051 }, ... }
-
-### publish(dataset_identifier, content_type="json")
-
-Publish a dataset after creating it, i.e. take it out of 'working copy' mode. The dataset id `id` returned from `create` will be used to publish.
-
-    >>> client.publish("2frc-hyvj")
-    {u'id': u'2frc-hyvj', u'name': u'Foo Bar', u'description': u'test dataset', u'publicationStage': u'unpublished', u'columns': [ { u'name': u'Foo', u'dataTypeName': u'text', u'fieldName': u'foo', ... }, { u'name': u'Bar', u'dataTypeName': u'number', u'fieldName': u'bar', ... } ], u'metadata': { u'rowIdentifier': 230641051 }, ... }
-
-### set_permission(dataset_identifier, permission="private", content_type="json")
-
-Set the permissions of a dataset to public or private.
-
-    >>> client.set_permission("2frc-hyvj", "public")
-    <Response [200]>
-
-### upsert(dataset_identifier, payload, content_type="json")
-
-Create a new row in an existing dataset.
-
-    >>> data = [{'Delegation': 'AJU', 'Name': 'Alaska', 'Key': 'AL', 'Entity': 'Juneau'}]
-    >>> client.upsert("eb9n-hr43", data)
-    {u'Errors': 0, u'Rows Deleted': 0, u'Rows Updated': 0, u'By SID': 0, u'Rows Created': 1, u'By RowIdentifier': 0}
-
-Update/Delete rows in a dataset.
-
-    >>> data = [{'Delegation': 'sfa', ':id': 8, 'Name': 'bar', 'Key': 'doo', 'Entity': 'dsfsd'}, {':id': 7, ':deleted': True}]
-    >>> client.upsert("eb9n-hr43", data)
-    {u'Errors': 0, u'Rows Deleted': 1, u'Rows Updated': 1, u'By SID': 2, u'Rows Created': 0, u'By RowIdentifier': 0}
-
-`upsert`'s can even be performed with a csv file.
-
-    >>> data = open("upsert_test.csv")
-    >>> client.upsert("eb9n-hr43", data)
-    {u'Errors': 0, u'Rows Deleted': 0, u'Rows Updated': 1, u'By SID': 1, u'Rows Created': 0, u'By RowIdentifier': 0}
-
-### replace(dataset_identifier, payload, content_type="json")
-
-Similar in usage to `upsert`, but overwrites existing data.
-
-    >>> data = open("replace_test.csv")
-    >>> client.replace("eb9n-hr43", data)
-    {u'Errors': 0, u'Rows Deleted': 0, u'Rows Updated': 0, u'By SID': 0, u'Rows Created': 12, u'By RowIdentifier': 0}
-
-### create_non_data_file(params, file_obj)
-
-Creates a new file-based dataset with the name provided in the files
-tuple. A valid file input would be:
-
-```python
-files = (
-    {'file': ("gtfs2", open('myfile.zip', 'rb'))}
-)
-```
-
-```python
-with open(nondatafile_path, 'rb') as f:
-    files = (
-        {'file': ("nondatafile.zip", f)}
-    )
-    response = client.create_non_data_file(params, files)
-```
-
-### replace_non_data_file(dataset_identifier, params, file_obj)
-
-Same as create_non_data_file, but replaces a file that already exists in a
-file-based dataset.
-
-Note: a table-based dataset cannot be replaced by a file-based dataset. Use create_non_data_file in order to replace.
-
-```python
-with open(nondatafile_path, 'rb') as f:
-    files = (
-        {'file': ("nondatafile.zip", f)}
-    )
-response = client.replace_non_data_file(DATASET_IDENTIFIER, {}, files)
-```
-
-### delete(dataset_identifier, row_id=None, content_type="json")
-
-Delete an individual row.
-
-    >>> client.delete("nimj-3ivp", row_id=2)
-    <Response [200]>
-
-Delete the entire dataset.
-
-    >>> client.delete("nimj-3ivp")
-    <Response [200]>
 
 ### close()
 
