@@ -37,6 +37,9 @@ jobs:
             --cov --cov-branch --cov-report=xml \
             --junitxml=junit.xml -o junit_family=legacy
 
+      - name: Confirm that package builds
+        run: uv build
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
