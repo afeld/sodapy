@@ -46,3 +46,6 @@ nosetests.xml
 
 # jupyter notebook
 examples/.ipynb_checkpoints
+
+# VSCode
+!.vscode/settings.json
