@@ -33,6 +33,8 @@ build-backend = "setuptools.build_meta"
 
 [dependency-groups]
 dev = [
+    "pandas<3.0",
+    "pyright",
     "pytest-cov",
     "pytest-recording>=0.13.3",
     "pytest>=7.1.2",
@@ -40,6 +42,14 @@ dev = [
     "types-requests",
     "vulture",
 ]
+
+# https://mypy.readthedocs.io/en/stable/config_file.html
+[tool.mypy]
+check_untyped_defs = true
+
+[tool.pyright]
+# TODO include examples
+include = ["sodapy", "tests"]
 
 [tool.ruff]
 line-length = 100
@@ -56,6 +66,7 @@ ignore_names = [
     "_content",
     "LOGGER",
     "auth",
+    "prefix",
     # https://github.com/jendrikseipp/vulture/issues/382
     "pytest_runtest_setup",
     "vcr_config",

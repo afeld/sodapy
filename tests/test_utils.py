@@ -65,10 +65,8 @@ def test_format_old_api_request(dataid, content_type, path):
     ],
 )
 def test_format_new_api_request(dataid, row_id, content_type, path):
-    assert (
-        utils.format_new_api_request(dataid=dataid, row_id=row_id, content_type=content_type)
-        == path
-    )
+    result = utils.format_new_api_request(dataid=dataid, row_id=row_id, content_type=content_type)
+    assert result == path
 
 
 def test_format_new_api_request_exception():
@@ -99,7 +97,7 @@ def test_download_file(tmp_path):
     text = "the response data"
     with requests_mock.Mocker() as mock:
         mock.get(url, text=text)
-        utils.download_file(url, str(path))
+        utils.download_file(url, path)
     assert path.read_text() == text
 
 
