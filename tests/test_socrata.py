@@ -33,7 +33,9 @@ def vcr_config():
 
 @pytest.fixture
 def real_client():
-    return Socrata(REAL_DOMAIN, None)
+    client = Socrata(REAL_DOMAIN, None)
+    yield client
+    client.close()
 
 
 def test_client():
@@ -77,15 +79,11 @@ def test_get(real_client):
     assert isinstance(response, list)
     assert len(response) == real_client.DEFAULT_LIMIT
 
-    real_client.close()
-
 
 @pytest.mark.vcr
 def test_get_missing(real_client):
     with pytest.raises(requests.exceptions.HTTPError):
         real_client.get(FAKE_DATASET_IDENTIFIER)
-
-    real_client.close()
 
 
 @pytest.mark.vcr
@@ -96,8 +94,6 @@ def test_get_all(real_client):
     desired_count = real_client.DEFAULT_LIMIT + 1
     list_responses = [item for _, item in zip(range(desired_count), response)]
     assert len(list_responses) == desired_count
-
-    real_client.close()
 
 
 def test_get_unicode():
@@ -155,15 +151,11 @@ def test_get_metadata_and_attachments(real_client):
     assert len(response) == expected_attachments
     assert response[0].endswith(f"/{REAL_DATASET_IDENTIFIER}/{filename}")
 
-    real_client.close()
-
 
 @pytest.mark.vcr
 def test_get_metadata_and_attachments_missing(real_client):
     with pytest.raises(requests.exceptions.HTTPError):
         real_client.get_metadata(FAKE_DATASET_IDENTIFIER)
-
-    real_client.close()
 
 
 def test_update_metadata():
