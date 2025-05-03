@@ -81,6 +81,14 @@ def test_get(real_client):
 
 
 @pytest.mark.vcr
+def test_get_missing(real_client):
+    with pytest.raises(requests.exceptions.HTTPError):
+        real_client.get(FAKE_DATASET_IDENTIFIER)
+
+    real_client.close()
+
+
+@pytest.mark.vcr
 def test_get_all(real_client):
     response = real_client.get_all(REAL_DATASET_IDENTIFIER)
     assert inspect.isgenerator(response)
@@ -118,6 +126,16 @@ def test_get_datasets(real_client):
 
 
 @pytest.mark.vcr
+def test_get_datasets_bad_domain():
+    client = Socrata("not-socrata.com", None)
+
+    with pytest.raises(requests.exceptions.ConnectionError):
+        client.datasets()
+
+    client.close()
+
+
+@pytest.mark.vcr
 def test_get_metadata_and_attachments(real_client):
     response = real_client.get_metadata(REAL_DATASET_IDENTIFIER)
 
@@ -136,6 +154,14 @@ def test_get_metadata_and_attachments(real_client):
     assert isinstance(response, list)
     assert len(response) == expected_attachments
     assert response[0].endswith(f"/{REAL_DATASET_IDENTIFIER}/{filename}")
+
+    real_client.close()
+
+
+@pytest.mark.vcr
+def test_get_metadata_and_attachments_missing(real_client):
+    with pytest.raises(requests.exceptions.HTTPError):
+        real_client.get_metadata(FAKE_DATASET_IDENTIFIER)
 
     real_client.close()
 
