@@ -96,6 +96,17 @@ def test_get_all(real_client):
     assert len(list_responses) == desired_count
 
 
+@pytest.mark.vcr
+def test_get_all_hit_limit(real_client):
+    # small dataset
+    # https://data.cityofnewyork.us/City-Government/New-York-City-Population-by-Borough-1950-2040/xywu-7bv9/about_data
+    response = real_client.get_all("xywu-7bv9")
+    assert inspect.isgenerator(response)
+
+    num_elements = sum(1 for _ in response)
+    assert num_elements == 6
+
+
 def test_get_unicode():
     mock_adapter = {}
     mock_adapter["prefix"] = PREFIX
