@@ -2,6 +2,7 @@ import inspect
 import json
 import logging
 import os.path
+import requests
 import requests_mock
 import pytest
 
