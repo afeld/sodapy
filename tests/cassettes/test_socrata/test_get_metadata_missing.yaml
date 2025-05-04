@@ -11,7 +11,7 @@ interactions:
       User-Agent:
       - python-requests/2.32.3
     method: GET
-    uri: https://data.cityofnewyork.us/api/catalog/v1?domains=data.cityofnewyork.us&ids=songs&offset=0
+    uri: https://data.cityofnewyork.us/api/catalog/v1?ids=songs&domains=data.cityofnewyork.us
   response:
     body:
       string: '{"error":"Id ''songs'' is incorrectly formatted and will not identify
@@ -24,7 +24,7 @@ interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 04 May 2025 15:31:11 GMT
+      - Sun, 04 May 2025 17:20:02 GMT
       Server:
       - nginx
       Strict-Transport-Security:
@@ -34,7 +34,7 @@ interactions:
       X-Socrata-Region:
       - aws-us-east-1-fedramp-prod
       X-Socrata-RequestId:
-      - b23526d5a1b99dbf3dc38351fac408bd
+      - 358b93dccc9921354a4f4d6bcc556e5b
     status:
       code: 400
       message: Bad Request
