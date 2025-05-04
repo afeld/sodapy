@@ -115,8 +115,9 @@ class Socrata:
 
         params = kwargs.copy()
 
+        if "offset" not in params:
+            params["offset"] = DEFAULT_OFFSET
         limit = params.get("limit", DEFAULT_DATASETS_LIMIT)
-        params["offset"] = params.get("offset", DEFAULT_OFFSET)
 
         while True:
             results = self.datasets(**params)
@@ -237,6 +238,7 @@ class Socrata:
         """
 
         params = kwargs.copy()
+
         if "offset" not in params:
             params["offset"] = DEFAULT_OFFSET
         limit = params.get("limit", DEFAULT_ROW_LIMIT)
