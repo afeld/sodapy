@@ -134,6 +134,23 @@ class Socrata:
         response = self.datasets(ids=[dataset_identifier])
         return response[0]
 
+    def _download_url(self, dataset_identifier, attachment):
+        params = {"download": "true"}
+
+        if "assetId" in attachment:
+            base = utils.format_old_api_request(dataid=dataset_identifier)
+            assetid = attachment["assetId"]
+            filename = attachment["filename"]
+            params["filename"] = filename
+            resource = f"{base}/files/{assetid}"
+        else:
+            assetid = attachment["blobId"]
+            resource = f"/api/assets/{assetid}"
+
+        resource += "?" + urlencode(params)
+
+        return "".join((self.uri_prefix, self.domain, resource))
+
     def download_attachments(
         self, dataset_identifier, content_type="json", download_dir="~/sodapy_downloads"
     ):
@@ -158,22 +175,8 @@ class Socrata:
             os.makedirs(download_dir)
 
         for attachment in attachments:
+            uri = self._download_url(dataset_identifier, attachment)
             file_path = os.path.join(download_dir, attachment["filename"])
-            params = {"download": "true"}
-
-            if "assetId" in attachment:
-                base = utils.format_old_api_request(dataid=dataset_identifier)
-                assetid = attachment["assetId"]
-                filename = attachment["filename"]
-                params["filename"] = filename
-                resource = f"{base}/files/{assetid}"
-            else:
-                assetid = attachment["blobId"]
-                resource = f"/api/assets/{assetid}"
-
-            resource += "?" + urlencode(params)
-
-            uri = "".join((self.uri_prefix, self.domain, resource))
             utils.download_file(uri, file_path)
             files.append(file_path)
 
