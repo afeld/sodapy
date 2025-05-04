@@ -1,9 +1,7 @@
-import csv
-from io import StringIO
-import json
 import logging
 import os
-import re
+from urllib.parse import urlencode
+
 import requests
 
 from sodapy.constants import (
@@ -72,7 +70,7 @@ class Socrata:
         if username and password:
             self.session.auth = (username, password)
         elif access_token:
-            self.session.headers.update({"Authorization": "OAuth {}".format(access_token)})
+            self.session.headers.update({"Authorization": f"OAuth {access_token}"})
 
         if session_adapter:
             self.session.mount(session_adapter["prefix"], session_adapter["adapter"])
@@ -113,21 +111,19 @@ class Socrata:
     def all_datasets(self, **kwargs):
         """Returns the datasets associated with a particular domain as a Generator. [API documentation.](https://dev.socrata.com/docs/other/discovery) Note that the `limit` is treated as the page size, not a limit on the number of items that are yielded."""
 
-        params = kwargs.copy()
-
-        if "offset" not in params:
-            params["offset"] = DEFAULT_OFFSET
-        limit = params.get("limit", DEFAULT_DATASETS_LIMIT)
+        if "offset" not in kwargs:
+            kwargs["offset"] = DEFAULT_OFFSET
+        limit = kwargs.get("limit", DEFAULT_DATASETS_LIMIT)
 
         while True:
-            results = self.datasets(**params)
+            results = self.datasets(**kwargs)
             for item in results:
                 yield item
 
             if len(results) < limit:
                 return
 
-            params["offset"] += limit
+            kwargs["offset"] += limit
 
     def get_metadata(self, dataset_identifier):
         """
@@ -135,6 +131,23 @@ class Socrata:
         """
         response = self.datasets(ids=[dataset_identifier])
         return response[0]
+
+    def _download_url(self, dataset_identifier, attachment):
+        params = {"download": "true"}
+
+        if "assetId" in attachment:
+            base = utils.format_old_api_request(dataid=dataset_identifier)
+            assetid = attachment["assetId"]
+            filename = attachment["filename"]
+            params["filename"] = filename
+            resource = f"{base}/files/{assetid}"
+        else:
+            assetid = attachment["blobId"]
+            resource = f"/api/assets/{assetid}"
+
+        resource += "?" + urlencode(params)
+
+        return "".join((self.uri_prefix, self.domain, resource))
 
     def download_attachments(
         self, dataset_identifier, content_type="json", download_dir="~/sodapy_downloads"
@@ -160,20 +173,8 @@ class Socrata:
             os.makedirs(download_dir)
 
         for attachment in attachments:
+            uri = self._download_url(dataset_identifier, attachment)
             file_path = os.path.join(download_dir, attachment["filename"])
-            has_assetid = attachment.get("assetId", False)
-            if has_assetid:
-                base = utils.format_old_api_request(dataid=dataset_identifier)
-                assetid = attachment["assetId"]
-                resource = "{}/files/{}?download=true&filename={}".format(
-                    base, assetid, attachment["filename"]
-                )
-            else:
-                base = "/api/assets"
-                assetid = attachment["blobId"]
-                resource = "{}/{}?download=true".format(base, assetid)
-
-            uri = "{}{}{}".format(self.uri_prefix, self.domain, resource)
             utils.download_file(uri, file_path)
             files.append(file_path)
 
@@ -237,57 +238,34 @@ class Socrata:
         Note that the `limit` is treated as the page size, not a limit on the number of items that are yielded.
         """
 
-        params = kwargs.copy()
-
-        if "offset" not in params:
-            params["offset"] = DEFAULT_OFFSET
-        limit = params.get("limit", DEFAULT_ROW_LIMIT)
+        if "offset" not in kwargs:
+            kwargs["offset"] = DEFAULT_OFFSET
+        limit = kwargs.get("limit", DEFAULT_ROW_LIMIT)
 
         while True:
-            response = self.get(*args, **params)
+            response = self.get(*args, **kwargs)
             for item in response:
                 yield item
 
             if len(response) < limit:
                 return
-            params["offset"] += limit
+            kwargs["offset"] += limit
 
     def _perform_request(self, resource, **kwargs):
         """
         Utility method that performs GET requests.
         """
 
-        uri = "{}{}{}".format(self.uri_prefix, self.domain, resource)
+        uri = "".join((self.uri_prefix, self.domain, resource))
 
         # set a timeout, just to be safe
         kwargs["timeout"] = self.timeout
 
         response = self.session.get(uri, **kwargs)
-
-        # handle errors
-        if response.status_code not in (200, 202):
-            utils.raise_for_status(response)
-
-        # when responses have no content body, simply return the whole response
-        if not response.text:
-            return response
+        utils.raise_for_status(response)
 
         # for other request types, return most useful data
-        content_type = response.headers.get("content-type").strip().lower()
-        if re.match(r"application\/(vnd\.geo\+)?json", content_type):
-            return response.json()
-        if re.match(r"text\/csv", content_type):
-            csv_stream = StringIO(response.text)
-            return list(csv.reader(csv_stream))
-        if "xml" in content_type:
-            return response.content
-        if re.match(r"text\/plain", content_type):
-            try:
-                return json.loads(response.text)
-            except ValueError:
-                return response.text
-
-        raise Exception("Unknown response format: {}".format(content_type))
+        return utils.format_response(response)
 
     def close(self):
         """
