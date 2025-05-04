@@ -29,7 +29,9 @@ def vcr_config():
 
 @pytest.fixture
 def real_client():
-    return Socrata(REAL_DOMAIN, None)
+    client = Socrata(REAL_DOMAIN, None)
+    yield client
+    client.close()
 
 
 def test_client():
@@ -73,7 +75,25 @@ def test_get(real_client):
     assert isinstance(response, list)
     assert len(response) == real_client.DEFAULT_LIMIT
 
-    real_client.close()
+
+@pytest.mark.vcr
+def test_get_csv(real_client):
+    response = real_client.get(REAL_DATASET_IDENTIFIER, content_type="csv")
+    assert isinstance(response, list)
+    # has a header row
+    assert len(response) == real_client.DEFAULT_LIMIT + 1
+
+
+@pytest.mark.vcr
+def test_get_xml(real_client):
+    response = real_client.get(REAL_DATASET_IDENTIFIER, content_type="xml")
+    assert isinstance(response, bytes)
+
+
+@pytest.mark.vcr
+def test_get_missing(real_client):
+    with pytest.raises(requests.exceptions.HTTPError):
+        real_client.get(FAKE_DATASET_IDENTIFIER)
 
 
 @pytest.mark.vcr
@@ -85,7 +105,16 @@ def test_get_all(real_client):
     list_responses = [item for _, item in zip(range(desired_count), response)]
     assert len(list_responses) == desired_count
 
-    real_client.close()
+
+@pytest.mark.vcr
+def test_get_all_hit_limit(real_client):
+    # small dataset
+    # https://data.cityofnewyork.us/City-Government/New-York-City-Population-by-Borough-1950-2040/xywu-7bv9/about_data
+    response = real_client.get_all("xywu-7bv9")
+    assert inspect.isgenerator(response)
+
+    num_elements = sum(1 for _ in response)
+    assert num_elements == 6
 
 
 def test_get_unicode():
@@ -114,6 +143,16 @@ def test_get_datasets(real_client):
 
 
 @pytest.mark.vcr
+def test_get_datasets_bad_domain():
+    client = Socrata("not-socrata.com", None)
+
+    with pytest.raises(requests.exceptions.ConnectionError):
+        client.datasets()
+
+    client.close()
+
+
+@pytest.mark.vcr
 def test_get_metadata_and_attachments(real_client):
     response = real_client.get_metadata(REAL_DATASET_IDENTIFIER)
 
@@ -133,7 +172,11 @@ def test_get_metadata_and_attachments(real_client):
     assert len(response) == expected_attachments
     assert response[0].endswith(f"/{REAL_DATASET_IDENTIFIER}/{filename}")
 
-    real_client.close()
+
+@pytest.mark.vcr
+def test_get_metadata_and_attachments_missing(real_client):
+    with pytest.raises(requests.exceptions.HTTPError):
+        real_client.get_metadata(FAKE_DATASET_IDENTIFIER)
 
 
 def setup_mock(

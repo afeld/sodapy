@@ -375,7 +375,7 @@ class Socrata:
         if re.match(r"text\/csv", content_type):
             csv_stream = StringIO(response.text)
             return list(csv.reader(csv_stream))
-        if re.match(r"application\/rdf\+xml", content_type):
+        if "xml" in content_type:
             return response.content
         if re.match(r"text\/plain", content_type):
             try:
