@@ -6,7 +6,7 @@ import os
 import re
 import requests
 
-from sodapy.constants import DATASETS_PATH, METADATA_PATH
+from sodapy.constants import DATASETS_PATH
 import sodapy.utils as utils
 
 
@@ -231,12 +231,12 @@ class Socrata:
 
         return all_results
 
-    def get_metadata(self, dataset_identifier, content_type="json"):
+    def get_metadata(self, dataset_identifier):
         """
-        Retrieve the metadata for a particular dataset. [Docs.](https://dev.socrata.com/docs/other/metadata)
+        Retrieve the metadata for a particular dataset. While there is a [Metadata API](https://dev.socrata.com/docs/other/metadata.html), this uses the [Discovery API](https://dev.socrata.com/docs/other/discovery#?route=get-/catalog/v1-ids--4x4-), as that returns more information.
         """
-        resource = f"{METADATA_PATH}/{dataset_identifier}.{content_type}"
-        return self._perform_request(resource)
+        response = self.datasets(ids=[dataset_identifier])
+        return response[0]
 
     def download_attachments(
         self, dataset_identifier, content_type="json", download_dir="~/sodapy_downloads"

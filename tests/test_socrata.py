@@ -155,11 +155,12 @@ def test_get_datasets_bad_domain():
 
 @pytest.mark.vcr
 def test_get_metadata(real_client):
-    response = real_client.get_metadata(REAL_DATASET_IDENTIFIER)
+    metadata = real_client.get_metadata(REAL_DATASET_IDENTIFIER)
 
-    assert isinstance(response, dict)
-    assert response["name"] == "Bicycle Counts"
-    assert response["attribution"] == "Department of Transportation (DOT)"
+    assert isinstance(metadata, dict)
+    resource = metadata["resource"]
+    assert resource["name"] == "Bicycle Counts"
+    assert resource["attribution"] == "Department of Transportation (DOT)"
 
 
 @pytest.mark.vcr
