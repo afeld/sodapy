@@ -81,6 +81,20 @@ def test_get(real_client):
 
 
 @pytest.mark.vcr
+def test_get_csv(real_client):
+    response = real_client.get(REAL_DATASET_IDENTIFIER, content_type="csv")
+    assert isinstance(response, list)
+    # has a header row
+    assert len(response) == real_client.DEFAULT_LIMIT + 1
+
+
+@pytest.mark.vcr
+def test_get_xml(real_client):
+    response = real_client.get(REAL_DATASET_IDENTIFIER, content_type="xml")
+    assert isinstance(response, bytes)
+
+
+@pytest.mark.vcr
 def test_get_missing(real_client):
     with pytest.raises(requests.exceptions.HTTPError):
         real_client.get(FAKE_DATASET_IDENTIFIER)
