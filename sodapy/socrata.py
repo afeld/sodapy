@@ -1,5 +1,6 @@
 import logging
 import os
+from urllib.parse import urlencode
 
 import requests
 
@@ -158,16 +159,19 @@ class Socrata:
 
         for attachment in attachments:
             file_path = os.path.join(download_dir, attachment["filename"])
-            has_assetid = attachment.get("assetId", False)
-            if has_assetid:
+            params = {"download": "true"}
+
+            if "assetId" in attachment:
                 base = utils.format_old_api_request(dataid=dataset_identifier)
                 assetid = attachment["assetId"]
                 filename = attachment["filename"]
-                resource = f"{base}/files/{assetid}?download=true&filename={filename}"
+                params["filename"] = filename
+                resource = f"{base}/files/{assetid}"
             else:
-                base = "/api/assets"
                 assetid = attachment["blobId"]
-                resource = f"{base}/{assetid}?download=true"
+                resource = f"/api/assets/{assetid}"
+
+            resource += "?" + urlencode(params)
 
             uri = "".join((self.uri_prefix, self.domain, resource))
             utils.download_file(uri, file_path)
