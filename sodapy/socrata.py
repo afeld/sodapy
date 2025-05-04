@@ -17,8 +17,11 @@ class Socrata:
         client = Socrata("opendata.socrata.com", None)
     """
 
-    # https://dev.socrata.com/docs/paging.html#2.1
-    DEFAULT_LIMIT = 1000
+    DEFAULT_ROW_LIMIT = 1000
+    """[Docs](https://dev.socrata.com/docs/paging.html#2.1)"""
+
+    DEFAULT_DATASETS_LIMIT = 100
+    """[Docs](https://dev.socrata.com/docs/other/discovery#?route=cmp--parameters-limit)"""
 
     def __init__(
         self,
@@ -97,7 +100,7 @@ class Socrata:
         """
         self.close()
 
-    def datasets(self, limit=0, offset=0, order=None, **kwargs):
+    def datasets(self, limit=DEFAULT_DATASETS_LIMIT, offset=0, order=None, **kwargs):
         """
         Returns the list of datasets associated with a particular domain.
         WARNING: Large limits (>1000) will return megabytes of data,
@@ -340,7 +343,7 @@ class Socrata:
         params.update(kwargs)
         if "offset" not in params:
             params["offset"] = 0
-        limit = params.get("limit", self.DEFAULT_LIMIT)
+        limit = params.get("limit", self.DEFAULT_ROW_LIMIT)
 
         while True:
             response = self.get(*args, **params)

@@ -73,7 +73,7 @@ def test_client_oauth():
 def test_get(real_client):
     response = real_client.get(REAL_DATASET_IDENTIFIER)
     assert isinstance(response, list)
-    assert len(response) == real_client.DEFAULT_LIMIT
+    assert len(response) == real_client.DEFAULT_ROW_LIMIT
 
 
 @pytest.mark.vcr
@@ -81,7 +81,7 @@ def test_get_csv(real_client):
     response = real_client.get(REAL_DATASET_IDENTIFIER, content_type="csv")
     assert isinstance(response, list)
     # has a header row
-    assert len(response) == real_client.DEFAULT_LIMIT + 1
+    assert len(response) == real_client.DEFAULT_ROW_LIMIT + 1
 
 
 @pytest.mark.vcr
@@ -101,7 +101,7 @@ def test_get_all(real_client):
     response = real_client.get_all(REAL_DATASET_IDENTIFIER)
     assert inspect.isgenerator(response)
 
-    desired_count = real_client.DEFAULT_LIMIT + 1
+    desired_count = real_client.DEFAULT_ROW_LIMIT + 1
     list_responses = [item for _, item in zip(range(desired_count), response)]
     assert len(list_responses) == desired_count
 
@@ -137,9 +137,18 @@ def test_get_unicode():
 
 @pytest.mark.vcr
 def test_get_datasets(real_client):
-    response = real_client.datasets(limit=7)
+    desired_count = 7
+    response = real_client.datasets(limit=desired_count)
     assert isinstance(response, list)
-    assert len(response) == 7
+    assert len(response) == desired_count
+
+
+@pytest.mark.vcr
+def test_get_datasets_paginate(real_client):
+    desired_count = real_client.DEFAULT_DATASETS_LIMIT * 2 + 1
+    response = real_client.datasets(limit=desired_count)
+    assert isinstance(response, list)
+    assert len(response) == desired_count
 
 
 @pytest.mark.vcr

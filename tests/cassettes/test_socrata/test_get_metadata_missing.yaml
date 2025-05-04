@@ -38,4 +38,43 @@ interactions:
     status:
       code: 400
       message: Bad Request
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://data.cityofnewyork.us/api/catalog/v1?domains=data.cityofnewyork.us&limit=100&ids=songs&offset=0
+  response:
+    body:
+      string: '{"error":"Id ''songs'' is incorrectly formatted and will not identify
+        any asset."}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 04 May 2025 17:15:38 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Socrata-Region:
+      - aws-us-east-1-fedramp-prod
+      X-Socrata-RequestId:
+      - 576665e4c616a5b70b43562b8baf745e
+    status:
+      code: 400
+      message: Bad Request
 version: 1
