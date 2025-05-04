@@ -115,4 +115,4 @@ def format_response(response):
         except ValueError:
             return response.text
 
-    raise Exception(f"Unknown response format: {content_type}")
+    raise RuntimeError(f"Unknown response format: {content_type}")

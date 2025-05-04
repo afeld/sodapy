@@ -150,3 +150,11 @@ def test_format_response(content_type, body, expected):
 
     actual = utils.format_response(response)
     assert actual == expected
+
+
+def test_format_response_unknown():
+    response = requests.Response()
+    response.headers["Content-Type"] = "something/else"
+
+    with pytest.raises(RuntimeError, match="Unknown response format"):
+        utils.format_response(response)
