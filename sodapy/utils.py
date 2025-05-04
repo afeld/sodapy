@@ -17,10 +17,10 @@ def raise_for_status(response):
     http_error_msg = ""
 
     if 400 <= response.status_code < 500:
-        http_error_msg = "{} Client Error: {}".format(response.status_code, response.reason)
+        http_error_msg = f"{response.status_code} Client Error: {response.reason}"
 
     elif 500 <= response.status_code < 600:
-        http_error_msg = "{} Server Error: {}".format(response.status_code, response.reason)
+        http_error_msg = f"{response.status_code} Server Error: {response.reason}"
 
     if http_error_msg:
         try:
@@ -28,7 +28,7 @@ def raise_for_status(response):
         except ValueError:
             more_info = None
         if more_info and more_info.lower() != response.reason.lower():
-            http_error_msg += ".\n\t{}".format(more_info)
+            http_error_msg += f".\n\t{more_info}"
         raise requests.exceptions.HTTPError(http_error_msg, response=response)
 
 
@@ -55,11 +55,11 @@ def clear_empty_values(args):
 def format_old_api_request(dataid=None, content_type=None):
     if dataid is not None:
         if content_type is not None:
-            return "{}/{}.{}".format(OLD_API_PATH, dataid, content_type)
-        return "{}/{}".format(OLD_API_PATH, dataid)
+            return f"{OLD_API_PATH}/{dataid}.{content_type}"
+        return f"{OLD_API_PATH}/{dataid}"
 
     if content_type is not None:
-        return "{}.{}".format(OLD_API_PATH, content_type)
+        return f"{OLD_API_PATH}.{content_type}"
 
     raise Exception("This method requires at least a dataset_id or content_type.")
 
@@ -68,8 +68,8 @@ def format_new_api_request(dataid=None, row_id=None, content_type=None):
     if dataid is not None:
         if content_type is not None:
             if row_id is not None:
-                return "{}{}/{}.{}".format(DEFAULT_API_PATH, dataid, row_id, content_type)
-            return "{}{}.{}".format(DEFAULT_API_PATH, dataid, content_type)
+                return f"{DEFAULT_API_PATH}{dataid}/{row_id}.{content_type}"
+            return f"{DEFAULT_API_PATH}{dataid}.{content_type}"
 
     raise Exception("This method requires at least a dataset_id or content_type.")
 
@@ -115,4 +115,4 @@ def format_response(response):
         except ValueError:
             return response.text
 
-    raise Exception("Unknown response format: {}".format(content_type))
+    raise Exception(f"Unknown response format: {content_type}")

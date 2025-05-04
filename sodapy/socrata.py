@@ -69,7 +69,7 @@ class Socrata:
         if username and password:
             self.session.auth = (username, password)
         elif access_token:
-            self.session.headers.update({"Authorization": "OAuth {}".format(access_token)})
+            self.session.headers.update({"Authorization": f"OAuth {access_token}"})
 
         if session_adapter:
             self.session.mount(session_adapter["prefix"], session_adapter["adapter"])
@@ -162,15 +162,14 @@ class Socrata:
             if has_assetid:
                 base = utils.format_old_api_request(dataid=dataset_identifier)
                 assetid = attachment["assetId"]
-                resource = "{}/files/{}?download=true&filename={}".format(
-                    base, assetid, attachment["filename"]
-                )
+                filename = attachment["filename"]
+                resource = f"{base}/files/{assetid}?download=true&filename={filename}"
             else:
                 base = "/api/assets"
                 assetid = attachment["blobId"]
-                resource = "{}/{}?download=true".format(base, assetid)
+                resource = f"{base}/{assetid}?download=true"
 
-            uri = "{}{}{}".format(self.uri_prefix, self.domain, resource)
+            uri = "".join((self.uri_prefix, self.domain, resource))
             utils.download_file(uri, file_path)
             files.append(file_path)
 
@@ -254,7 +253,7 @@ class Socrata:
         Utility method that performs GET requests.
         """
 
-        uri = "{}{}{}".format(self.uri_prefix, self.domain, resource)
+        uri = "".join((self.uri_prefix, self.domain, resource))
 
         # set a timeout, just to be safe
         kwargs["timeout"] = self.timeout

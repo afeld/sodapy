@@ -209,9 +209,7 @@ def setup_mock(
     with open(path, "r") as response_body:
         body = json.load(response_body)
 
-    uri = "{}{}{}{}.{}".format(
-        PREFIX, FAKE_DOMAIN, DEFAULT_API_PATH, dataset_identifier, content_type
-    )
+    uri = f"{PREFIX}{FAKE_DOMAIN}{DEFAULT_API_PATH}{dataset_identifier}.{content_type}"
 
     if query:
         uri += "?" + query

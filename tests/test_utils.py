@@ -21,8 +21,7 @@ def test_raise_for_status(status_code, status_type, reason, raises_exception):
 
     if raises_exception:
         with pytest.raises(
-            requests.exceptions.HTTPError,
-            match="{} {}: {}".format(status_code, status_type, reason),
+            requests.exceptions.HTTPError, match=f"{status_code} {status_type}: {reason}"
         ):
             utils.raise_for_status(response)
     else:
