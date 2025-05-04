@@ -11,41 +11,31 @@ interactions:
       User-Agent:
       - python-requests/2.32.3
     method: GET
-    uri: https://data.cityofnewyork.us/api/views/songs.json
+    uri: https://data.cityofnewyork.us/api/catalog/v1?domains=data.cityofnewyork.us&ids=songs&offset=0
   response:
     body:
-      string: "{\n  \"code\" : \"not_found\",\n  \"error\" : true,\n  \"message\"
-        : \"Not found\",\n  \"data\" : {\n    \"id\" : \"songs\"\n  }\n}\n"
+      string: '{"error":"Id ''songs'' is incorrectly formatted and will not identify
+        any asset."}'
     headers:
       Access-Control-Allow-Origin:
       - '*'
-      Age:
-      - '0'
-      Cache-Control:
-      - private, no-cache, must-revalidate
       Connection:
       - keep-alive
-      Content-Encoding:
-      - gzip
       Content-Type:
-      - application/json; charset=utf-8
+      - application/json;charset=utf-8
       Date:
-      - Sat, 03 May 2025 21:11:58 GMT
+      - Sun, 04 May 2025 15:31:11 GMT
       Server:
       - nginx
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
       - chunked
-      X-Error-Code:
-      - not_found
-      X-Error-Message:
-      - Not found
       X-Socrata-Region:
       - aws-us-east-1-fedramp-prod
       X-Socrata-RequestId:
-      - 96914e023b148fc8410d70febfa818e4
+      - b23526d5a1b99dbf3dc38351fac408bd
     status:
-      code: 404
-      message: Not Found
+      code: 400
+      message: Bad Request
 version: 1

@@ -231,14 +231,12 @@ class Socrata:
 
         return all_results
 
-    def get_metadata(self, dataset_identifier, content_type="json"):
+    def get_metadata(self, dataset_identifier):
         """
-        Retrieve the metadata for a particular dataset.
+        Retrieve the metadata for a particular dataset. While there is a [Metadata API](https://dev.socrata.com/docs/other/metadata.html), this uses the [Discovery API](https://dev.socrata.com/docs/other/discovery#?route=get-/catalog/v1-ids--4x4-), as that returns more information.
         """
-        resource = utils.format_old_api_request(
-            dataid=dataset_identifier, content_type=content_type
-        )
-        return self._perform_request(resource)
+        response = self.datasets(ids=[dataset_identifier])
+        return response[0]
 
     def download_attachments(
         self, dataset_identifier, content_type="json", download_dir="~/sodapy_downloads"
@@ -247,7 +245,12 @@ class Socrata:
         Download all of the attachments associated with a dataset. Return the paths of downloaded
         files.
         """
-        metadata = self.get_metadata(dataset_identifier, content_type=content_type)
+
+        resource = utils.format_old_api_request(
+            dataid=dataset_identifier, content_type=content_type
+        )
+        metadata = self._perform_request(resource)
+
         files = []
         attachments = metadata["metadata"].get("attachments")
         if not attachments:
