@@ -111,21 +111,19 @@ class Socrata:
     def all_datasets(self, **kwargs):
         """Returns the datasets associated with a particular domain as a Generator. [API documentation.](https://dev.socrata.com/docs/other/discovery) Note that the `limit` is treated as the page size, not a limit on the number of items that are yielded."""
 
-        params = kwargs.copy()
-
-        if "offset" not in params:
-            params["offset"] = DEFAULT_OFFSET
-        limit = params.get("limit", DEFAULT_DATASETS_LIMIT)
+        if "offset" not in kwargs:
+            kwargs["offset"] = DEFAULT_OFFSET
+        limit = kwargs.get("limit", DEFAULT_DATASETS_LIMIT)
 
         while True:
-            results = self.datasets(**params)
+            results = self.datasets(**kwargs)
             for item in results:
                 yield item
 
             if len(results) < limit:
                 return
 
-            params["offset"] += limit
+            kwargs["offset"] += limit
 
     def get_metadata(self, dataset_identifier):
         """
@@ -240,20 +238,18 @@ class Socrata:
         Note that the `limit` is treated as the page size, not a limit on the number of items that are yielded.
         """
 
-        params = kwargs.copy()
-
-        if "offset" not in params:
-            params["offset"] = DEFAULT_OFFSET
-        limit = params.get("limit", DEFAULT_ROW_LIMIT)
+        if "offset" not in kwargs:
+            kwargs["offset"] = DEFAULT_OFFSET
+        limit = kwargs.get("limit", DEFAULT_ROW_LIMIT)
 
         while True:
-            response = self.get(*args, **params)
+            response = self.get(*args, **kwargs)
             for item in response:
                 yield item
 
             if len(response) < limit:
                 return
-            params["offset"] += limit
+            kwargs["offset"] += limit
 
     def _perform_request(self, resource, **kwargs):
         """
@@ -266,14 +262,7 @@ class Socrata:
         kwargs["timeout"] = self.timeout
 
         response = self.session.get(uri, **kwargs)
-
-        # handle errors
-        if response.status_code not in (200, 202):
-            utils.raise_for_status(response)
-
-        # when responses have no content body, simply return the whole response
-        if not response.text:
-            return response
+        utils.raise_for_status(response)
 
         # for other request types, return most useful data
         return utils.format_response(response)
