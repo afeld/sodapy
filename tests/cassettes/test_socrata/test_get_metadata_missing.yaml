@@ -11,11 +11,11 @@ interactions:
       User-Agent:
       - python-requests/2.32.3
     method: GET
-    uri: https://data.cityofnewyork.us/api/views/songs.json
+    uri: https://data.cityofnewyork.us/api/views/metadata/v1/songs.json
   response:
     body:
       string: "{\n  \"code\" : \"not_found\",\n  \"error\" : true,\n  \"message\"
-        : \"Not found\",\n  \"data\" : {\n    \"id\" : \"songs\"\n  }\n}\n"
+        : \"Cannot find view with id songs\"\n}\n"
     headers:
       Access-Control-Allow-Origin:
       - '*'
@@ -30,7 +30,7 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sun, 04 May 2025 15:09:11 GMT
+      - Sun, 04 May 2025 15:18:00 GMT
       Server:
       - nginx
       Strict-Transport-Security:
@@ -40,11 +40,11 @@ interactions:
       X-Error-Code:
       - not_found
       X-Error-Message:
-      - Not found
+      - Cannot find view with id songs
       X-Socrata-Region:
       - aws-us-east-1-fedramp-prod
       X-Socrata-RequestId:
-      - 41de62ccb6da311bfd5a1fc12d10fb76
+      - 40f6a259379bbd9490681a3d3b88fc9d
     status:
       code: 404
       message: Not Found

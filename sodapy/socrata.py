@@ -6,7 +6,7 @@ import os
 import re
 import requests
 
-from sodapy.constants import DATASETS_PATH
+from sodapy.constants import DATASETS_PATH, METADATA_PATH
 import sodapy.utils as utils
 
 
@@ -233,11 +233,9 @@ class Socrata:
 
     def get_metadata(self, dataset_identifier, content_type="json"):
         """
-        Retrieve the metadata for a particular dataset.
+        Retrieve the metadata for a particular dataset. [Docs.](https://dev.socrata.com/docs/other/metadata)
         """
-        resource = utils.format_old_api_request(
-            dataid=dataset_identifier, content_type=content_type
-        )
+        resource = f"{METADATA_PATH}/{dataset_identifier}.{content_type}"
         return self._perform_request(resource)
 
     def download_attachments(
@@ -247,7 +245,12 @@ class Socrata:
         Download all of the attachments associated with a dataset. Return the paths of downloaded
         files.
         """
-        metadata = self.get_metadata(dataset_identifier, content_type=content_type)
+
+        resource = utils.format_old_api_request(
+            dataid=dataset_identifier, content_type=content_type
+        )
+        metadata = self._perform_request(resource)
+
         files = []
         attachments = metadata["metadata"].get("attachments")
         if not attachments:

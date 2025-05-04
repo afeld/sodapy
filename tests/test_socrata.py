@@ -158,7 +158,6 @@ def test_get_metadata(real_client):
     response = real_client.get_metadata(REAL_DATASET_IDENTIFIER)
 
     assert isinstance(response, dict)
-    assert response["newBackend"]
     assert response["name"] == "Bicycle Counts"
     assert response["attribution"] == "Department of Transportation (DOT)"
 
