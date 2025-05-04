@@ -1,3 +1,5 @@
+from collections.abc import Iterable
+from typing import Any
 import requests
 
 from .constants import DEFAULT_API_PATH, OLD_API_PATH
@@ -24,6 +26,15 @@ def raise_for_status(response):
         if more_info and more_info.lower() != response.reason.lower():
             http_error_msg += ".\n\t{}".format(more_info)
         raise requests.exceptions.HTTPError(http_error_msg, response=response)
+
+
+def format_param(val: Any):
+    """By default, the requests package will take params values that are lists etc. and include that key in the URL multiple times. This combines the values with commas, which seems to be the convention of the Socrata APIs."""
+
+    if isinstance(val, Iterable) and not isinstance(val, str):
+        return ",".join(val)
+
+    return val
 
 
 def clear_empty_values(args):

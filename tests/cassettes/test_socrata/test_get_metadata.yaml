@@ -11,102 +11,7 @@ interactions:
       User-Agent:
       - python-requests/2.32.3
     method: GET
-    uri: https://data.cityofnewyork.us/api/catalog/v1?domains=data.cityofnewyork.us&ids=uczf-rk3c&offset=0
-  response:
-    body:
-      string: "{\n  \"results\" :\n    [\n      {\n        \"resource\" :\n          {\n
-        \           \"name\" : \"Bicycle Counts\",\n            \"id\" : \"uczf-rk3c\",\n
-        \           \"resource_name\" : null,\n            \"parent_fxf\" : [],\n
-        \           \"description\" : \"Bicycle counts conducted around New York City
-        at key locations. For the counter locations, please refer to the <a href=\\\"https://data.cityofnewyork.us/d/smn3-rzf9/\\\">Bicycle
-        Counters dataset</a>. \\n\\nThe data may have lapses due to transmission issues
-        cause by weather, connection interruptions, equipment malfunctions, vandalism,
-        etc. The data will update as soon as it is feasible. The City makes no presentation
-        as to the accuracy of the content and assumes no liability for omissions or
-        errors in information contains on the website. Time is captured in GMT/UTC
-        timezone.\",\n            \"attribution\" : \"Department of Transportation
-        (DOT)\",\n            \"attribution_link\" : null,\n            \"contact_email\"
-        : null,\n            \"type\" : \"dataset\",\n            \"updatedAt\" :
-        \"2025-05-04T15:04:05.000Z\",\n            \"createdAt\" : \"2019-12-27T16:18:08.000Z\",\n
-        \           \"metadata_updated_at\" : \"2025-05-04T15:04:05.000Z\",\n            \"data_updated_at\"
-        : \"2025-05-02T15:11:43.000Z\",\n            \"page_views\" :\n              {\n
-        \               \"page_views_last_week\" : 140,\n                \"page_views_last_month\"
-        : 445,\n                \"page_views_total\" : 15532,\n                \"page_views_last_week_log\"
-        : 7.139551352398794,\n                \"page_views_last_month_log\" : 8.800899899920305,\n
-        \               \"page_views_total_log\" : 13.923048874254617\n              },\n
-        \           \"columns_name\" : [ \"countid\", \"id\", \"date\", \"counts\",
-        \"status\" ],\n            \"columns_field_name\" :\n              [ \"countid\",
-        \"id\", \"date\", \"counts\", \"status\" ],\n            \"columns_datatype\"
-        :\n              [ \"Number\", \"Number\", \"Calendar date\", \"Number\",
-        \"Number\" ],\n            \"columns_description\" : [ \"\", \"\", \"\", \"\",
-        \"\" ],\n            \"columns_format\" :\n              [\n                {
-        \"precisionStyle\" : \"standard\", \"noCommas\" : \"true\" },\n                {
-        \"noCommas\" : \"true\" },\n                { \"view\" : \"date_time\" },\n
-        \               {},\n                {}\n              ],\n            \"download_count\"
-        : 3964,\n            \"provenance\" : \"official\",\n            \"lens_view_type\"
-        : \"tabular\",\n            \"lens_display_type\" : \"table\",\n            \"locked\"
-        : false,\n            \"blob_mime_type\" : null,\n            \"hide_from_data_json\"
-        : false,\n            \"publication_date\" : \"2022-06-24T20:24:11.000Z\"\n
-        \         },\n        \"classification\" :\n          {\n            \"categories\"
-        : [],\n            \"tags\" : [],\n            \"domain_category\" : \"Transportation\",\n
-        \           \"domain_tags\" :\n              [\n                \"bicycle\",\n
-        \               \"count\",\n                \"eco-counter\",\n                \"midtown\",\n
-        \               \"east river\",\n                \"uptown\",\n                \"bike\"\n
-        \             ],\n            \"domain_metadata\" :\n              [\n                {
-        \"key\" : \"Update_Automation\", \"value\" : \"Yes\" },\n                {
-        \"key\" : \"Update_Date-Made-Public\", \"value\" : \"12/31/2019\" },\n                {
-        \"key\" : \"Update_Update-Frequency\", \"value\" : \"Daily\" },\n                {\n
-        \                 \"key\" : \"Dataset-Information_Agency\",\n                  \"value\"
-        : \"Department of Transportation (DOT)\"\n                }\n              ]\n
-        \         },\n        \"metadata\" : { \"domain\" : \"data.cityofnewyork.us\"
-        },\n        \"permalink\" : \"https://data.cityofnewyork.us/d/uczf-rk3c\",\n
-        \       \"link\" : \"https://data.cityofnewyork.us/Transportation/Bicycle-Counts/uczf-rk3c\",\n
-        \       \"owner\" :\n          {\n            \"id\" : \"5fuc-pqz2\",\n            \"user_type\"
-        : \"interactive\",\n            \"display_name\" : \"NYC OpenData\"\n          },\n
-        \       \"creator\" :\n          {\n            \"id\" : \"5fuc-pqz2\",\n
-        \           \"user_type\" : \"interactive\",\n            \"display_name\"
-        : \"NYC OpenData\"\n          }\n      }\n    ],\n  \"resultSetSize\" : 1,\n
-        \ \"timings\" : { \"serviceMillis\" : 19, \"searchMillis\" : [ 2, 3 ] },\n
-        \ \"warnings\" : []\n}"
-    headers:
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Encoding:
-      - gzip
-      Content-Type:
-      - application/json;charset=utf-8
-      Date:
-      - Sun, 04 May 2025 15:31:11 GMT
-      Server:
-      - nginx
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Transfer-Encoding:
-      - chunked
-      Vary:
-      - Accept-Encoding
-      X-Socrata-Region:
-      - aws-us-east-1-fedramp-prod
-      X-Socrata-RequestId:
-      - e6fd3674638a124a46852ff8c92544b5
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://data.cityofnewyork.us/api/catalog/v1?domains=data.cityofnewyork.us&limit=100&ids=uczf-rk3c&offset=0
+    uri: https://data.cityofnewyork.us/api/catalog/v1?ids=uczf-rk3c&domains=data.cityofnewyork.us
   response:
     body:
       string: "{\n  \"results\" :\n    [\n      {\n        \"resource\" :\n          {\n
@@ -161,7 +66,7 @@ interactions:
         \       \"creator\" :\n          {\n            \"id\" : \"5fuc-pqz2\",\n
         \           \"user_type\" : \"interactive\",\n            \"display_name\"
         : \"NYC OpenData\"\n          }\n      }\n    ],\n  \"resultSetSize\" : 1,\n
-        \ \"timings\" : { \"serviceMillis\" : 16, \"searchMillis\" : [ 2, 3 ] },\n
+        \ \"timings\" : { \"serviceMillis\" : 27, \"searchMillis\" : [ 4, 8 ] },\n
         \ \"warnings\" : []\n}"
     headers:
       Access-Control-Allow-Origin:
@@ -173,7 +78,7 @@ interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 04 May 2025 17:15:38 GMT
+      - Sun, 04 May 2025 17:20:02 GMT
       Server:
       - nginx
       Strict-Transport-Security:
@@ -185,7 +90,7 @@ interactions:
       X-Socrata-Region:
       - aws-us-east-1-fedramp-prod
       X-Socrata-RequestId:
-      - db526f81acef7a7bb51ac01b1dfa801a
+      - 4f7d4c70bacfce6d85b982d36764e457
     status:
       code: 200
       message: OK

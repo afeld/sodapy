@@ -23,6 +23,9 @@ class Socrata:
     DEFAULT_DATASETS_LIMIT = 100
     """[Docs](https://dev.socrata.com/docs/other/discovery#?route=cmp--parameters-limit)"""
 
+    DEFAULT_OFFSET = 0
+    """Docs: [SODA](https://dev.socrata.com/docs/paging) and [Discovery](https://dev.socrata.com/docs/other/discovery#?route=cmp--parameters-offset)"""
+
     def __init__(
         self,
         domain,
@@ -100,137 +103,37 @@ class Socrata:
         """
         self.close()
 
-    def datasets(self, limit=DEFAULT_DATASETS_LIMIT, offset=0, order=None, **kwargs):
-        """
-        Returns the list of datasets associated with a particular domain.
-        WARNING: Large limits (>1000) will return megabytes of data,
-        which can be slow on low-bandwidth networks, and is also a lot of
-        data to hold in memory.
+    def datasets(self, **kwargs):
+        """Returns the list of datasets associated with a particular domain. [API documentation.](https://dev.socrata.com/docs/other/discovery)"""
 
-        This method performs a get request on these type of URLs:
-        https://data.edmonton.ca/api/catalog/v1
+        params = {key: utils.format_param(value) for key, value in kwargs.items()}
 
-            limit: max number of results to return, default is all (0)
-            offset: the offset of result set
-            order: field to sort on, optionally with ' ASC' or ' DESC' suffix
-            ids: list of dataset IDs to consider
-            domains: list of additional domains to search
-            categories: list of categories
-            tags: list of tags
-            only: list of logical types to return, among `api`, `calendar`,
-                `chart`, `datalens`, `dataset`, `federated_href`, `file`,
-                `filter`, `form`, `href`, `link`, `map`, `measure`, `story`,
-                `visualization`
-            shared_to: list of users IDs or team IDs that datasets have to be
-                shared with, or the string `site` meaning anyone on the domain.
-                Note that you may only specify yourself or a team that you are
-                on.
-                Also note that if you search for assets shared to you, assets
-                owned by you might be not be returned.
-            column_names: list of column names that must be present in the
-                tabular datasets
-            q: text query that will be used by Elasticsearch to match results
-            min_should_match: string specifying the number of words from `q`
-                that should match. Refer to Elasticsearch docs for the format,
-                the default is '3<60%', meaning that 60% of the terms must
-                match, or all of them if there are 3 or fewer.
-            attribution: string specifying the organization datasets must come
-                from
-            license: string used to filter on results having a specific license
-            derived_from: string containing the ID of a dataset that must be a
-                parent of the result datasets (for example, charts are derived
-                from a parent dataset)
-            provenance: string 'official' or 'community'
-            for_user: string containing a user ID that must own the returned
-                datasets
-            visibility: string 'open' or 'internal'
-            public: boolean indicating that all returned datasets should be
-                public (True) or private (False)
-            published: boolean indicating that returned datasets should have
-                been published (True) or not yet published (False)
-            approval_status: string 'pending', 'rejected', 'approved',
-                'not_ready' filtering results by their current status in the
-                approval pipeline
-            explicitly_hidden: boolean filtering out datasets that have been
-                explicitly hidden on a domain (False) or returning only those
-                (True)
-            derived: boolean allowing to search only for derived datasets
-                (True) or only those from which other datasets were derived
-                (False)
-        """
-        # Those filters can be passed multiple times; this function expects
-        # an iterable for them
-        filter_multiple = set(
-            [
-                "ids",
-                "domains",
-                "categories",
-                "tags",
-                "only",
-                "shared_to",
-                "column_names",
-            ]
-        )
-        # Those filters only get a single value
-        filter_single = set(
-            [
-                "q",
-                "min_should_match",
-                "attribution",
-                "license",
-                "derived_from",
-                "provenance",
-                "for_user",
-                "visibility",
-                "public",
-                "published",
-                "approval_status",
-                "explicitly_hidden",
-                "derived",
-            ]
-        )
-        all_filters = filter_multiple.union(filter_single)
-        for key in kwargs:
-            if key not in all_filters:
-                raise TypeError("Unexpected keyword argument %s" % key)
-        params = [("domains", self.domain)]
-        if limit:
-            params.append(("limit", limit))
-        for key, value in kwargs.items():
-            if key in filter_multiple:
-                for item in value:
-                    params.append((key, item))
-            elif key in filter_single:
-                params.append((key, value))
-        # TODO: custom domain-specific metadata
-        # https://socratadiscovery.docs.apiary.io/
-        #     #reference/0/find-by-domain-specific-metadata
+        # strange behavior: calling the Discovery API under a particular domain without the `domains` parameter returns results from all domains
+        params["domains"] = params.get("domains", [self.domain])
 
-        if order:
-            params.append(("order", order))
+        limit = params.get("limit", self.DEFAULT_DATASETS_LIMIT)
+        offset = params.get("offset", self.DEFAULT_OFFSET)
 
-        results = self._perform_request(DATASETS_PATH, params=params + [("offset", offset)])
+        results = self._perform_request(DATASETS_PATH, params=params)
         num_results = results["resultSetSize"]
+        result_set = results["results"]
         # no more results to fetch, or limit reached
-        if (
-            limit >= num_results
-            or limit == len(results["results"])
-            or num_results == len(results["results"])
-        ):
-            return results["results"]
+        if limit >= num_results or limit == len(result_set) or num_results == len(result_set):
+            return result_set
 
         if limit != 0:
             raise Exception(
                 "Unexpected number of results returned from endpoint.\
-                    Expected {}, got {}.".format(limit, len(results["results"]))
+                    Expected {}, got {}.".format(limit, len(result_set))
             )
 
         # get all remaining results
-        all_results = results["results"]
+        all_results = result_set
         while len(all_results) != num_results:
-            offset += len(results["results"])
-            results = self._perform_request(DATASETS_PATH, params=params + [("offset", offset)])
-            all_results.extend(results["results"])
+            offset += len(result_set)
+            params["offset"] = offset
+            results = self._perform_request(DATASETS_PATH, params=params)
+            all_results.extend(result_set)
 
         return all_results
 
@@ -342,7 +245,7 @@ class Socrata:
         params = {}
         params.update(kwargs)
         if "offset" not in params:
-            params["offset"] = 0
+            params["offset"] = self.DEFAULT_OFFSET
         limit = params.get("limit", self.DEFAULT_ROW_LIMIT)
 
         while True:

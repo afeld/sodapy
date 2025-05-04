@@ -140,6 +140,8 @@ def test_get_datasets(real_client):
     desired_count = 7
     response = real_client.datasets(limit=desired_count)
     assert isinstance(response, list)
+    for dataset in response:
+        assert dataset["metadata"]["domain"] == REAL_DOMAIN
     assert len(response) == desired_count
 
 

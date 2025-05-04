@@ -11,7 +11,7 @@ interactions:
       User-Agent:
       - python-requests/2.32.3
     method: GET
-    uri: https://data.cityofnewyork.us/api/catalog/v1?domains=data.cityofnewyork.us&limit=7&offset=0
+    uri: https://data.cityofnewyork.us/api/catalog/v1?limit=7&domains=data.cityofnewyork.us
   response:
     body:
       string: "{\n  \"results\" :\n    [\n      {\n        \"resource\" :\n          {\n
@@ -29,95 +29,95 @@ interactions:
         For inquiries about the contents of this dataset, please email licensinginquiries@tlc.nyc.gov.\",\n
         \           \"attribution\" : \"Taxi and Limousine Commission (TLC)\",\n            \"attribution_link\"
         : null,\n            \"contact_email\" : null,\n            \"type\" : \"dataset\",\n
-        \           \"updatedAt\" : \"2025-04-27T19:04:46.000Z\",\n            \"createdAt\"
+        \           \"updatedAt\" : \"2025-05-03T18:52:58.000Z\",\n            \"createdAt\"
         : \"2015-07-16T17:33:32.000Z\",\n            \"metadata_updated_at\" : \"2022-09-06T21:05:32.000Z\",\n
-        \           \"data_updated_at\" : \"2025-04-27T19:04:46.000Z\",\n            \"page_views\"
-        :\n              {\n                \"page_views_last_week\" : 10011,\n                \"page_views_last_month\"
-        : 47723,\n                \"page_views_total\" : 3155908,\n                \"page_views_last_week_log\"
-        : 13.289442575688332,\n                \"page_views_last_month_log\" : 15.542427347526369,\n
-        \               \"page_views_total_log\" : 21.589624175454542\n              },\n
-        \           \"columns_name\" :\n              [\n                \"DMV License
-        Plate Number\",\n                \"Permit License Number\",\n                \"Vehicle
-        VIN Number\",\n                \"Base Number\",\n                \"Base Name\",\n
-        \               \"Wheelchair Accessible\",\n                \"License Type\",\n
-        \               \"Hack Up Date\",\n                \"Vehicle License Number\",\n
-        \               \"Expiration Date\",\n                \"Active\",\n                \"Base
-        Type\",\n                \"Certification Date\",\n                \"Website\",\n
-        \               \"Order Date\",\n                \"Last Date Updated\",\n
-        \               \"Name\",\n                \"Vehicle Year\",\n                \"Base
-        Telephone Number\",\n                \"Base Address\",\n                \"Reason\",\n
-        \               \"Last Time Updated\",\n                \"VEH\"\n              ],\n
-        \           \"columns_field_name\" :\n              [\n                \"dmv_license_plate_number\",\n
-        \               \"permit_license_number\",\n                \"vehicle_vin_number\",\n
-        \               \"base_number\",\n                \"base_name\",\n                \"wheelchair_accessible\",\n
-        \               \"license_type\",\n                \"hack_up_date\",\n                \"vehicle_license_number\",\n
-        \               \"expiration_date\",\n                \"active\",\n                \"base_type\",\n
-        \               \"certification_date\",\n                \"website\",\n                \"order_date\",\n
-        \               \"last_date_updated\",\n                \"name\",\n                \"vehicle_year\",\n
-        \               \"base_telephone_number\",\n                \"base_address\",\n
-        \               \"reason\",\n                \"last_time_updated\",\n                \"veh\"\n
-        \             ],\n            \"columns_datatype\" :\n              [\n                \"Text\",\n
+        \           \"data_updated_at\" : \"2025-05-03T18:52:58.000Z\",\n            \"page_views\"
+        :\n              {\n                \"page_views_last_week\" : 8635,\n                \"page_views_last_month\"
+        : 43160,\n                \"page_views_total\" : 3164443,\n                \"page_views_last_week_log\"
+        : 13.076147528022505,\n                \"page_views_last_month_log\" : 15.397440670657303,\n
+        \               \"page_views_total_log\" : 21.59352060644781\n              },\n
+        \           \"columns_name\" :\n              [\n                \"Base Name\",\n
+        \               \"VEH\",\n                \"License Type\",\n                \"Last
+        Time Updated\",\n                \"Wheelchair Accessible\",\n                \"Vehicle
+        VIN Number\",\n                \"Last Date Updated\",\n                \"Active\",\n
+        \               \"DMV License Plate Number\",\n                \"Base Address\",\n
+        \               \"Reason\",\n                \"Website\",\n                \"Base
+        Telephone Number\",\n                \"Name\",\n                \"Vehicle
+        License Number\",\n                \"Certification Date\",\n                \"Base
+        Number\",\n                \"Vehicle Year\",\n                \"Order Date\",\n
+        \               \"Base Type\",\n                \"Expiration Date\",\n                \"Permit
+        License Number\",\n                \"Hack Up Date\"\n              ],\n            \"columns_field_name\"
+        :\n              [\n                \"base_name\",\n                \"veh\",\n
+        \               \"license_type\",\n                \"last_time_updated\",\n
+        \               \"wheelchair_accessible\",\n                \"vehicle_vin_number\",\n
+        \               \"last_date_updated\",\n                \"active\",\n                \"dmv_license_plate_number\",\n
+        \               \"base_address\",\n                \"reason\",\n                \"website\",\n
+        \               \"base_telephone_number\",\n                \"name\",\n                \"vehicle_license_number\",\n
+        \               \"certification_date\",\n                \"base_number\",\n
+        \               \"vehicle_year\",\n                \"order_date\",\n                \"base_type\",\n
+        \               \"expiration_date\",\n                \"permit_license_number\",\n
+        \               \"hack_up_date\"\n              ],\n            \"columns_datatype\"
+        :\n              [\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Calendar date\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Calendar date\",\n                \"Text\",\n
+        \               \"Number\",\n                \"Calendar date\",\n                \"Text\",\n
         \               \"Calendar date\",\n                \"Text\",\n                \"Calendar
-        date\",\n                \"Text\",\n                \"Text\",\n                \"Calendar
-        date\",\n                \"Text\",\n                \"Calendar date\",\n                \"Calendar
-        date\",\n                \"Text\",\n                \"Number\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\"\n              ],\n            \"columns_description\"
-        :\n              [\n                \"DMV License Plate Number\",\n                \"Permit
-        License Number\",\n                \"Vehicle VIN Number\",\n                \"Base
-        Number\",\n                \"Base Name\",\n                \"Wheelchair Accessible
-        Indicator\\n\",\n                \"TLC License Type\\n\",\n                \"Hack
-        Up Date\",\n                \"FHV Vehicle License Number\",\n                \"Expiration
-        Date\",\n                \"Permit active or not\\n\",\n                \"Base
-        Type\",\n                \"Certification Date\",\n                \"Base Website\",\n
-        \               \"Date Suspension ordered\\n\",\n                \"Last Date
-        Updated\",\n                \"Owner Name\\n\",\n                \"Vehicle
-        Year\",\n                \"Base Telephone NumberBase Telephone Number\",\n
-        \               \"Base Address\",\n                \"Reason Code A,B,C or
-        G\\n\",\n                \"Last Time Updated\",\n                \"Hybrid
-        vehicle indicator\\n\"\n              ],\n            \"columns_format\" :\n
-        \             [\n                { \"displayStyle\" : \"plain\", \"align\"
-        : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
-        \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\"
-        },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        date\"\n              ],\n            \"columns_description\" :\n              [\n
+        \               \"Base Name\",\n                \"Hybrid vehicle indicator\\n\",\n
+        \               \"TLC License Type\\n\",\n                \"Last Time Updated\",\n
+        \               \"Wheelchair Accessible Indicator\\n\",\n                \"Vehicle
+        VIN Number\",\n                \"Last Date Updated\",\n                \"Permit
+        active or not\\n\",\n                \"DMV License Plate Number\",\n                \"Base
+        Address\",\n                \"Reason Code A,B,C or G\\n\",\n                \"Base
+        Website\",\n                \"Base Telephone NumberBase Telephone Number\",\n
+        \               \"Owner Name\\n\",\n                \"FHV Vehicle License
+        Number\",\n                \"Certification Date\",\n                \"Base
+        Number\",\n                \"Vehicle Year\",\n                \"Date Suspension
+        ordered\\n\",\n                \"Base Type\",\n                \"Expiration
+        Date\",\n                \"Permit License Number\",\n                \"Hack
+        Up Date\"\n              ],\n            \"columns_format\" :\n              [\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"view\" : \"date\", \"align\" : \"left\" },\n                {
-        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                { \"view\"
-        : \"date\", \"align\" : \"left\" },\n                { \"displayStyle\" :
+        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                { \"displayStyle\"
+        : \"plain\", \"align\" : \"left\" },\n                { \"displayStyle\" :
         \"plain\", \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\",
-        \"align\" : \"left\" },\n                { \"view\" : \"date\", \"align\"
+        \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\"
         : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
-        \"left\" },\n                { \"view\" : \"date_time\", \"align\" : \"left\"
-        },\n                { \"view\" : \"date\", \"align\" : \"left\" },\n                {
+        \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\"
+        },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               { \"view\" : \"date\", \"align\" : \"left\" },\n                {
         \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                {\n
         \                 \"precisionStyle\" : \"standard\",\n                  \"noCommas\"
         : \"true\",\n                  \"align\" : \"right\"\n                },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" }\n              ],\n
-        \           \"download_count\" : 555048,\n            \"provenance\" : \"official\",\n
-        \           \"lens_view_type\" : \"tabular\",\n            \"lens_display_type\"
-        : \"table\",\n            \"locked\" : false,\n            \"blob_mime_type\"
-        : null,\n            \"hide_from_data_json\" : false,\n            \"publication_date\"
-        : \"2021-04-05T13:20:47.000Z\"\n          },\n        \"classification\" :\n
-        \         {\n            \"categories\" : [],\n            \"tags\" : [],\n
-        \           \"domain_category\" : \"Transportation\",\n            \"domain_tags\"
-        :\n              [\n                \"active\",\n                \"drivers\",\n
-        \               \"fhv\",\n                \"for hire\",\n                \"for-hire\",\n
-        \               \"for-hire-vehicles\",\n                \"inactive\",\n                \"taxi\"\n
-        \             ],\n            \"domain_metadata\" :\n              [\n                {
-        \"key\" : \"Update_Automation\", \"value\" : \"Yes\" },\n                {
-        \"key\" : \"Update_Date-Made-Public\", \"value\" : \"7/20/2015\" },\n                {
-        \"key\" : \"Update_Update-Frequency\", \"value\" : \"Daily\" },\n                {\n
-        \                 \"key\" : \"Dataset-Information_Agency\",\n                  \"value\"
-        : \"Taxi and Limousine Commission (TLC)\"\n                }\n              ]\n
-        \         },\n        \"metadata\" : { \"domain\" : \"data.cityofnewyork.us\"
+        \               { \"view\" : \"date_time\", \"align\" : \"left\" },\n                {
+        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                { \"view\"
+        : \"date\", \"align\" : \"left\" },\n                { \"displayStyle\" :
+        \"plain\", \"align\" : \"left\" },\n                { \"view\" : \"date\",
+        \"align\" : \"left\" }\n              ],\n            \"download_count\" :
+        556302,\n            \"provenance\" : \"official\",\n            \"lens_view_type\"
+        : \"tabular\",\n            \"lens_display_type\" : \"table\",\n            \"locked\"
+        : false,\n            \"blob_mime_type\" : null,\n            \"hide_from_data_json\"
+        : false,\n            \"publication_date\" : \"2021-04-05T13:20:47.000Z\"\n
+        \         },\n        \"classification\" :\n          {\n            \"categories\"
+        : [],\n            \"tags\" : [],\n            \"domain_category\" : \"Transportation\",\n
+        \           \"domain_tags\" :\n              [\n                \"for-hire\",\n
+        \               \"for hire\",\n                \"for-hire-vehicles\",\n                \"inactive\",\n
+        \               \"fhv\",\n                \"drivers\",\n                \"active\",\n
+        \               \"taxi\"\n              ],\n            \"domain_metadata\"
+        :\n              [\n                { \"key\" : \"Update_Automation\", \"value\"
+        : \"Yes\" },\n                { \"key\" : \"Update_Date-Made-Public\", \"value\"
+        : \"7/20/2015\" },\n                { \"key\" : \"Update_Update-Frequency\",
+        \"value\" : \"Daily\" },\n                {\n                  \"key\" : \"Dataset-Information_Agency\",\n
+        \                 \"value\" : \"Taxi and Limousine Commission (TLC)\"\n                }\n
+        \             ]\n          },\n        \"metadata\" : { \"domain\" : \"data.cityofnewyork.us\"
         },\n        \"permalink\" : \"https://data.cityofnewyork.us/d/8wbx-tsch\",\n
         \       \"link\" : \"https://data.cityofnewyork.us/Transportation/For-Hire-Vehicles-FHV-Active/8wbx-tsch\",\n
         \       \"owner\" :\n          {\n            \"id\" : \"5fuc-pqz2\",\n            \"user_type\"
@@ -135,123 +135,124 @@ interactions:
         \           \"attribution\" : \"Department of Citywide Administrative Services
         (DCAS)\",\n            \"attribution_link\" : null,\n            \"contact_email\"
         : null,\n            \"type\" : \"dataset\",\n            \"updatedAt\" :
-        \"2025-04-25T13:11:14.000Z\",\n            \"createdAt\" : \"2016-06-14T21:12:15.000Z\",\n
+        \"2025-05-02T13:10:55.000Z\",\n            \"createdAt\" : \"2016-06-14T21:12:15.000Z\",\n
         \           \"metadata_updated_at\" : \"2024-05-14T14:26:52.000Z\",\n            \"data_updated_at\"
-        : \"2025-04-25T13:11:14.000Z\",\n            \"page_views\" :\n              {\n
-        \               \"page_views_last_week\" : 6547,\n                \"page_views_last_month\"
-        : 28638,\n                \"page_views_total\" : 2957505,\n                \"page_views_last_week_log\"
-        : 12.676838606474153,\n                \"page_views_last_month_log\" : 14.805693497841975,\n
-        \               \"page_views_total_log\" : 21.495949664740113\n              },\n
-        \           \"columns_name\" :\n              [\n                \"Parent
-        Lgy Credit\",\n                \"Exam No\",\n                \"Group No\",\n
-        \               \"Residency Credit\",\n                \"Anniversary Date\",\n
-        \               \"Last Name\",\n                \"List Div Code\",\n                \"Sibling
-        Lgy Credit\",\n                \"Veteran Credit\",\n                \"List
-        Title Desc\",\n                \"MI\",\n                \"List Agency Code\",\n
-        \               \"List Agency Desc\",\n                \"Published Date\",\n
-        \               \"Extension Date\",\n                \"Adj. FA\",\n                \"First
-        Name\",\n                \"Established Date\",\n                \"List No\",\n
-        \               \"List Title Code\"\n              ],\n            \"columns_field_name\"
-        :\n              [\n                \"parent_lgy_credit\",\n                \"exam_no\",\n
-        \               \"group_no\",\n                \"residency_credit\",\n                \"anniversary_date\",\n
-        \               \"last_name\",\n                \"list_div_code\",\n                \"sibling_lgy_credit\",\n
-        \               \"veteran_credit\",\n                \"list_title_desc\",\n
-        \               \"mi\",\n                \"list_agency_code\",\n                \"list_agency_desc\",\n
-        \               \"published_date\",\n                \"extension_date\",\n
-        \               \"adj_fa\",\n                \"first_name\",\n                \"established_date\",\n
-        \               \"list_no\",\n                \"list_title_code\"\n              ],\n
-        \           \"columns_datatype\" :\n              [\n                \"Text\",\n
+        : \"2025-05-02T13:10:55.000Z\",\n            \"page_views\" :\n              {\n
+        \               \"page_views_last_week\" : 6646,\n                \"page_views_last_month\"
+        : 28962,\n                \"page_views_total\" : 2964067,\n                \"page_views_last_week_log\"
+        : 12.698487638557692,\n                \"page_views_last_month_log\" : 14.82192342468336,\n
+        \               \"page_views_total_log\" : 21.499147114855052\n              },\n
+        \           \"columns_name\" :\n              [\n                \"Extension
+        Date\",\n                \"List Title Code\",\n                \"Sibling Lgy
+        Credit\",\n                \"Veteran Credit\",\n                \"Exam No\",\n
+        \               \"Residency Credit\",\n                \"List Agency Code\",\n
+        \               \"Anniversary Date\",\n                \"Established Date\",\n
+        \               \"Published Date\",\n                \"List Title Desc\",\n
+        \               \"Adj. FA\",\n                \"First Name\",\n                \"List
+        No\",\n                \"MI\",\n                \"Group No\",\n                \"List
+        Div Code\",\n                \"List Agency Desc\",\n                \"Last
+        Name\",\n                \"Parent Lgy Credit\"\n              ],\n            \"columns_field_name\"
+        :\n              [\n                \"extension_date\",\n                \"list_title_code\",\n
+        \               \"sibling_lgy_credit\",\n                \"veteran_credit\",\n
+        \               \"exam_no\",\n                \"residency_credit\",\n                \"list_agency_code\",\n
+        \               \"anniversary_date\",\n                \"established_date\",\n
+        \               \"published_date\",\n                \"list_title_desc\",\n
+        \               \"adj_fa\",\n                \"first_name\",\n                \"list_no\",\n
+        \               \"mi\",\n                \"group_no\",\n                \"list_div_code\",\n
+        \               \"list_agency_desc\",\n                \"last_name\",\n                \"parent_lgy_credit\"\n
+        \             ],\n            \"columns_datatype\" :\n              [\n                \"Calendar
+        date\",\n                \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Calendar date\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Calendar date\",\n                \"Calendar date\",\n                \"Calendar
+        date\",\n                \"Text\",\n                \"Number\",\n                \"Text\",\n
+        \               \"Number\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Calendar date\",\n                \"Calendar date\",\n                \"Number\",\n
-        \               \"Text\",\n                \"Calendar date\",\n                \"Number\",\n
         \               \"Text\"\n              ],\n            \"columns_description\"
-        :\n              [\n                \"A \u201CParent Legacy credit\u201D is
-        an additional credit given on an exam (10 points) to a candidate who lost
-        a parent (FDNY, NYPD, or a First Responder, during or as a result of 911).\\n\",\n
-        \               \"A four (4) digit number that identifies a civil service
-        examination. \\n\\n\",\n                \"Represents the certification order
-        for a list. (e.g. \u2013 eligible candidates on a list with a 01 group number
-        may be considered for appointment before an eligible candidate on primary
-        list with a 00 group number).\\n\",\n                \"An additional credit
-        given on an exam to a candidate who maintains a continuous period of residency
-        in New York City as described in the Notice of Examination for a specific
-        title.     \\n\",\n                \"The date on which an eligible list is
-        scheduled to expire.     \_\\n\",\n                \"A candidate\u2019s last
-        name as it appears on their application.\\n\",\n                \"The promotional
-        division codes/descriptions within the New York City Transit Authority only.\\n\",\n
+        :\n              [\n                \"The date on which a list will be extended
+        beyond its original expiration date.  \\n\",\n                \"A five (5)
+        digit number that corresponds to and represents a civil service title.\\n\",\n
         \               \"A \u201CSibling Legacy Credit\u201D is additional credit
         given on an exam (10 points) to a candidate who lost a sibling (FDNY, NYPD,
         or a First Responder, during or as a result of 911).\\n\",\n                \"An
         additional credit given to a Veteran (5 points) or disabled veteran (10 points)
         when s/he accepts a permanent position from an eligible list. \\n\",\n                \"A
-        descriptive name that identifies a civil service title. \\n\",\n                \"A
-        candidate\u2019s middle initial (MI) as it appears on their application.\\n\",\n
-        \               \"A three (3) digit number used to identify an agency (For
-        Promotion List Only).\\n\",\n                \"The name of an appointing Agency.\\n\",\n
-        \               \"The date on which an eligible list is made available for
-        review by the general public and appointing agencies. \_\\n\",\n                \"The
-        date on which a list will be extended beyond its original expiration date.
-        \ \\n\",\n                \"The Adjusted Final Average (\u201CAdj. FA\u201D
+        four (4) digit number that identifies a civil service examination. \\n\\n\",\n
+        \               \"An additional credit given on an exam to a candidate who
+        maintains a continuous period of residency in New York City as described in
+        the Notice of Examination for a specific title.     \\n\",\n                \"A
+        three (3) digit number used to identify an agency (For Promotion List Only).\\n\",\n
+        \               \"The date on which an eligible list is scheduled to expire.
+        \    \_\\n\",\n                \"The date on which an eligible list is made
+        available for certification to agencies to consider an eligible candidate
+        for appointment.\\n\",\n                \"The date on which an eligible list
+        is made available for review by the general public and appointing agencies.
+        \_\\n\",\n                \"A descriptive name that identifies a civil service
+        title. \\n\",\n                \"The Adjusted Final Average (\u201CAdj. FA\u201D
         or \u201CAFA\u201D) is an eligible candidate\u2019s test score in addition
         to any additional credits granted.\\n\",\n                \"A candidate\u2019s
-        first name as it appears on their application.\\n\",\n                \"The
-        date on which an eligible list is made available for certification to agencies
-        to consider an eligible candidate for appointment.\\n\",\n                \"An
+        first name as it appears on their application.\\n\",\n                \"An
         eligible candidate\u2019s placement on a given list as of the business day
-        that the data set is populated. \\n\\n\",\n                \"A five (5) digit
-        number that corresponds to and represents a civil service title.\\n\"\n              ],\n
-        \           \"columns_format\" :\n              [\n                { \"displayStyle\"
-        : \"plain\", \"align\" : \"left\" },\n                { \"displayStyle\" :
-        \"plain\", \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\",
-        \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\"
-        : \"left\" },\n                { \"view\" : \"date\", \"align\" : \"left\"
+        that the data set is populated. \\n\\n\",\n                \"A candidate\u2019s
+        middle initial (MI) as it appears on their application.\\n\",\n                \"Represents
+        the certification order for a list. (e.g. \u2013 eligible candidates on a
+        list with a 01 group number may be considered for appointment before an eligible
+        candidate on primary list with a 00 group number).\\n\",\n                \"The
+        promotional division codes/descriptions within the New York City Transit Authority
+        only.\\n\",\n                \"The name of an appointing Agency.\\n\",\n                \"A
+        candidate\u2019s last name as it appears on their application.\\n\",\n                \"A
+        \u201CParent Legacy credit\u201D is an additional credit given on an exam
+        (10 points) to a candidate who lost a parent (FDNY, NYPD, or a First Responder,
+        during or as a result of 911).\\n\"\n              ],\n            \"columns_format\"
+        :\n              [\n                { \"view\" : \"date\", \"align\" : \"left\"
         },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"view\" : \"date\", \"align\" : \"left\" },\n                {
-        \"view\" : \"date\", \"align\" : \"left\" },\n                {\n                  \"precisionStyle\"
+        \"view\" : \"date\", \"align\" : \"left\" },\n                { \"view\" :
+        \"date\", \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\",
+        \"align\" : \"left\" },\n                {\n                  \"precisionStyle\"
         : \"standard\",\n                  \"noCommas\" : \"false\",\n                  \"precision\"
         : \"2\",\n                  \"align\" : \"left\"\n                },\n                {
-        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                { \"view\"
-        : \"date\", \"align\" : \"left\" },\n                {\n                  \"precisionStyle\"
-        : \"standard\",\n                  \"noCommas\" : \"false\",\n                  \"precision\"
-        : \"3\",\n                  \"align\" : \"left\"\n                },\n                {
-        \"displayStyle\" : \"plain\", \"align\" : \"left\" }\n              ],\n            \"download_count\"
-        : 73933,\n            \"provenance\" : \"official\",\n            \"lens_view_type\"
-        : \"tabular\",\n            \"lens_display_type\" : \"table\",\n            \"locked\"
-        : false,\n            \"blob_mime_type\" : null,\n            \"hide_from_data_json\"
-        : false,\n            \"publication_date\" : \"2024-01-12T16:15:05.000Z\"\n
-        \         },\n        \"classification\" :\n          {\n            \"categories\"
-        : [],\n            \"tags\" : [],\n            \"domain_category\" : \"City
-        Government\",\n            \"domain_tags\" :\n              [\n                \"admin\",\n
-        \               \"cei\",\n                \"citywide equity and inclusion\",\n
-        \               \"civil service list\",\n                \"construction and
-        technical services\",\n                \"cts\",\n                \"dcas\",\n
-        \               \"dem\",\n                \"department of citywide administrative
-        services\",\n                \"department of energy management\",\n                \"eal
-        estate services\",\n                \"exam\",\n                \"facilities
-        management\",\n                \"fbm\",\n                \"fiscal and business
-        management\",\n                \"fleet\",\n                \"fm\",\n                \"hc\",\n
-        \               \"human capital\",\n                \"name\",\n                \"ocp\",\n
-        \               \"office of citywide procurement\",\n                \"office
-        of general counsel\",\n                \"ogc\",\n                \"rank\",\n
-        \               \"res\",\n                \"score\"\n              ],\n            \"domain_metadata\"
-        :\n              [\n                { \"key\" : \"Update_Automation\", \"value\"
-        : \"Yes\" },\n                { \"key\" : \"Update_Date-Made-Public\", \"value\"
-        : \"7/12/2016\" },\n                { \"key\" : \"Update_Update-Frequency\",
-        \"value\" : \"Daily\" },\n                { \"key\" : \"Update_Data-Change-Frequency\",
-        \"value\" : \"Daily\" },\n                {\n                  \"key\" : \"Dataset-Information_Agency\",\n
-        \                 \"value\" : \"Department of Citywide Administrative Services
-        (DCAS)\"\n                }\n              ]\n          },\n        \"metadata\"
-        : { \"domain\" : \"data.cityofnewyork.us\" },\n        \"permalink\" : \"https://data.cityofnewyork.us/d/vx8i-nprf\",\n
+        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                {\n
+        \                 \"precisionStyle\" : \"standard\",\n                  \"noCommas\"
+        : \"false\",\n                  \"precision\" : \"3\",\n                  \"align\"
+        : \"left\"\n                },\n                { \"displayStyle\" : \"plain\",
+        \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\"
+        : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
+        \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\"
+        },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" }\n              ],\n
+        \           \"download_count\" : 74272,\n            \"provenance\" : \"official\",\n
+        \           \"lens_view_type\" : \"tabular\",\n            \"lens_display_type\"
+        : \"table\",\n            \"locked\" : false,\n            \"blob_mime_type\"
+        : null,\n            \"hide_from_data_json\" : false,\n            \"publication_date\"
+        : \"2024-01-12T16:15:05.000Z\"\n          },\n        \"classification\" :\n
+        \         {\n            \"categories\" : [],\n            \"tags\" : [],\n
+        \           \"domain_category\" : \"City Government\",\n            \"domain_tags\"
+        :\n              [\n                \"cts\",\n                \"construction
+        and technical services\",\n                \"civil service list\",\n                \"name\",\n
+        \               \"hc\",\n                \"fm\",\n                \"ogc\",\n
+        \               \"rank\",\n                \"res\",\n                \"score\",\n
+        \               \"cei\",\n                \"admin\",\n                \"fleet\",\n
+        \               \"fiscal and business management\",\n                \"fbm\",\n
+        \               \"facilities management\",\n                \"exam\",\n                \"eal
+        estate services\",\n                \"department of energy management\",\n
+        \               \"department of citywide administrative services\",\n                \"citywide
+        equity and inclusion\",\n                \"dem\",\n                \"dcas\",\n
+        \               \"ocp\",\n                \"human capital\",\n                \"office
+        of general counsel\",\n                \"office of citywide procurement\"\n
+        \             ],\n            \"domain_metadata\" :\n              [\n                {
+        \"key\" : \"Update_Automation\", \"value\" : \"Yes\" },\n                {
+        \"key\" : \"Update_Date-Made-Public\", \"value\" : \"7/12/2016\" },\n                {
+        \"key\" : \"Update_Update-Frequency\", \"value\" : \"Daily\" },\n                {
+        \"key\" : \"Update_Data-Change-Frequency\", \"value\" : \"Daily\" },\n                {\n
+        \                 \"key\" : \"Dataset-Information_Agency\",\n                  \"value\"
+        : \"Department of Citywide Administrative Services (DCAS)\"\n                }\n
+        \             ]\n          },\n        \"metadata\" : { \"domain\" : \"data.cityofnewyork.us\"
+        },\n        \"permalink\" : \"https://data.cityofnewyork.us/d/vx8i-nprf\",\n
         \       \"link\" : \"https://data.cityofnewyork.us/City-Government/Civil-Service-List-Active-/vx8i-nprf\",\n
         \       \"owner\" :\n          {\n            \"id\" : \"5fuc-pqz2\",\n            \"user_type\"
         : \"interactive\",\n            \"display_name\" : \"NYC OpenData\"\n          },\n
@@ -267,190 +268,192 @@ interactions:
         Job Application Filings dataset for DOB NOW jobs.\",\n            \"attribution\"
         : \"Department of Buildings (DOB)\",\n            \"attribution_link\" : null,\n
         \           \"contact_email\" : null,\n            \"type\" : \"dataset\",\n
-        \           \"updatedAt\" : \"2025-04-27T20:15:37.000Z\",\n            \"createdAt\"
+        \           \"updatedAt\" : \"2025-05-02T20:01:45.000Z\",\n            \"createdAt\"
         : \"2013-04-18T15:18:56.000Z\",\n            \"metadata_updated_at\" : \"2020-06-23T02:08:44.000Z\",\n
-        \           \"data_updated_at\" : \"2025-04-27T20:15:37.000Z\",\n            \"page_views\"
-        :\n              {\n                \"page_views_last_week\" : 566,\n                \"page_views_last_month\"
-        : 2476,\n                \"page_views_total\" : 2376989,\n                \"page_views_last_week_log\"
-        : 9.147204924942228,\n                \"page_views_last_month_log\" : 11.274378153246364,\n
-        \               \"page_views_total_log\" : 21.18070440319739\n              },\n
-        \           \"columns_name\" :\n              [\n                \"Fully Paid\",\n
-        \               \"SPECIAL_ACTION_STATUS\",\n                \"Job Status\",\n
-        \               \"Loft Board\",\n                \"Lot\",\n                \"House
-        #\",\n                \"Fire Alarm\",\n                \"Doc #\",\n                \"Zoning
-        Dist2\",\n                \"Equipment\",\n                \"Block\",\n                \"Pre-
-        Filing Date\",\n                \"Landmarked\",\n                \"Job Type\",\n
-        \               \"Existing Height\",\n                \"Fuel Storage\",\n
-        \               \"City Owned\",\n                \"Horizontal Enlrgmt\",\n
-        \               \"Fire Suppression\",\n                \"Standpipe\",\n                \"Building
-        Type\",\n                \"Adult Estab\",\n                \"Little e\",\n
-        \               \"Mechanical\",\n                \"Applicant License #\",\n
-        \               \"Applicant Professional Title\",\n                \"Job Description\",\n
-        \               \"Other\",\n                \"Cluster\",\n                \"Non-Profit\",\n
-        \               \"Vertical Enlrgmt\",\n                \"PC Filed\",\n                \"Boiler\",\n
-        \               \"Professional Cert\",\n                \"GIS_CENSUS_TRACT\",\n
-        \               \"Sprinkler\",\n                \"Curb Cut\",\n                \"Applicant's
-        First Name\",\n                \"Proposed No. of Stories\",\n                \"Initial
-        Cost\",\n                \"Zip\",\n                \"Existing Zoning Sqft\",\n
-        \               \"Borough\",\n                \"Other Description\",\n                \"Paid\",\n
-        \               \"Proposed Zoning Sqft\",\n                \"Enlargement SQ
-        Footage\",\n                \"Zoning Dist3\",\n                \"DOBRunDate\",\n
-        \               \"Job #\",\n                \"Street Name\",\n                \"Bin
-        #\",\n                \"Job Status Descrp\",\n                \"Community
-        - Board\",\n                \"Fuel Burning\",\n                \"GIS_LONGITUDE\",\n
-        \               \"BUILDING_CLASS\",\n                \"SPECIAL_ACTION_DATE\",\n
-        \               \"SIGNOFF_DATE\",\n                \"JOB_S1_NO\",\n                \"GIS_COUNCIL_DISTRICT\",\n
-        \               \"Owner'sPhone #\",\n                \"City \",\n                \"Owner'sHouse
-        Street Name\",\n                \"Owner's House Number\",\n                \"Owner's
-        Business Name\",\n                \"Owner's First Name\",\n                \"GIS_LATITUDE\",\n
-        \               \"GIS_NTA_NAME\",\n                \"Owner Type\",\n                \"JOB_NO_GOOD_COUNT\",\n
-        \               \"TOTAL_CONSTRUCTION_FLOOR_AREA\",\n                \"ExistingNo.
-        of Stories\",\n                \"Owner's Last Name\",\n                \"Special
-        District 2\",\n                \"Special District 1\",\n                \"Proposed
-        Occupancy\",\n                \"Site Fill\",\n                \"Proposed Dwelling
-        Units\",\n                \"Proposed Height\",\n                \"Street Frontage\",\n
-        \               \"Existing Dwelling Units\",\n                \"Total Est.
-        Fee\",\n                \"Fully Permitted\",\n                \"Latest Action
-        Date\",\n                \"WITHDRAWAL_FLAG\",\n                \"GIS_BIN\",\n
-        \               \"Existing Occupancy\",\n                \"State\",\n                \"Approved\",\n
-        \               \"Applicant's Last Name\",\n                \"Fee Status\",\n
-        \               \"Zoning Dist1\",\n                \"Plumbing\",\n                \"Assigned\",\n
-        \               \"eFiling Filed\"\n              ],\n            \"columns_field_name\"
-        :\n              [\n                \"fully_paid\",\n                \"special_action_status\",\n
-        \               \"job_status\",\n                \"loft_board\",\n                \"lot\",\n
-        \               \"house__\",\n                \"fire_alarm\",\n                \"doc__\",\n
-        \               \"zoning_dist2\",\n                \"equipment\",\n                \"block\",\n
-        \               \"pre__filing_date\",\n                \"landmarked\",\n                \"job_type\",\n
-        \               \"existing_height\",\n                \"fuel_storage\",\n
-        \               \"city_owned\",\n                \"horizontal_enlrgmt\",\n
-        \               \"fire_suppression\",\n                \"standpipe\",\n                \"building_type\",\n
-        \               \"adult_estab\",\n                \"little_e\",\n                \"mechanical\",\n
-        \               \"applicant_license__\",\n                \"applicant_professional_title\",\n
-        \               \"job_description\",\n                \"other\",\n                \"cluster\",\n
-        \               \"non_profit\",\n                \"vertical_enlrgmt\",\n                \"pc_filed\",\n
-        \               \"boiler\",\n                \"professional_cert\",\n                \"gis_census_tract\",\n
-        \               \"sprinkler\",\n                \"curb_cut\",\n                \"applicant_s_first_name\",\n
-        \               \"proposed_no_of_stories\",\n                \"initial_cost\",\n
-        \               \"zip\",\n                \"existing_zoning_sqft\",\n                \"borough\",\n
-        \               \"other_description\",\n                \"paid\",\n                \"proposed_zoning_sqft\",\n
-        \               \"enlargement_sq_footage\",\n                \"zoning_dist3\",\n
-        \               \"dobrundate\",\n                \"job__\",\n                \"street_name\",\n
-        \               \"bin__\",\n                \"job_status_descrp\",\n                \"community___board\",\n
-        \               \"fuel_burning\",\n                \"gis_longitude\",\n                \"building_class\",\n
-        \               \"special_action_date\",\n                \"signoff_date\",\n
-        \               \"job_s1_no\",\n                \"gis_council_district\",\n
-        \               \"owner_sphone__\",\n                \"city_\",\n                \"owner_shouse_street_name\",\n
-        \               \"owner_s_house_number\",\n                \"owner_s_business_name\",\n
-        \               \"owner_s_first_name\",\n                \"gis_latitude\",\n
-        \               \"gis_nta_name\",\n                \"owner_type\",\n                \"job_no_good_count\",\n
-        \               \"total_construction_floor_area\",\n                \"existingno_of_stories\",\n
-        \               \"owner_s_last_name\",\n                \"special_district_2\",\n
-        \               \"special_district_1\",\n                \"proposed_occupancy\",\n
-        \               \"site_fill\",\n                \"proposed_dwelling_units\",\n
-        \               \"proposed_height\",\n                \"street_frontage\",\n
-        \               \"existing_dwelling_units\",\n                \"total_est__fee\",\n
-        \               \"fully_permitted\",\n                \"latest_action_date\",\n
-        \               \"withdrawal_flag\",\n                \"gis_bin\",\n                \"existing_occupancy\",\n
-        \               \"state\",\n                \"approved\",\n                \"applicant_s_last_name\",\n
-        \               \"fee_status\",\n                \"zoning_dist1\",\n                \"plumbing\",\n
-        \               \"assigned\",\n                \"efiling_filed\"\n              ],\n
+        \           \"data_updated_at\" : \"2025-05-02T20:01:45.000Z\",\n            \"page_views\"
+        :\n              {\n                \"page_views_last_week\" : 637,\n                \"page_views_last_month\"
+        : 2496,\n                \"page_views_total\" : 2377619,\n                \"page_views_last_week_log\"
+        : 9.31741261376487,\n                \"page_views_last_month_log\" : 11.285980105928212,\n
+        \               \"page_views_total_log\" : 21.181086725987726\n              },\n
+        \           \"columns_name\" :\n              [\n                \"Street
+        Name\",\n                \"SIGNOFF_DATE\",\n                \"Owner's Business
+        Name\",\n                \"Owner Type\",\n                \"Special District
+        2\",\n                \"Total Est. Fee\",\n                \"Fully Paid\",\n
+        \               \"Applicant License #\",\n                \"Applicant Professional
+        Title\",\n                \"Fire Alarm\",\n                \"Loft Board\",\n
+        \               \"Owner's First Name\",\n                \"SPECIAL_ACTION_STATUS\",\n
+        \               \"Plumbing\",\n                \"Zoning Dist1\",\n                \"Owner's
+        House Number\",\n                \"Owner'sHouse Street Name\",\n                \"Existing
+        Occupancy\",\n                \"ExistingNo. of Stories\",\n                \"Special
+        District 1\",\n                \"Owner'sPhone #\",\n                \"GIS_LATITUDE\",\n
+        \               \"JOB_NO_GOOD_COUNT\",\n                \"TOTAL_CONSTRUCTION_FLOOR_AREA\",\n
+        \               \"GIS_COUNCIL_DISTRICT\",\n                \"Owner's Last
+        Name\",\n                \"Site Fill\",\n                \"GIS_BIN\",\n                \"Existing
+        Dwelling Units\",\n                \"Latest Action Date\",\n                \"WITHDRAWAL_FLAG\",\n
+        \               \"Professional Cert\",\n                \"Proposed Occupancy\",\n
+        \               \"State\",\n                \"Zoning Dist3\",\n                \"Paid\",\n
+        \               \"Fee Status\",\n                \"Existing Zoning Sqft\",\n
+        \               \"eFiling Filed\",\n                \"Job Status\",\n                \"Boiler\",\n
+        \               \"GIS_NTA_NAME\",\n                \"Job Status Descrp\",\n
+        \               \"Standpipe\",\n                \"City \",\n                \"SPECIAL_ACTION_DATE\",\n
+        \               \"Lot\",\n                \"BUILDING_CLASS\",\n                \"Proposed
+        Dwelling Units\",\n                \"GIS_CENSUS_TRACT\",\n                \"Job
+        #\",\n                \"House #\",\n                \"Borough\",\n                \"Proposed
+        Height\",\n                \"Bin #\",\n                \"Community - Board\",\n
+        \               \"Other\",\n                \"Other Description\",\n                \"Applicant's
+        First Name\",\n                \"Pre- Filing Date\",\n                \"Assigned\",\n
+        \               \"Fuel Storage\",\n                \"Street Frontage\",\n
+        \               \"Approved\",\n                \"Existing Height\",\n                \"Job
+        Type\",\n                \"Proposed No. of Stories\",\n                \"Enlargement
+        SQ Footage\",\n                \"Landmarked\",\n                \"Proposed
+        Zoning Sqft\",\n                \"GIS_LONGITUDE\",\n                \"Block\",\n
+        \               \"Zoning Dist2\",\n                \"Doc #\",\n                \"Fully
+        Permitted\",\n                \"Initial Cost\",\n                \"Applicant's
+        Last Name\",\n                \"Equipment\",\n                \"Fuel Burning\",\n
+        \               \"Zip\",\n                \"Curb Cut\",\n                \"Sprinkler\",\n
+        \               \"PC Filed\",\n                \"Vertical Enlrgmt\",\n                \"Non-Profit\",\n
+        \               \"Cluster\",\n                \"Mechanical\",\n                \"Little
+        e\",\n                \"JOB_S1_NO\",\n                \"Adult Estab\",\n                \"Building
+        Type\",\n                \"Fire Suppression\",\n                \"DOBRunDate\",\n
+        \               \"Horizontal Enlrgmt\",\n                \"Job Description\",\n
+        \               \"City Owned\"\n              ],\n            \"columns_field_name\"
+        :\n              [\n                \"street_name\",\n                \"signoff_date\",\n
+        \               \"owner_s_business_name\",\n                \"owner_type\",\n
+        \               \"special_district_2\",\n                \"total_est__fee\",\n
+        \               \"fully_paid\",\n                \"applicant_license__\",\n
+        \               \"applicant_professional_title\",\n                \"fire_alarm\",\n
+        \               \"loft_board\",\n                \"owner_s_first_name\",\n
+        \               \"special_action_status\",\n                \"plumbing\",\n
+        \               \"zoning_dist1\",\n                \"owner_s_house_number\",\n
+        \               \"owner_shouse_street_name\",\n                \"existing_occupancy\",\n
+        \               \"existingno_of_stories\",\n                \"special_district_1\",\n
+        \               \"owner_sphone__\",\n                \"gis_latitude\",\n                \"job_no_good_count\",\n
+        \               \"total_construction_floor_area\",\n                \"gis_council_district\",\n
+        \               \"owner_s_last_name\",\n                \"site_fill\",\n                \"gis_bin\",\n
+        \               \"existing_dwelling_units\",\n                \"latest_action_date\",\n
+        \               \"withdrawal_flag\",\n                \"professional_cert\",\n
+        \               \"proposed_occupancy\",\n                \"state\",\n                \"zoning_dist3\",\n
+        \               \"paid\",\n                \"fee_status\",\n                \"existing_zoning_sqft\",\n
+        \               \"efiling_filed\",\n                \"job_status\",\n                \"boiler\",\n
+        \               \"gis_nta_name\",\n                \"job_status_descrp\",\n
+        \               \"standpipe\",\n                \"city_\",\n                \"special_action_date\",\n
+        \               \"lot\",\n                \"building_class\",\n                \"proposed_dwelling_units\",\n
+        \               \"gis_census_tract\",\n                \"job__\",\n                \"house__\",\n
+        \               \"borough\",\n                \"proposed_height\",\n                \"bin__\",\n
+        \               \"community___board\",\n                \"other\",\n                \"other_description\",\n
+        \               \"applicant_s_first_name\",\n                \"pre__filing_date\",\n
+        \               \"assigned\",\n                \"fuel_storage\",\n                \"street_frontage\",\n
+        \               \"approved\",\n                \"existing_height\",\n                \"job_type\",\n
+        \               \"proposed_no_of_stories\",\n                \"enlargement_sq_footage\",\n
+        \               \"landmarked\",\n                \"proposed_zoning_sqft\",\n
+        \               \"gis_longitude\",\n                \"block\",\n                \"zoning_dist2\",\n
+        \               \"doc__\",\n                \"fully_permitted\",\n                \"initial_cost\",\n
+        \               \"applicant_s_last_name\",\n                \"equipment\",\n
+        \               \"fuel_burning\",\n                \"zip\",\n                \"curb_cut\",\n
+        \               \"sprinkler\",\n                \"pc_filed\",\n                \"vertical_enlrgmt\",\n
+        \               \"non_profit\",\n                \"cluster\",\n                \"mechanical\",\n
+        \               \"little_e\",\n                \"job_s1_no\",\n                \"adult_estab\",\n
+        \               \"building_type\",\n                \"fire_suppression\",\n
+        \               \"dobrundate\",\n                \"horizontal_enlrgmt\",\n
+        \               \"job_description\",\n                \"city_owned\"\n              ],\n
         \           \"columns_datatype\" :\n              [\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Number\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Number\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Number\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Number\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Number\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Number\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Number\",\n                \"Text\",\n
+        \               \"Number\",\n                \"Text\",\n                \"Number\",\n
+        \               \"Number\",\n                \"Text\",\n                \"Number\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Number\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Number\",\n                \"Number\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
         \               \"Text\",\n                \"Text\"\n              ],\n            \"columns_description\"
-        :\n              [\n                \"Date when job is paid and entered\",\n
-        \               \"Special Action Status\",\n                \"DOB Status code
-        of job (A-Pre Filed, I-Sign Off, P- Approved, R-Permit Entire) Complete List
-        - http://www.nyc.gov/html/dob/downloads/pdf/bisjobstatus.pdf\",\n                \"Loft
-        Board\",\n                \"Tax lot assigned by Department of Finance\",\n
-        \               \"House Number of Residence or Commercial Property\",\n                \"Fire
-        Alarm  Work Type? (X=Yes, Blank=No)\",\n                \"Document Number\",\n
-        \               \"Zoning Distr 2\",\n                \"Equipment  Work Type?
-        (X=Yes, Blank=No)\",\n                \"Tax block assigned by Department of
-        Finance\",\n                \"Date when job is prefiled\",\n                \"L
-        code indicates that the building has been assigned landmark status\",\n                \"Job
-        Type, based on DOB Job Code (NB-New Building, A1, A2, A3- Alterations 1-3,
-        SG-Sign, etc.)\",\n                \"Existing Height\",\n                \"Fuel
-        Storage  Work Type? (X=Yes, Blank=No)\",\n                \"City Owned\",\n
-        \               \"Horizontal Enlrgmt\",\n                \"Fire Suppression
-        \ Work Type? (X=Yes, Blank=No)\",\n                \"Standpipe Work Type?
-        (X=Yes, Blank=No)\",\n                \"1-2-3 Family  or Other\",\n                \"Adult
-        Estab\",\n                \"Hazardous\",\n                \"Mechanical  Work
-        Type? (X=Yes, Blank=No)\",\n                \"Number assigned to the skilled
+        :\n              [\n                \"Street Name where Property is located\",\n
+        \               \"Sign-off Date\",\n                \"Business Name of Property
+        Owner\",\n                \"Owner Type\",\n                \"Special District
+        2\",\n                \"Estimated fee of job\",\n                \"Date when
+        job is paid and entered\",\n                \"Number assigned to the skilled
         trade person/contractor or licensed professional\",\n                \"Applicant's
-        Professional Title\",\n                \"Job Description\",\n                \"Other?
-        (X=Yes, Blank=No)\",\n                \"Cluster\",\n                \"Non-Profit\",\n
-        \               \"Vertical Enlrgmt\",\n                \"Application Filed
-        electronically, rather than manually\",\n                \"Boiler  Work Type?
-        (X=Yes, Blank=No)\",\n                \"Job is Professionally Certified by
-        Licensed Professional instead of having it reviewed by Department of Building's
-        Plan Examiners\",\n                \"Census Tract\",\n                \"Sprinkler
-        \ Work Type? (X=Yes, Blank=No)\",\n                \"Curb Cut  Work Type?
-        (X=Yes, Blank=No)\",\n                \"First Name of Applicant\",\n                \"Proposed
-        No. of Stories\",\n                \" Estimated cost of job\",\n                \"Zip\",\n
-        \               \"Existing Zoning Sqft\",\n                \"1= Manhattan,
-        2= Bronx, 3 = Brooklyn, 4 = Queens, 5 = Staten Island\",\n                \"Other
-        Description\",\n                \"Date when job is paid\",\n                \"Proposed
-        Zoning Sqft\",\n                \"Enlargement SQ Footage\",\n                \"Zoning
-        Distr 3\",\n                \"Date when query is run and pushed to Open Data.
-        Could be used to differentiate report dates.\",\n                \"Number
-        assigned by DOB to Job Filing\",\n                \"Street Name where Property
-        is located\",\n                \"Number assigned by City Planning to a specific
-        building\",\n                \"Status code description\",\n                \"3-digit
-        identifier: Borough code = first position, last 2 = community board\",\n                \"Fuel
-        Burning  Work Type? (X=Yes, Blank=No)\",\n                \"Longitude\",\n
-        \               \"Building Class\",\n                \"Special Action Date\",\n
-        \               \"Sign-off Date\",\n                \"JOB_S1_NO\",\n                \"Council
-        District\",\n                \"Owner's  Phone #\",\n                \"City
-        \",\n                \"House Street Name of Property Owner\",\n                \"House
-        Number of Property Owner\",\n                \"Business Name of Property Owner\",\n
-        \               \"First Name of property owner\",\n                \"Latitude\",\n
-        \               \"NTA Name\",\n                \"Owner Type\",\n                \"Job
-        No Good Count\",\n                \"Total  Construction Floor Area\",\n                \"ExistingNo.
-        of Stories\",\n                \"Last Name of property owner\",\n                \"Special
-        District 2\",\n                \"Special Distr 1\",\n                \"Proposed
-        Occupancy\",\n                \"Site Fill\",\n                \"Proposed Dwelling
-        Units\",\n                \"Proposed Height\",\n                \"Street Frontage\",\n
-        \               \"Existing Dwelling Units\",\n                \"Estimated
-        fee of job\",\n                \"Date when job is fully permitted\",\n                \"Latest
-        status date\",\n                \"Withdrawal Indicator\",\n                \"BIN\",\n
-        \               \"Existing Occupancy\",\n                \"State\",\n                \"Date
-        when job is approved\",\n                \"Last Name of Applicant\",\n                \"Type
-        of Fee\",\n                \"Zoning Distr 1\",\n                \"Plumbing
-        Work Type? (X=Yes, Blank=No)\",\n                \"Date when job is assigned
-        to plan examiner\",\n                \"Application Filed electronically, rather
-        than manually\"\n              ],\n            \"columns_format\" :\n              [\n
-        \               { \"align\" : \"right\" },\n                { \"align\" :
-        \"right\" },\n                { \"align\" : \"right\" },\n                {
+        Professional Title\",\n                \"Fire Alarm  Work Type? (X=Yes, Blank=No)\",\n
+        \               \"Loft Board\",\n                \"First Name of property
+        owner\",\n                \"Special Action Status\",\n                \"Plumbing
+        Work Type? (X=Yes, Blank=No)\",\n                \"Zoning Distr 1\",\n                \"House
+        Number of Property Owner\",\n                \"House Street Name of Property
+        Owner\",\n                \"Existing Occupancy\",\n                \"ExistingNo.
+        of Stories\",\n                \"Special Distr 1\",\n                \"Owner's
+        \ Phone #\",\n                \"Latitude\",\n                \"Job No Good
+        Count\",\n                \"Total  Construction Floor Area\",\n                \"Council
+        District\",\n                \"Last Name of property owner\",\n                \"Site
+        Fill\",\n                \"BIN\",\n                \"Existing Dwelling Units\",\n
+        \               \"Latest status date\",\n                \"Withdrawal Indicator\",\n
+        \               \"Job is Professionally Certified by Licensed Professional
+        instead of having it reviewed by Department of Building's Plan Examiners\",\n
+        \               \"Proposed Occupancy\",\n                \"State\",\n                \"Zoning
+        Distr 3\",\n                \"Date when job is paid\",\n                \"Type
+        of Fee\",\n                \"Existing Zoning Sqft\",\n                \"Application
+        Filed electronically, rather than manually\",\n                \"DOB Status
+        code of job (A-Pre Filed, I-Sign Off, P- Approved, R-Permit Entire) Complete
+        List - http://www.nyc.gov/html/dob/downloads/pdf/bisjobstatus.pdf\",\n                \"Boiler
+        \ Work Type? (X=Yes, Blank=No)\",\n                \"NTA Name\",\n                \"Status
+        code description\",\n                \"Standpipe Work Type? (X=Yes, Blank=No)\",\n
+        \               \"City \",\n                \"Special Action Date\",\n                \"Tax
+        lot assigned by Department of Finance\",\n                \"Building Class\",\n
+        \               \"Proposed Dwelling Units\",\n                \"Census Tract\",\n
+        \               \"Number assigned by DOB to Job Filing\",\n                \"House
+        Number of Residence or Commercial Property\",\n                \"1= Manhattan,
+        2= Bronx, 3 = Brooklyn, 4 = Queens, 5 = Staten Island\",\n                \"Proposed
+        Height\",\n                \"Number assigned by City Planning to a specific
+        building\",\n                \"3-digit identifier: Borough code = first position,
+        last 2 = community board\",\n                \"Other? (X=Yes, Blank=No)\",\n
+        \               \"Other Description\",\n                \"First Name of Applicant\",\n
+        \               \"Date when job is prefiled\",\n                \"Date when
+        job is assigned to plan examiner\",\n                \"Fuel Storage  Work
+        Type? (X=Yes, Blank=No)\",\n                \"Street Frontage\",\n                \"Date
+        when job is approved\",\n                \"Existing Height\",\n                \"Job
+        Type, based on DOB Job Code (NB-New Building, A1, A2, A3- Alterations 1-3,
+        SG-Sign, etc.)\",\n                \"Proposed No. of Stories\",\n                \"Enlargement
+        SQ Footage\",\n                \"L code indicates that the building has been
+        assigned landmark status\",\n                \"Proposed Zoning Sqft\",\n                \"Longitude\",\n
+        \               \"Tax block assigned by Department of Finance\",\n                \"Zoning
+        Distr 2\",\n                \"Document Number\",\n                \"Date when
+        job is fully permitted\",\n                \" Estimated cost of job\",\n                \"Last
+        Name of Applicant\",\n                \"Equipment  Work Type? (X=Yes, Blank=No)\",\n
+        \               \"Fuel Burning  Work Type? (X=Yes, Blank=No)\",\n                \"Zip\",\n
+        \               \"Curb Cut  Work Type? (X=Yes, Blank=No)\",\n                \"Sprinkler
+        \ Work Type? (X=Yes, Blank=No)\",\n                \"Application Filed electronically,
+        rather than manually\",\n                \"Vertical Enlrgmt\",\n                \"Non-Profit\",\n
+        \               \"Cluster\",\n                \"Mechanical  Work Type? (X=Yes,
+        Blank=No)\",\n                \"Hazardous\",\n                \"JOB_S1_NO\",\n
+        \               \"Adult Estab\",\n                \"1-2-3 Family  or Other\",\n
+        \               \"Fire Suppression  Work Type? (X=Yes, Blank=No)\",\n                \"Date
+        when query is run and pushed to Open Data. Could be used to differentiate
+        report dates.\",\n                \"Horizontal Enlrgmt\",\n                \"Job
+        Description\",\n                \"City Owned\"\n              ],\n            \"columns_format\"
+        :\n              [\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
         \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
         \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
         \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
@@ -464,7 +467,15 @@ interactions:
         \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
         \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
         \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"view\" : \"date\", \"align\" : \"right\" },\n                { \"align\"
+        : \"right\" },\n                { \"align\" : \"right\" },\n                {
         \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                {\n                  \"precisionStyle\"
+        : \"standard\",\n                  \"noCommas\" : \"true\",\n                  \"align\"
+        : \"left\"\n                },\n                { \"align\" : \"right\" },\n
+        \               { \"align\" : \"right\" },\n                { \"align\" :
+        \"right\" },\n                { \"align\" : \"right\" },\n                {
         \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
         \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
         \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
@@ -473,60 +484,51 @@ interactions:
         \"align\" : \"right\" },\n                {\n                  \"precisionStyle\"
         : \"standard\",\n                  \"noCommas\" : \"true\",\n                  \"align\"
         : \"left\"\n                },\n                { \"align\" : \"right\" },\n
+        \               { \"align\" : \"right\" },\n                { \"align\" :
+        \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {\n
+        \                 \"precisionStyle\" : \"standard\",\n                  \"noCommas\"
+        : \"true\",\n                  \"align\" : \"left\"\n                },\n
         \               { \"align\" : \"right\" },\n                {\n                  \"precisionStyle\"
         : \"standard\",\n                  \"noCommas\" : \"true\",\n                  \"align\"
         : \"left\"\n                },\n                { \"align\" : \"right\" },\n
-        \               { \"align\" : \"right\" },\n                { \"align\" :
-        \"right\" },\n                {\n                  \"precisionStyle\" : \"standard\",\n
+        \               {\n                  \"precisionStyle\" : \"standard\",\n
         \                 \"noCommas\" : \"true\",\n                  \"align\" :
         \"left\"\n                },\n                {\n                  \"precisionStyle\"
         : \"standard\",\n                  \"noCommas\" : \"true\",\n                  \"align\"
         : \"left\"\n                },\n                { \"align\" : \"right\" },\n
-        \               { \"view\" : \"date\", \"align\" : \"left\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                {\n                  \"precisionStyle\"
-        : \"standard\",\n                  \"noCommas\" : \"true\",\n                  \"align\"
-        : \"left\"\n                },\n                { \"align\" : \"right\" },\n
-        \               { \"align\" : \"right\" },\n                { \"align\" :
-        \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {\n
-        \                 \"precisionStyle\" : \"standard\",\n                  \"noCommas\"
-        : \"true\",\n                  \"align\" : \"left\"\n                },\n
         \               {\n                  \"precisionStyle\" : \"standard\",\n
         \                 \"noCommas\" : \"true\",\n                  \"align\" :
         \"left\"\n                },\n                { \"align\" : \"right\" },\n
         \               { \"align\" : \"right\" },\n                { \"align\" :
-        \"right\" },\n                { \"view\" : \"date\", \"align\" : \"right\"
-        },\n                { \"align\" : \"right\" },\n                { \"align\"
+        \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
+        \"view\" : \"date\", \"align\" : \"left\" },\n                { \"align\"
         : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" },\n                {
-        \"align\" : \"right\" },\n                { \"align\" : \"right\" }\n              ],\n
-        \           \"download_count\" : 63050,\n            \"provenance\" : \"official\",\n
-        \           \"lens_view_type\" : \"tabular\",\n            \"lens_display_type\"
-        : \"table\",\n            \"locked\" : false,\n            \"blob_mime_type\"
-        : null,\n            \"hide_from_data_json\" : false,\n            \"publication_date\"
-        : \"2020-06-22T18:23:35.000Z\"\n          },\n        \"classification\" :\n
-        \         {\n            \"categories\" : [],\n            \"tags\" : [],\n
-        \           \"domain_category\" : \"Housing & Development\",\n            \"domain_tags\"
-        : [ \"buildings\", \"dob\", \"job\" ],\n            \"domain_metadata\" :\n
-        \             [\n                { \"key\" : \"Update_Automation\", \"value\"
-        : \"Yes\" },\n                { \"key\" : \"Update_Date-Made-Public\", \"value\"
-        : \"4/26/2013\" },\n                { \"key\" : \"Update_Update-Frequency\",
-        \"value\" : \"Daily\" },\n                {\n                  \"key\" : \"Dataset-Information_Agency\",\n
-        \                 \"value\" : \"Department of Buildings (DOB)\"\n                }\n
-        \             ]\n          },\n        \"metadata\" : { \"domain\" : \"data.cityofnewyork.us\"
+        \"align\" : \"right\" }\n              ],\n            \"download_count\"
+        : 63230,\n            \"provenance\" : \"official\",\n            \"lens_view_type\"
+        : \"tabular\",\n            \"lens_display_type\" : \"table\",\n            \"locked\"
+        : false,\n            \"blob_mime_type\" : null,\n            \"hide_from_data_json\"
+        : false,\n            \"publication_date\" : \"2020-06-22T18:23:35.000Z\"\n
+        \         },\n        \"classification\" :\n          {\n            \"categories\"
+        : [],\n            \"tags\" : [],\n            \"domain_category\" : \"Housing
+        & Development\",\n            \"domain_tags\" : [ \"job\", \"dob\", \"buildings\"
+        ],\n            \"domain_metadata\" :\n              [\n                {
+        \"key\" : \"Update_Automation\", \"value\" : \"Yes\" },\n                {
+        \"key\" : \"Update_Date-Made-Public\", \"value\" : \"4/26/2013\" },\n                {
+        \"key\" : \"Update_Update-Frequency\", \"value\" : \"Daily\" },\n                {\n
+        \                 \"key\" : \"Dataset-Information_Agency\",\n                  \"value\"
+        : \"Department of Buildings (DOB)\"\n                }\n              ]\n
+        \         },\n        \"metadata\" : { \"domain\" : \"data.cityofnewyork.us\"
         },\n        \"permalink\" : \"https://data.cityofnewyork.us/d/ic3t-wcy2\",\n
         \       \"link\" : \"https://data.cityofnewyork.us/Housing-Development/DOB-Job-Application-Filings/ic3t-wcy2\",\n
         \       \"owner\" :\n          {\n            \"id\" : \"5fuc-pqz2\",\n            \"user_type\"
@@ -543,113 +545,113 @@ interactions:
         historical/archived data of past application statuses, please see- https://data.cityofnewyork.us/Transportation/Historical-Driver-Application-Status/p32s-yqxq\",\n
         \           \"attribution\" : \"Taxi and Limousine Commission (TLC)\",\n            \"attribution_link\"
         : null,\n            \"contact_email\" : null,\n            \"type\" : \"dataset\",\n
-        \           \"updatedAt\" : \"2025-04-27T16:10:16.000Z\",\n            \"createdAt\"
+        \           \"updatedAt\" : \"2025-05-04T16:08:31.000Z\",\n            \"createdAt\"
         : \"2016-05-17T18:43:43.000Z\",\n            \"metadata_updated_at\" : \"2022-05-09T22:28:03.000Z\",\n
-        \           \"data_updated_at\" : \"2025-04-27T16:10:16.000Z\",\n            \"page_views\"
-        :\n              {\n                \"page_views_last_week\" : 195,\n                \"page_views_last_month\"
-        : 723,\n                \"page_views_total\" : 1735201,\n                \"page_views_last_week_log\"
-        : 7.6147098441152075,\n                \"page_views_last_month_log\" : 9.499845887083206,\n
-        \               \"page_views_total_log\" : 20.726672190303397\n              },\n
-        \           \"columns_name\" :\n              [\n                \"App No\",\n
-        \               \"Defensive Driving\",\n                \"App Date\",\n                \"Status\",\n
-        \               \"Type\",\n                \"Last Updated\",\n                \"FRU
-        Interview Scheduled\",\n                \"Drug Test\",\n                \"Medical
-        Clearance Form\",\n                \"WAV Course\",\n                \"Other
-        Requirements\",\n                \"Driver Exam\"\n              ],\n            \"columns_field_name\"
-        :\n              [\n                \"app_no\",\n                \"defensive_driving\",\n
-        \               \"app_date\",\n                \"status\",\n                \"type\",\n
-        \               \"lastupdate\",\n                \"fru_interview_scheduled\",\n
-        \               \"drug_test\",\n                \"medical_clearance_form\",\n
-        \               \"wav_course\",\n                \"other_requirements\",\n
-        \               \"driver_exam\"\n              ],\n            \"columns_datatype\"
-        :\n              [\n                \"Number\",\n                \"Text\",\n
+        \           \"data_updated_at\" : \"2025-05-04T16:08:31.000Z\",\n            \"page_views\"
+        :\n              {\n                \"page_views_last_week\" : 243,\n                \"page_views_last_month\"
+        : 786,\n                \"page_views_total\" : 1735441,\n                \"page_views_last_week_log\"
+        : 7.930737337562887,\n                \"page_views_last_month_log\" : 9.620219825507487,\n
+        \               \"page_views_total_log\" : 20.726871719157618\n              },\n
+        \           \"columns_name\" :\n              [\n                \"Other Requirements\",\n
+        \               \"Status\",\n                \"Driver Exam\",\n                \"App
+        No\",\n                \"App Date\",\n                \"WAV Course\",\n                \"Defensive
+        Driving\",\n                \"Last Updated\",\n                \"Type\",\n
+        \               \"Drug Test\",\n                \"Medical Clearance Form\",\n
+        \               \"FRU Interview Scheduled\"\n              ],\n            \"columns_field_name\"
+        :\n              [\n                \"other_requirements\",\n                \"status\",\n
+        \               \"driver_exam\",\n                \"app_no\",\n                \"app_date\",\n
+        \               \"wav_course\",\n                \"defensive_driving\",\n
+        \               \"lastupdate\",\n                \"type\",\n                \"drug_test\",\n
+        \               \"medical_clearance_form\",\n                \"fru_interview_scheduled\"\n
+        \             ],\n            \"columns_datatype\" :\n              [\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Number\",\n
         \               \"Calendar date\",\n                \"Text\",\n                \"Text\",\n
         \               \"Calendar date\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\"\n              ],\n            \"columns_description\"
-        :\n              [\n                \"This is the number linked to your application.\\nOnce
+        \               \"Text\",\n                \"Text\"\n              ],\n            \"columns_description\"
+        :\n              [\n                \"This field is for miscellaneous items
+        that may need more sensitive information. Visit www.nyc.gov/tlcup for more
+        information and to upload missing requirements. \u201CNot Applicable\u201D:
+        \u201COther requirements\u201D do not apply to you at this time. \\n\",\n
+        \               \"\\\"Incomplete\\\": Your application is missing requirements.
+        \\\"Pending Fitness Interview\\\": Your application has been forwarded to
+        the Fitness Review Unit for a Fitness Interview. \\\"Denied\\\": Your application
+        has been denied. \\\"Under Review\\\": Your application is still being processed.
+        \\\"Approved - License Issued\\\": Your application has been approved and
+        your license will be mailed to the address provided on your application. Allow
+        up to two weeks after approval for delivery.\\n\",\n                \"Upon
+        Completion of TLC Driver Training (Taxi School), you will need to take and
+        pass a final exam. Passing score is 70%. \u201CNeeded\u201D: Your TLC Driver
+        Exam information is not in our system. If you have not taken your TLC Driver
+        Exam please do so. \u201CNot Applicable\u201D: If you applied for a Paratransit
+        or Commuter Van license you will not need to take this exam. \u201CComplete\u201D:
+        Your TLC Driver Exam information has been received and updated in your TLC
+        record\\n\",\n                \"This is the number linked to your application.\\nOnce
         your application has been approved this will become your license number.\",\n
-        \               \"A NYS certified 6 hour Defensive Driving Course is a requirement
-        to receive your TLC license.\\n\",\n                \"The date you submitted
-        your application.\",\n                \"\\\"Incomplete\\\": Your application
-        is missing requirements. \\\"Pending Fitness Interview\\\": Your application
-        has been forwarded to the Fitness Review Unit for a Fitness Interview. \\\"Denied\\\":
-        Your application has been denied. \\\"Under Review\\\": Your application is
-        still being processed. \\\"Approved - License Issued\\\": Your application
-        has been approved and your license will be mailed to the address provided
-        on your application. Allow up to two weeks after approval for delivery.\\n\",\n
-        \               \"This is the classification of license you have applied for.
-        HDR: Medallion /For-Hire Vehicle Operator. PDR: Paratransit Vehicle Operator.
-        VDR: Commuter Van Vehicle Operator \\n\",\n                \"Latest Updated
-        Date\\n\",\n                \"Fitness Review Unit Interview: \u201CNot Applicable\u201D
-        if no Fitness Review is necessary. OR If there is a date, a Fitness Interview
-        has been scheduled. Watch your mail/email for more information.\\n\",\n                \"Drug
-        testing is required for Medallion and FHV TLC driver\u2019s licenses. \\\"Needed\\\":
-        You must take and pass a drug test at an approved testing facility. \u201CNot
-        Applicable\u201D: If you applied for a Paratransit or Commuter Van license
-        you do not need to take a TLC Drug Test. \u201CComplete\u201D: Your drug test
-        information has been received and updated in your TLC record.\",\n                \"A
-        Medical Clearance form from a licensed medical doctor is a requirement for
-        those who apply for a Medallion or a For-Hire Vehicle driver\u2019s license.
-        If the entry is: \u201CNeeded\u201D: Your Medical Clearance form is not in
-        our system. If you have not been medically cleared by a licensed medical doctor
-        please do so immediately. \u201CNot Applicable\u201D: If you applied for a
-        Paratransit or Commuter Van license you will not need to take this step as
-        it is covered by your 19A status. \u201CComplete\u201D: Your Medical Clearance
-        has been received and updated in your TLC record.\\n\",\n                \"Wheelchair
+        \               \"The date you submitted your application.\",\n                \"Wheelchair
         Accessible Vehicle Training (WAV) is a requirement for those who apply for
         a Medallion or For-Hire Vehicle driver\u2019s license. \u201CNeeded\u201D:
         You must take the Wheelchair Accessible Vehicle Training Course within 90
         days from the date you submitted your application. \u201CNot Applicable\u201D:
         If you applied for a Paratransit or Commuter Van license you will not need
         to take this training. \u201CComplete\u201D: Your WAV training information
-        has been received and updated in your TLC record.\\n\",\n                \"This
-        field is for miscellaneous items that may need more sensitive information.
-        Visit www.nyc.gov/tlcup for more information and to upload missing requirements.
-        \u201CNot Applicable\u201D: \u201COther requirements\u201D do not apply to
-        you at this time. \\n\",\n                \"Upon Completion of TLC Driver
-        Training (Taxi School), you will need to take and pass a final exam. Passing
-        score is 70%. \u201CNeeded\u201D: Your TLC Driver Exam information is not
-        in our system. If you have not taken your TLC Driver Exam please do so. \u201CNot
-        Applicable\u201D: If you applied for a Paratransit or Commuter Van license
-        you will not need to take this exam. \u201CComplete\u201D: Your TLC Driver
-        Exam information has been received and updated in your TLC record\\n\"\n              ],\n
-        \           \"columns_format\" :\n              [\n                {\n                  \"precisionStyle\"
-        : \"standard\",\n                  \"noCommas\" : \"true\",\n                  \"align\"
-        : \"right\"\n                },\n                { \"displayStyle\" : \"plain\",
-        \"align\" : \"left\" },\n                { \"view\" : \"date\", \"align\"
+        has been received and updated in your TLC record.\\n\",\n                \"A
+        NYS certified 6 hour Defensive Driving Course is a requirement to receive
+        your TLC license.\\n\",\n                \"Latest Updated Date\\n\",\n                \"This
+        is the classification of license you have applied for. HDR: Medallion /For-Hire
+        Vehicle Operator. PDR: Paratransit Vehicle Operator. VDR: Commuter Van Vehicle
+        Operator \\n\",\n                \"Drug testing is required for Medallion
+        and FHV TLC driver\u2019s licenses. \\\"Needed\\\": You must take and pass
+        a drug test at an approved testing facility. \u201CNot Applicable\u201D: If
+        you applied for a Paratransit or Commuter Van license you do not need to take
+        a TLC Drug Test. \u201CComplete\u201D: Your drug test information has been
+        received and updated in your TLC record.\",\n                \"A Medical Clearance
+        form from a licensed medical doctor is a requirement for those who apply for
+        a Medallion or a For-Hire Vehicle driver\u2019s license. If the entry is:
+        \u201CNeeded\u201D: Your Medical Clearance form is not in our system. If you
+        have not been medically cleared by a licensed medical doctor please do so
+        immediately. \u201CNot Applicable\u201D: If you applied for a Paratransit
+        or Commuter Van license you will not need to take this step as it is covered
+        by your 19A status. \u201CComplete\u201D: Your Medical Clearance has been
+        received and updated in your TLC record.\\n\",\n                \"Fitness
+        Review Unit Interview: \u201CNot Applicable\u201D if no Fitness Review is
+        necessary. OR If there is a date, a Fitness Interview has been scheduled.
+        Watch your mail/email for more information.\\n\"\n              ],\n            \"columns_format\"
+        :\n              [\n                { \"displayStyle\" : \"plain\", \"align\"
+        : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
+        \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\"
+        },\n                {\n                  \"precisionStyle\" : \"standard\",\n
+        \                 \"noCommas\" : \"true\",\n                  \"align\" :
+        \"right\"\n                },\n                { \"view\" : \"date\", \"align\"
         : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
         \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\"
         },\n                { \"view\" : \"date_time\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" }\n              ],\n
-        \           \"download_count\" : 40340,\n            \"provenance\" : \"official\",\n
+        \           \"download_count\" : 40366,\n            \"provenance\" : \"official\",\n
         \           \"lens_view_type\" : \"tabular\",\n            \"lens_display_type\"
         : \"table\",\n            \"locked\" : false,\n            \"blob_mime_type\"
         : null,\n            \"hide_from_data_json\" : false,\n            \"publication_date\"
         : \"2019-12-17T18:44:57.000Z\"\n          },\n        \"classification\" :\n
         \         {\n            \"categories\" : [],\n            \"tags\" : [],\n
         \           \"domain_category\" : \"Transportation\",\n            \"domain_tags\"
-        :\n              [\n                \"defensive driver\",\n                \"dmv\",\n
-        \               \"driver\",\n                \"driver exam\",\n                \"drug
-        test\",\n                \"exam\",\n                \"exam fee\",\n                \"fhv\",\n
-        \               \"fingerprint\",\n                \"for-hire\",\n                \"fru\",\n
-        \               \"green\",\n                \"hack number\",\n                \"limousine\",\n
+        :\n              [\n                \"fru\",\n                \"green\",\n
+        \               \"hack number\",\n                \"tlc\",\n                \"drug
+        test\",\n                \"fingerprint\",\n                \"limousine\",\n
         \               \"medallion\",\n                \"medical clearance\",\n                \"new
         application\",\n                \"results\",\n                \"shl\",\n                \"status\",\n
-        \               \"street hail livery\",\n                \"taxi\",\n                \"tlc\",\n
-        \               \"wav\",\n                \"wheelchair accessible vehicle\"\n
-        \             ],\n            \"domain_metadata\" :\n              [\n                {
-        \"key\" : \"Update_Automation\", \"value\" : \"Yes\" },\n                {
-        \"key\" : \"Update_Date-Made-Public\", \"value\" : \"6/24/2016\" },\n                {
-        \"key\" : \"Update_Update-Frequency\", \"value\" : \"Daily\" },\n                {\n
-        \                 \"key\" : \"Dataset-Information_Agency\",\n                  \"value\"
-        : \"Taxi and Limousine Commission (TLC)\"\n                },\n                {\n
-        \                 \"key\" : \"Legislative-Compliance_Geo-coding-Attached?\",\n
+        \               \"fhv\",\n                \"driver exam\",\n                \"driver\",\n
+        \               \"dmv\",\n                \"defensive driver\",\n                \"wav\",\n
+        \               \"street hail livery\",\n                \"taxi\",\n                \"wheelchair
+        accessible vehicle\",\n                \"exam\",\n                \"exam fee\",\n
+        \               \"for-hire\"\n              ],\n            \"domain_metadata\"
+        :\n              [\n                { \"key\" : \"Update_Automation\", \"value\"
+        : \"Yes\" },\n                { \"key\" : \"Update_Date-Made-Public\", \"value\"
+        : \"6/24/2016\" },\n                { \"key\" : \"Update_Update-Frequency\",
+        \"value\" : \"Daily\" },\n                {\n                  \"key\" : \"Dataset-Information_Agency\",\n
+        \                 \"value\" : \"Taxi and Limousine Commission (TLC)\"\n                },\n
+        \               {\n                  \"key\" : \"Legislative-Compliance_Geo-coding-Attached?\",\n
         \                 \"value\" : \"\"\n                }\n              ]\n          },\n
         \       \"metadata\" : { \"domain\" : \"data.cityofnewyork.us\" },\n        \"permalink\"
         : \"https://data.cityofnewyork.us/d/dpec-ucu7\",\n        \"link\" : \"https://data.cityofnewyork.us/Transportation/TLC-New-Driver-Application-Status/dpec-ucu7\",\n
@@ -673,50 +675,49 @@ interactions:
         please email licensinginquiries@tlc.nyc.gov.\",\n            \"attribution\"
         : \"Taxi and Limousine Commission (TLC)\",\n            \"attribution_link\"
         : null,\n            \"contact_email\" : null,\n            \"type\" : \"dataset\",\n
-        \           \"updatedAt\" : \"2025-04-27T19:06:16.000Z\",\n            \"createdAt\"
+        \           \"updatedAt\" : \"2025-05-03T18:54:50.000Z\",\n            \"createdAt\"
         : \"2015-07-16T17:24:02.000Z\",\n            \"metadata_updated_at\" : \"2025-03-12T21:04:30.000Z\",\n
-        \           \"data_updated_at\" : \"2025-04-27T19:06:16.000Z\",\n            \"page_views\"
-        :\n              {\n                \"page_views_last_week\" : 3056,\n                \"page_views_last_month\"
-        : 14620,\n                \"page_views_total\" : 1560990,\n                \"page_views_last_week_log\"
-        : 11.577900836886972,\n                \"page_views_last_month_log\" : 13.8357543670165,\n
-        \               \"page_views_total_log\" : 20.57403078870739\n              },\n
-        \           \"columns_name\" :\n              [\n                \"License
-        Number\",\n                \"Wheelchair Accessible Trained\",\n                \"Last
-        Date Updated\",\n                \"Name\",\n                \"Expiration Date\",\n
-        \               \"Type\",\n                \"Last Time Updated\"\n              ],\n
-        \           \"columns_field_name\" :\n              [\n                \"license_number\",\n
-        \               \"wheelchair_accessible_trained\",\n                \"last_date_updated\",\n
-        \               \"name\",\n                \"expiration_date\",\n                \"type\",\n
-        \               \"last_time_updated\"\n              ],\n            \"columns_datatype\"
-        :\n              [\n                \"Number\",\n                \"Text\",\n
+        \           \"data_updated_at\" : \"2025-05-03T18:54:50.000Z\",\n            \"page_views\"
+        :\n              {\n                \"page_views_last_week\" : 3434,\n                \"page_views_last_month\"
+        : 14492,\n                \"page_views_total\" : 1564390,\n                \"page_views_last_week_log\"
+        : 11.746094383705463,\n                \"page_views_last_month_log\" : 13.823068638153234,\n
+        \               \"page_views_total_log\" : 20.577169710652953\n              },\n
+        \           \"columns_name\" :\n              [\n                \"Type\",\n
+        \               \"Expiration Date\",\n                \"Name\",\n                \"Last
+        Date Updated\",\n                \"Wheelchair Accessible Trained\",\n                \"License
+        Number\",\n                \"Last Time Updated\"\n              ],\n            \"columns_field_name\"
+        :\n              [\n                \"type\",\n                \"expiration_date\",\n
+        \               \"name\",\n                \"last_date_updated\",\n                \"wheelchair_accessible_trained\",\n
+        \               \"license_number\",\n                \"last_time_updated\"\n
+        \             ],\n            \"columns_datatype\" :\n              [\n                \"Text\",\n
         \               \"Calendar date\",\n                \"Text\",\n                \"Calendar
-        date\",\n                \"Text\",\n                \"Text\"\n              ],\n
-        \           \"columns_description\" :\n              [\n                \"FHV
-        License Number\\n\",\n                \"WAV if Wheelchair Accessible Trained\\n\",\n
-        \               \"Last Date Updated\",\n                \"Driver Name\\n\\n\",\n
-        \               \"Expiration Date\\n\\n\\n\",\n                \"Type of License\\n\\n\",\n
-        \               \"Last Time Updated\"\n              ],\n            \"columns_format\"
-        :\n              [\n                {\n                  \"precisionStyle\"
-        : \"standard\",\n                  \"noCommas\" : \"true\",\n                  \"align\"
-        : \"right\"\n                },\n                { \"displayStyle\" : \"plain\",
-        \"align\" : \"left\" },\n                { \"view\" : \"date\", \"align\"
-        : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
-        \"left\" },\n                { \"view\" : \"date\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" }\n              ],\n
-        \           \"download_count\" : 436327,\n            \"provenance\" : \"official\",\n
-        \           \"lens_view_type\" : \"tabular\",\n            \"lens_display_type\"
-        : \"table\",\n            \"locked\" : false,\n            \"blob_mime_type\"
-        : null,\n            \"hide_from_data_json\" : false,\n            \"publication_date\"
-        : \"2024-01-11T19:58:17.000Z\"\n          },\n        \"classification\" :\n
-        \         {\n            \"categories\" : [],\n            \"tags\" : [],\n
-        \           \"domain_category\" : \"Transportation\",\n            \"domain_tags\"
-        :\n              [\n                \"active\",\n                \"drivers\",\n
-        \               \"fhv\",\n                \"for hire\",\n                \"for-hire\",\n
-        \               \"for-hire-vehicles\",\n                \"taxi\"\n              ],\n
-        \           \"domain_metadata\" :\n              [\n                { \"key\"
-        : \"Update_Automation\", \"value\" : \"Yes\" },\n                { \"key\"
-        : \"Update_Date-Made-Public\", \"value\" : \"7/20/2015\" },\n                {
+        date\",\n                \"Text\",\n                \"Number\",\n                \"Text\"\n
+        \             ],\n            \"columns_description\" :\n              [\n
+        \               \"Type of License\\n\\n\",\n                \"Expiration Date\\n\\n\\n\",\n
+        \               \"Driver Name\\n\\n\",\n                \"Last Date Updated\",\n
+        \               \"WAV if Wheelchair Accessible Trained\\n\",\n                \"FHV
+        License Number\\n\",\n                \"Last Time Updated\"\n              ],\n
+        \           \"columns_format\" :\n              [\n                { \"displayStyle\"
+        : \"plain\", \"align\" : \"left\" },\n                { \"view\" : \"date\",
+        \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\"
+        : \"left\" },\n                { \"view\" : \"date\", \"align\" : \"left\"
+        },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               {\n                  \"precisionStyle\" : \"standard\",\n
+        \                 \"noCommas\" : \"true\",\n                  \"align\" :
+        \"right\"\n                },\n                { \"displayStyle\" : \"plain\",
+        \"align\" : \"left\" }\n              ],\n            \"download_count\" :
+        437191,\n            \"provenance\" : \"official\",\n            \"lens_view_type\"
+        : \"tabular\",\n            \"lens_display_type\" : \"table\",\n            \"locked\"
+        : false,\n            \"blob_mime_type\" : null,\n            \"hide_from_data_json\"
+        : false,\n            \"publication_date\" : \"2024-01-11T19:58:17.000Z\"\n
+        \         },\n        \"classification\" :\n          {\n            \"categories\"
+        : [],\n            \"tags\" : [],\n            \"domain_category\" : \"Transportation\",\n
+        \           \"domain_tags\" :\n              [\n                \"fhv\",\n
+        \               \"active\",\n                \"drivers\",\n                \"taxi\",\n
+        \               \"for hire\",\n                \"for-hire\",\n                \"for-hire-vehicles\"\n
+        \             ],\n            \"domain_metadata\" :\n              [\n                {
+        \"key\" : \"Update_Automation\", \"value\" : \"Yes\" },\n                {
+        \"key\" : \"Update_Date-Made-Public\", \"value\" : \"7/20/2015\" },\n                {
         \"key\" : \"Update_Update-Frequency\", \"value\" : \"Daily\" },\n                {\n
         \                 \"key\" : \"Dataset-Information_Agency\",\n                  \"value\"
         : \"Taxi and Limousine Commission (TLC)\"\n                }\n              ]\n
@@ -737,193 +738,192 @@ interactions:
         information is automatically updated daily.\\n</p>\",\n            \"attribution\"
         : \"311\",\n            \"attribution_link\" : null,\n            \"contact_email\"
         : null,\n            \"type\" : \"dataset\",\n            \"updatedAt\" :
-        \"2025-04-27T01:32:54.000Z\",\n            \"createdAt\" : \"2011-10-10T05:52:17.000Z\",\n
+        \"2025-05-04T01:32:48.000Z\",\n            \"createdAt\" : \"2011-10-10T05:52:17.000Z\",\n
         \           \"metadata_updated_at\" : \"2025-02-11T16:11:10.000Z\",\n            \"data_updated_at\"
-        : \"2025-04-27T01:32:54.000Z\",\n            \"page_views\" :\n              {\n
-        \               \"page_views_last_week\" : 4614,\n                \"page_views_last_month\"
-        : 18091,\n                \"page_views_total\" : 987292,\n                \"page_views_last_week_log\"
-        : 12.172114932533136,\n                \"page_views_last_month_log\" : 14.14306428063141,\n
-        \               \"page_views_total_log\" : 19.913118772813295\n              },\n
-        \           \"columns_name\" :\n              [\n                \"X Coordinate
-        (State Plane)\",\n                \"Incident Zip\",\n                \"Location
-        Type\",\n                \"Descriptor\",\n                \"Complaint Type\",\n
-        \               \"Agency Name\",\n                \"Agency\",\n                \"Closed
-        Date\",\n                \"Created Date\",\n                \"Unique Key\",\n
-        \               \"Status\",\n                \"Intersection Street 1\",\n
-        \               \"Due Date\",\n                \"Resolution Description\",\n
-        \               \"Resolution Action Updated Date\",\n                \"Community
-        Board\",\n                \"BBL\",\n                \"Borough\",\n                \"Y
-        Coordinate (State Plane)\",\n                \"Cross Street 2\",\n                \"Open
-        Data Channel Type\",\n                \"Cross Street 1\",\n                \"Street
-        Name\",\n                \"Park Facility Name\",\n                \"Park Borough\",\n
-        \               \"Vehicle Type\",\n                \"Taxi Company Borough\",\n
-        \               \"Police Precinct\",\n                \"Taxi Pick Up Location\",\n
-        \               \"Police Precincts\",\n                \"City Council Districts\",\n
-        \               \"Bridge Highway Name\",\n                \"Borough Boundaries\",\n
-        \               \"Community Districts\",\n                \"Zip Codes\",\n
-        \               \"Location (zip)\",\n                \"Intersection Street
-        2\",\n                \"Address Type\",\n                \"City\",\n                \"Landmark\",\n
-        \               \"Facility Type\",\n                \"Location (state)\",\n
-        \               \"Location (city)\",\n                \"Location (address)\",\n
-        \               \"Location\",\n                \"Longitude\",\n                \"Bridge
-        Highway Direction\",\n                \"Latitude\",\n                \"Road
-        Ramp\",\n                \"Bridge Highway Segment\",\n                \"Incident
-        Address\"\n              ],\n            \"columns_field_name\" :\n              [\n
-        \               \"x_coordinate_state_plane\",\n                \"incident_zip\",\n
-        \               \"location_type\",\n                \"descriptor\",\n                \"complaint_type\",\n
-        \               \"agency_name\",\n                \"agency\",\n                \"closed_date\",\n
-        \               \"created_date\",\n                \"unique_key\",\n                \"status\",\n
-        \               \"intersection_street_1\",\n                \"due_date\",\n
-        \               \"resolution_description\",\n                \"resolution_action_updated_date\",\n
-        \               \"community_board\",\n                \"bbl\",\n                \"borough\",\n
-        \               \"y_coordinate_state_plane\",\n                \"cross_street_2\",\n
-        \               \"open_data_channel_type\",\n                \"cross_street_1\",\n
-        \               \"street_name\",\n                \"park_facility_name\",\n
-        \               \"park_borough\",\n                \"vehicle_type\",\n                \"taxi_company_borough\",\n
-        \               \":@computed_region_7mpf_4k6g\",\n                \"taxi_pick_up_location\",\n
+        : \"2025-05-04T01:32:48.000Z\",\n            \"page_views\" :\n              {\n
+        \               \"page_views_last_week\" : 5815,\n                \"page_views_last_month\"
+        : 18840,\n                \"page_views_total\" : 992951,\n                \"page_views_last_week_log\"
+        : 12.505811553919594,\n                \"page_views_last_month_log\" : 14.20158791863784,\n
+        \               \"page_views_total_log\" : 19.921364452980274\n              },\n
+        \           \"columns_name\" :\n              [\n                \"Taxi Pick
+        Up Location\",\n                \"Police Precinct\",\n                \"Police
+        Precincts\",\n                \"City Council Districts\",\n                \"Borough
+        Boundaries\",\n                \"Community Districts\",\n                \"Zip
+        Codes\",\n                \"Location (zip)\",\n                \"Location
+        (state)\",\n                \"Location (city)\",\n                \"Location
+        (address)\",\n                \"Location\",\n                \"Longitude\",\n
+        \               \"Latitude\",\n                \"Bridge Highway Segment\",\n
+        \               \"Road Ramp\",\n                \"Bridge Highway Direction\",\n
+        \               \"Bridge Highway Name\",\n                \"Taxi Company Borough\",\n
+        \               \"Vehicle Type\",\n                \"Park Borough\",\n                \"Park
+        Facility Name\",\n                \"Open Data Channel Type\",\n                \"Y
+        Coordinate (State Plane)\",\n                \"X Coordinate (State Plane)\",\n
+        \               \"Borough\",\n                \"BBL\",\n                \"Community
+        Board\",\n                \"Resolution Action Updated Date\",\n                \"Resolution
+        Description\",\n                \"Due Date\",\n                \"Status\",\n
+        \               \"Facility Type\",\n                \"Landmark\",\n                \"City\",\n
+        \               \"Address Type\",\n                \"Intersection Street 2\",\n
+        \               \"Intersection Street 1\",\n                \"Cross Street
+        2\",\n                \"Cross Street 1\",\n                \"Street Name\",\n
+        \               \"Incident Address\",\n                \"Incident Zip\",\n
+        \               \"Location Type\",\n                \"Descriptor\",\n                \"Complaint
+        Type\",\n                \"Agency Name\",\n                \"Agency\",\n                \"Closed
+        Date\",\n                \"Created Date\",\n                \"Unique Key\"\n
+        \             ],\n            \"columns_field_name\" :\n              [\n
+        \               \"taxi_pick_up_location\",\n                \":@computed_region_7mpf_4k6g\",\n
         \               \":@computed_region_sbqj_enih\",\n                \":@computed_region_92fq_4b7q\",\n
-        \               \"bridge_highway_name\",\n                \":@computed_region_yeji_bk3q\",\n
-        \               \":@computed_region_f5dn_yrer\",\n                \":@computed_region_efsh_h5xi\",\n
-        \               \"location_zip\",\n                \"intersection_street_2\",\n
-        \               \"address_type\",\n                \"city\",\n                \"landmark\",\n
-        \               \"facility_type\",\n                \"location_state\",\n
-        \               \"location_city\",\n                \"location_address\",\n
-        \               \"location\",\n                \"longitude\",\n                \"bridge_highway_direction\",\n
-        \               \"latitude\",\n                \"road_ramp\",\n                \"bridge_highway_segment\",\n
-        \               \"incident_address\"\n              ],\n            \"columns_datatype\"
-        :\n              [\n                \"Number\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Calendar
-        date\",\n                \"Calendar date\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Calendar date\",\n                \"Text\",\n
-        \               \"Calendar date\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Number\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Number\",\n                \"Text\",\n
-        \               \"Number\",\n                \"Number\",\n                \"Text\",\n
+        \               \":@computed_region_yeji_bk3q\",\n                \":@computed_region_f5dn_yrer\",\n
+        \               \":@computed_region_efsh_h5xi\",\n                \"location_zip\",\n
+        \               \"location_state\",\n                \"location_city\",\n
+        \               \"location_address\",\n                \"location\",\n                \"longitude\",\n
+        \               \"latitude\",\n                \"bridge_highway_segment\",\n
+        \               \"road_ramp\",\n                \"bridge_highway_direction\",\n
+        \               \"bridge_highway_name\",\n                \"taxi_company_borough\",\n
+        \               \"vehicle_type\",\n                \"park_borough\",\n                \"park_facility_name\",\n
+        \               \"open_data_channel_type\",\n                \"y_coordinate_state_plane\",\n
+        \               \"x_coordinate_state_plane\",\n                \"borough\",\n
+        \               \"bbl\",\n                \"community_board\",\n                \"resolution_action_updated_date\",\n
+        \               \"resolution_description\",\n                \"due_date\",\n
+        \               \"status\",\n                \"facility_type\",\n                \"landmark\",\n
+        \               \"city\",\n                \"address_type\",\n                \"intersection_street_2\",\n
+        \               \"intersection_street_1\",\n                \"cross_street_2\",\n
+        \               \"cross_street_1\",\n                \"street_name\",\n                \"incident_address\",\n
+        \               \"incident_zip\",\n                \"location_type\",\n                \"descriptor\",\n
+        \               \"complaint_type\",\n                \"agency_name\",\n                \"agency\",\n
+        \               \"closed_date\",\n                \"created_date\",\n                \"unique_key\"\n
+        \             ],\n            \"columns_datatype\" :\n              [\n                \"Text\",\n
+        \               \"Number\",\n                \"Number\",\n                \"Number\",\n
         \               \"Number\",\n                \"Number\",\n                \"Number\",\n
         \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Point\",\n                \"Number\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Point\",\n                \"Number\",\n
         \               \"Number\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Text\"\n              ],\n            \"columns_description\"
-        :\n              [\n                \"Geo validated, X coordinate of the incident
-        location. \\n\",\n                \"Incident location zip code, provided by
-        geo validation.\\n\",\n                \"Describes the type of location used
-        in the address information \\n\",\n                \"This is  associated to
-        the Complaint Type, and provides further detail on the incident or condition.
-        Descriptor values are dependent on the Complaint Type, and are not always
-        required in SR. \\n\",\n                \"This is the first level of a hierarchy
-        identifying the topic of the incident or condition. Complaint Type may have
-        a corresponding Descriptor (below) or may stand alone.\",\n                \"Full
-        Agency name of responding City Government Agency\",\n                \"Acronym
-        of responding City Government Agency\\n\",\n                \"Date SR was
-        closed by responding agency\\n\",\n                \"Date SR  was created\\n\",\n
-        \               \"Unique identifier of a Service Request (SR) in the open
-        data set\\n\",\n                \"Status of SR submitted \\n\",\n                \"First
-        intersecting street based on geo validated incident location\\n\",\n                \"Date
-        when responding agency is expected to update the SR.  This is based on the
-        Complaint Type and internal Service Level Agreements (SLAs).\\n\",\n                \"Describes
-        the last action taken on the SR by the responding agency.  May describe next
-        or future steps. \\n\",\n                \"Date when responding agency last
-        updated the SR.\\n\",\n                \"Provided by geovalidation.\\n\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Number\",\n                \"Number\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Calendar date\",\n                \"Text\",\n                \"Calendar
+        date\",\n                \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Calendar
+        date\",\n                \"Calendar date\",\n                \"Text\"\n              ],\n
+        \           \"columns_description\" :\n              [\n                \"If
+        the incident is identified as a taxi, this field displays the taxi pick up
+        location\\n\",\n                \"This column was automatically created in
+        order to record in what polygon from the dataset 'Police Precinct' (7mpf-4k6g)
+        the point in column 'location' is located.  This enables the creation of region
+        maps (choropleths) in the visualization canvas and data lens.\",\n                \"\",\n
+        \               \"\",\n                \"\",\n                \"\",\n                \"\",\n
+        \               \"\",\n                \"\",\n                \"\",\n                \"\",\n
+        \               \"Combination of the geo based lat & long of the incident
+        location\\n\",\n                \"Geo based Long of the incident location\\n\",\n
+        \               \"Geo based Lat of the incident location\\n\",\n                \"Additional
+        information on the section of the Bridge/Highway were the incident took place.\\n\",\n
+        \               \"If the incident location was Bridge/Highway this column
+        differentiates if the issue was on the Road or the Ramp.\\n\",\n                \"If
+        the incident is identified as a Bridge/Highway, the direction where the issue
+        took place would be displayed here.\\n\",\n                \"If the incident
+        is identified as a Bridge/Highway, the name will be displayed here.\\n\",\n
+        \               \"If the incident is identified as a taxi, this field will
+        display the borough of the taxi company. \\n\",\n                \"If the
+        incident is a taxi, this field describes the type of TLC vehicle. \\n\",\n
+        \               \"The borough of incident if it is a Parks Dept facility\\n\",\n
+        \               \"If the incident location is a Parks Dept facility, the Name
+        of the facility will appear here\\n\",\n                \"Indicates how the
+        SR was submitted to 311.  i.e. By Phone, Online, Mobile, Other or Unknown.\",\n
+        \               \"Geo validated,  Y coordinate of the incident location. \\n\",\n
+        \               \"Geo validated, X coordinate of the incident location. \\n\",\n
+        \               \"Provided by the submitter and confirmed by geovalidation.\\n\",\n
         \               \"Borough Block and Lot, provided by geovalidation. Parcel
         number to identify the location of location of buildings and properties in
-        NYC.\",\n                \"Provided by the submitter and confirmed by geovalidation.\\n\",\n
-        \               \"Geo validated,  Y coordinate of the incident location. \\n\",\n
-        \               \"Second Cross Street based on the geo validated incident
-        location\\n\",\n                \"Indicates how the SR was submitted to 311.
-        \ i.e. By Phone, Online, Mobile, Other or Unknown.\",\n                \"First
-        Cross street based on the geo validated incident location\\n\",\n                \"Street
-        name of incident address provided by the submitter\\n\",\n                \"If
-        the incident location is a Parks Dept facility, the Name of the facility will
-        appear here\\n\",\n                \"The borough of incident if it is a Parks
-        Dept facility\\n\",\n                \"If the incident is a taxi, this field
-        describes the type of TLC vehicle. \\n\",\n                \"If the incident
-        is identified as a taxi, this field will display the borough of the taxi company.
-        \\n\",\n                \"This column was automatically created in order to
-        record in what polygon from the dataset 'Police Precinct' (7mpf-4k6g) the
-        point in column 'location' is located.  This enables the creation of region
-        maps (choropleths) in the visualization canvas and data lens.\",\n                \"If
-        the incident is identified as a taxi, this field displays the taxi pick up
-        location\\n\",\n                \"\",\n                \"\",\n                \"If
-        the incident is identified as a Bridge/Highway, the name will be displayed
-        here.\\n\",\n                \"\",\n                \"\",\n                \"\",\n
-        \               \"\",\n                \"Second intersecting street based
-        on geo validated incident location\\n\",\n                \"Type of incident
-        location information available.\\n\",\n                \"City of the incident
-        location provided by geovalidation.\\n\",\n                \"If the incident
-        location is identified as a Landmark the name of the landmark will display
-        here\\n\",\n                \"If available, this field describes the type
-        of city facility associated to the SR\\n\",\n                \"\",\n                \"\",\n
-        \               \"\",\n                \"Combination of the geo based lat
-        & long of the incident location\\n\",\n                \"Geo based Long of
-        the incident location\\n\",\n                \"If the incident is identified
-        as a Bridge/Highway, the direction where the issue took place would be displayed
-        here.\\n\",\n                \"Geo based Lat of the incident location\\n\",\n
-        \               \"If the incident location was Bridge/Highway this column
-        differentiates if the issue was on the Road or the Ramp.\\n\",\n                \"Additional
-        information on the section of the Bridge/Highway were the incident took place.\\n\",\n
-        \               \"House number of incident address provided by submitter.\\n\"\n
-        \             ],\n            \"columns_format\" :\n              [\n                {\n
-        \                 \"precisionStyle\" : \"standard\",\n                  \"noCommas\"
-        : \"false\",\n                  \"align\" : \"right\"\n                },\n
-        \               {},\n                {},\n                {},\n                {
-        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                { \"displayStyle\"
-        : \"plain\", \"align\" : \"left\" },\n                {},\n                {
-        \"view\" : \"date_time\", \"align\" : \"left\" },\n                { \"view\"
-        : \"date_time\", \"align\" : \"left\" },\n                {},\n                {},\n
-        \               {},\n                { \"view\" : \"date_time\", \"align\"
+        NYC.\",\n                \"Provided by geovalidation.\\n\",\n                \"Date
+        when responding agency last updated the SR.\\n\",\n                \"Describes
+        the last action taken on the SR by the responding agency.  May describe next
+        or future steps. \\n\",\n                \"Date when responding agency is
+        expected to update the SR.  This is based on the Complaint Type and internal
+        Service Level Agreements (SLAs).\\n\",\n                \"Status of SR submitted
+        \\n\",\n                \"If available, this field describes the type of city
+        facility associated to the SR\\n\",\n                \"If the incident location
+        is identified as a Landmark the name of the landmark will display here\\n\",\n
+        \               \"City of the incident location provided by geovalidation.\\n\",\n
+        \               \"Type of incident location information available.\\n\",\n
+        \               \"Second intersecting street based on geo validated incident
+        location\\n\",\n                \"First intersecting street based on geo validated
+        incident location\\n\",\n                \"Second Cross Street based on the
+        geo validated incident location\\n\",\n                \"First Cross street
+        based on the geo validated incident location\\n\",\n                \"Street
+        name of incident address provided by the submitter\\n\",\n                \"House
+        number of incident address provided by submitter.\\n\",\n                \"Incident
+        location zip code, provided by geo validation.\\n\",\n                \"Describes
+        the type of location used in the address information \\n\",\n                \"This
+        is  associated to the Complaint Type, and provides further detail on the incident
+        or condition. Descriptor values are dependent on the Complaint Type, and are
+        not always required in SR. \\n\",\n                \"This is the first level
+        of a hierarchy identifying the topic of the incident or condition. Complaint
+        Type may have a corresponding Descriptor (below) or may stand alone.\",\n
+        \               \"Full Agency name of responding City Government Agency\",\n
+        \               \"Acronym of responding City Government Agency\\n\",\n                \"Date
+        SR was closed by responding agency\\n\",\n                \"Date SR  was created\\n\",\n
+        \               \"Unique identifier of a Service Request (SR) in the open
+        data set\\n\"\n              ],\n            \"columns_format\" :\n              [\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               {},\n                {},\n                {},\n                {},\n
+        \               {},\n                {},\n                {},\n                {},\n
+        \               {},\n                {},\n                { \"view\" : \"coords\",
+        \"align\" : \"left\" },\n                {\n                  \"precisionStyle\"
+        : \"standard\",\n                  \"noCommas\" : \"false\",\n                  \"align\"
+        : \"right\"\n                },\n                {\n                  \"precisionStyle\"
+        : \"standard\",\n                  \"noCommas\" : \"false\",\n                  \"align\"
+        : \"right\"\n                },\n                { \"displayStyle\" : \"plain\",
+        \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\"
         : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
-        \"left\" },\n                { \"view\" : \"date_time\", \"align\" : \"left\"
+        \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\"
         },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
         \               {\n                  \"precisionStyle\" : \"standard\",\n
         \                 \"noCommas\" : \"false\",\n                  \"align\" :
-        \"right\"\n                },\n                {},\n                { \"displayStyle\"
-        : \"plain\", \"align\" : \"left\" },\n                {},\n                {},\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               {},\n                { \"displayStyle\" : \"plain\", \"align\"
-        : \"left\" },\n                {},\n                {},\n                {
-        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                {},\n
-        \               {},\n                {},\n                {},\n                {},\n
-        \               {},\n                { \"displayStyle\" : \"plain\", \"align\"
-        : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
-        \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\"
-        },\n                {},\n                {},\n                {},\n                {
-        \"view\" : \"coords\", \"align\" : \"left\" },\n                {\n                  \"precisionStyle\"
-        : \"standard\",\n                  \"noCommas\" : \"false\",\n                  \"align\"
-        : \"right\"\n                },\n                { \"displayStyle\" : \"plain\",
-        \"align\" : \"left\" },\n                {\n                  \"precisionStyle\"
+        \"right\"\n                },\n                {\n                  \"precisionStyle\"
         : \"standard\",\n                  \"noCommas\" : \"false\",\n                  \"align\"
         : \"right\"\n                },\n                { \"displayStyle\" : \"plain\",
         \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\"
-        : \"left\" },\n                {}\n              ],\n            \"download_count\"
-        : 458296,\n            \"provenance\" : \"official\",\n            \"lens_view_type\"
-        : \"tabular\",\n            \"lens_display_type\" : \"table\",\n            \"locked\"
-        : false,\n            \"blob_mime_type\" : null,\n            \"hide_from_data_json\"
-        : false,\n            \"publication_date\" : \"2025-02-07T00:22:53.000Z\"\n
-        \         },\n        \"classification\" :\n          {\n            \"categories\"
-        : [],\n            \"tags\" : [],\n            \"domain_category\" : \"Social
-        Services\",\n            \"domain_tags\" :\n              [\n                \"311\",\n
-        \               \"311 service requests\",\n                \"all service requests\",\n
+        : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
+        \"left\" },\n                { \"view\" : \"date_time\", \"align\" : \"left\"
+        },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               { \"view\" : \"date_time\", \"align\" : \"left\" },\n                {},\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               {},\n                {},\n                {},\n                {},\n
+        \               {},\n                {},\n                {},\n                {},\n
+        \               {},\n                {},\n                { \"displayStyle\"
+        : \"plain\", \"align\" : \"left\" },\n                { \"displayStyle\" :
+        \"plain\", \"align\" : \"left\" },\n                {},\n                {
+        \"view\" : \"date_time\", \"align\" : \"left\" },\n                { \"view\"
+        : \"date_time\", \"align\" : \"left\" },\n                {}\n              ],\n
+        \           \"download_count\" : 459295,\n            \"provenance\" : \"official\",\n
+        \           \"lens_view_type\" : \"tabular\",\n            \"lens_display_type\"
+        : \"table\",\n            \"locked\" : false,\n            \"blob_mime_type\"
+        : null,\n            \"hide_from_data_json\" : false,\n            \"publication_date\"
+        : \"2025-02-07T00:22:53.000Z\"\n          },\n        \"classification\" :\n
+        \         {\n            \"categories\" : [],\n            \"tags\" : [],\n
+        \           \"domain_category\" : \"Social Services\",\n            \"domain_tags\"
+        :\n              [\n                \"socialservices\",\n                \"all
+        service requests\",\n                \"311 service requests\",\n                \"311\",\n
         \               \"bike\",\n                \"city government\",\n                \"complaints\",\n
         \               \"pothole\",\n                \"rat\",\n                \"rodent\",\n
-        \               \"service request status\",\n                \"socialservices\"\n
-        \             ],\n            \"domain_metadata\" :\n              [\n                {
-        \"key\" : \"Update_Automation\", \"value\" : \"Yes\" },\n                {
-        \"key\" : \"Update_Date-Made-Public\", \"value\" : \"10/18/2011\" },\n                {
-        \"key\" : \"Update_Update-Frequency\", \"value\" : \"Daily\" },\n                {\n
-        \                 \"key\" : \"Dataset-Information_Agency\",\n                  \"value\"
-        : \"Office of Technology and Innovation (OTI)\"\n                }\n              ]\n
-        \         },\n        \"metadata\" : { \"domain\" : \"data.cityofnewyork.us\"
-        },\n        \"permalink\" : \"https://data.cityofnewyork.us/d/erm2-nwe9\",\n
+        \               \"service request status\"\n              ],\n            \"domain_metadata\"
+        :\n              [\n                { \"key\" : \"Update_Automation\", \"value\"
+        : \"Yes\" },\n                { \"key\" : \"Update_Date-Made-Public\", \"value\"
+        : \"10/18/2011\" },\n                { \"key\" : \"Update_Update-Frequency\",
+        \"value\" : \"Daily\" },\n                {\n                  \"key\" : \"Dataset-Information_Agency\",\n
+        \                 \"value\" : \"Office of Technology and Innovation (OTI)\"\n
+        \               }\n              ]\n          },\n        \"metadata\" : {
+        \"domain\" : \"data.cityofnewyork.us\" },\n        \"permalink\" : \"https://data.cityofnewyork.us/d/erm2-nwe9\",\n
         \       \"link\" : \"https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9\",\n
         \       \"owner\" :\n          {\n            \"id\" : \"5fuc-pqz2\",\n            \"user_type\"
         : \"interactive\",\n            \"display_name\" : \"NYC OpenData\"\n          },\n
@@ -942,120 +942,119 @@ interactions:
         https://www1.nyc.gov/site/dcas/employment/take-an-exam.page\",\n            \"attribution\"
         : \"Department of Citywide Administrative Services (DCAS)\",\n            \"attribution_link\"
         : null,\n            \"contact_email\" : null,\n            \"type\" : \"dataset\",\n
-        \           \"updatedAt\" : \"2025-04-25T13:14:44.000Z\",\n            \"createdAt\"
+        \           \"updatedAt\" : \"2025-05-02T13:13:19.000Z\",\n            \"createdAt\"
         : \"2016-11-16T19:24:56.000Z\",\n            \"metadata_updated_at\" : \"2024-05-14T14:29:26.000Z\",\n
-        \           \"data_updated_at\" : \"2025-04-25T13:14:44.000Z\",\n            \"page_views\"
-        :\n              {\n                \"page_views_last_week\" : 2534,\n                \"page_views_last_month\"
-        : 10290,\n                \"page_views_total\" : 873784,\n                \"page_views_last_week_log\"
-        : 11.307770031890703,\n                \"page_views_last_month_log\" : 13.329095558568858,\n
-        \               \"page_views_total_log\" : 19.73691881412675\n              },\n
-        \           \"columns_name\" :\n              [\n                \"List Agency
-        Desc\",\n                \"List No\",\n                \"No Certified\",\n
+        \           \"data_updated_at\" : \"2025-05-02T13:13:19.000Z\",\n            \"page_views\"
+        :\n              {\n                \"page_views_last_week\" : 2253,\n                \"page_views_last_month\"
+        : 10140,\n                \"page_views_total\" : 876015,\n                \"page_views_last_week_log\"
+        : 11.138271800172221,\n                \"page_views_last_month_log\" : 13.307912302492946,\n
+        \               \"page_views_total_log\" : 19.740597694616973\n              },\n
+        \           \"columns_name\" :\n              [\n                \"No Requested\",\n
+        \               \"List Agency Desc\",\n                \"List Title Desc\",\n
+        \               \"Reissue Date\",\n                \"Provisional Replacement\",\n
+        \               \"List Agency Code\",\n                \"Cert Seq No\",\n
         \               \"No Vacancies\",\n                \"Sel Cert Description\",\n
-        \               \"Cert Date\",\n                \"Exam No\",\n                \"Provisional
-        Replacement\",\n                \"MI\",\n                \"No Requested\",\n
-        \               \"Reissue Date\",\n                \"Cert Issue No\",\n                \"List
-        Title Code\",\n                \"Last Name\",\n                \"List Title
-        Desc\",\n                \"List Agency Code\",\n                \"Cert Seq
-        No\",\n                \"First Name\",\n                \"Request Date\",\n
-        \               \"Salary\",\n                \"Cert Expiration Date\"\n              ],\n
-        \           \"columns_field_name\" :\n              [\n                \"list_agency_desc\",\n
-        \               \"list_no\",\n                \"no_certified\",\n                \"no_vacancies\",\n
-        \               \"sel_cert_description\",\n                \"cert_date\",\n
-        \               \"exam_no\",\n                \"provisional_replacement\",\n
-        \               \"mi\",\n                \"no_requested\",\n                \"reissue_date\",\n
-        \               \"cert_issue_no\",\n                \"list_title_code\",\n
-        \               \"last_name\",\n                \"list_title_desc\",\n                \"list_agency_code\",\n
-        \               \"cert_seq_no\",\n                \"first_name\",\n                \"request_date\",\n
-        \               \"salary\",\n                \"cert_expiration_date\"\n              ],\n
-        \           \"columns_datatype\" :\n              [\n                \"Text\",\n
-        \               \"Number\",\n                \"Number\",\n                \"Number\",\n
-        \               \"Text\",\n                \"Calendar date\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Number\",\n
-        \               \"Calendar date\",\n                \"Number\",\n                \"Text\",\n
-        \               \"Text\",\n                \"Text\",\n                \"Text\",\n
-        \               \"Number\",\n                \"Text\",\n                \"Calendar
-        date\",\n                \"Number\",\n                \"Calendar date\"\n
-        \             ],\n            \"columns_description\" :\n              [\n
-        \               \"The name of an appointing Agency.\\n\",\n                \"An
-        eligible candidate\u2019s placement on a given list as of the business day
-        that the data set is populated. \\n\",\n                \"Represents the number
-        (\u201CNo\u201D) of eligible candidates sent to an appointing agency as part
-        of the Certification.  \\n\",\n                \"Represent the number (\u201CNo\u201D)
-        of vacancies an agency is approved to fill.\\n\",\n                \"A certification
-        sequence number (\u201CCert Seq No\u201D) indicates an eligible candidate\u2019s
-        placement on a Certification.\\n\",\n                \"The date on which a
-        Certification is created by the Certification Unit at the Department of Citywide
-        Administrative Services.   \_\\n\",\n                \"A four (4) digit number
-        that identifies a civil service examination. \",\n                \"Indicates
-        if a Certification is being  issued to replace a provisional (\u201CProv\u201D)
-        employee (not permanent)\\n\",\n                \"An eligible candidate\u2019s
-        middle initial (MI) as it appears on their application.\\n\",\n                \"Represents
+        \               \"Salary\",\n                \"Cert Expiration Date\",\n                \"Last
+        Name\",\n                \"No Certified\",\n                \"Cert Date\",\n
+        \               \"List Title Code\",\n                \"Cert Issue No\",\n
+        \               \"Request Date\",\n                \"Exam No\",\n                \"MI\",\n
+        \               \"List No\",\n                \"First Name\"\n              ],\n
+        \           \"columns_field_name\" :\n              [\n                \"no_requested\",\n
+        \               \"list_agency_desc\",\n                \"list_title_desc\",\n
+        \               \"reissue_date\",\n                \"provisional_replacement\",\n
+        \               \"list_agency_code\",\n                \"cert_seq_no\",\n
+        \               \"no_vacancies\",\n                \"sel_cert_description\",\n
+        \               \"salary\",\n                \"cert_expiration_date\",\n                \"last_name\",\n
+        \               \"no_certified\",\n                \"cert_date\",\n                \"list_title_code\",\n
+        \               \"cert_issue_no\",\n                \"request_date\",\n                \"exam_no\",\n
+        \               \"mi\",\n                \"list_no\",\n                \"first_name\"\n
+        \             ],\n            \"columns_datatype\" :\n              [\n                \"Number\",\n
+        \               \"Text\",\n                \"Text\",\n                \"Calendar
+        date\",\n                \"Text\",\n                \"Text\",\n                \"Number\",\n
+        \               \"Number\",\n                \"Text\",\n                \"Number\",\n
+        \               \"Calendar date\",\n                \"Text\",\n                \"Number\",\n
+        \               \"Calendar date\",\n                \"Text\",\n                \"Number\",\n
+        \               \"Calendar date\",\n                \"Text\",\n                \"Text\",\n
+        \               \"Number\",\n                \"Text\"\n              ],\n
+        \           \"columns_description\" :\n              [\n                \"Represents
         the number (\u201CNo\u201D) of eligible candidates requested by an appointing
-        Agency to fill vacancies. \\n\",\n                \"The date on which a Certification
-        will be extended beyond its original expiration date.  \\n\",\n                \"A
-        system generated identifier (number or \u201CNo\u201D) that is unique to a
-        specific Certification. \\n\",\n                \"A five (5) digit number
-        that corresponds to and represents a civil service title.\\n\",\n                \"An
+        Agency to fill vacancies. \\n\",\n                \"The name of an appointing
+        Agency.\\n\",\n                \"A descriptive name that identifies a civil
+        service title. \\n\",\n                \"The date on which a Certification
+        will be extended beyond its original expiration date.  \\n\",\n                \"Indicates
+        if a Certification is being  issued to replace a provisional (\u201CProv\u201D)
+        employee (not permanent)\\n\",\n                \"A three (3) digit number
+        used to identify an appointing agency (For Promotion List Only).\\n\",\n                \"A
+        certification sequence number (\u201CCert Seq No\u201D) indicates an eligible
+        candidate\u2019s placement on a Certification.\\n\",\n                \"Represent
+        the number (\u201CNo\u201D) of vacancies an agency is approved to fill.\\n\",\n
+        \               \"A certification sequence number (\u201CCert Seq No\u201D)
+        indicates an eligible candidate\u2019s placement on a Certification.\\n\",\n
+        \               \"The hiring salary for a title.  \\n\",\n                \"The
+        date on which a Certification is scheduled to expire.     \_\\n\",\n                \"An
         eligible candidate\u2019s last name as it appears on their application. \\n\",\n
-        \               \"A descriptive name that identifies a civil service title.
-        \\n\",\n                \"A three (3) digit number used to identify an appointing
-        agency (For Promotion List Only).\\n\",\n                \"A certification
-        sequence number (\u201CCert Seq No\u201D) indicates an eligible candidate\u2019s
-        placement on a Certification.\\n\",\n                \"An eligible candidate\u2019s
-        first name as it appears on their application.\\n\",\n                \"The
+        \               \"Represents the number (\u201CNo\u201D) of eligible candidates
+        sent to an appointing agency as part of the Certification.  \\n\",\n                \"The
+        date on which a Certification is created by the Certification Unit at the
+        Department of Citywide Administrative Services.   \_\\n\",\n                \"A
+        five (5) digit number that corresponds to and represents a civil service title.\\n\",\n
+        \               \"A system generated identifier (number or \u201CNo\u201D)
+        that is unique to a specific Certification. \\n\",\n                \"The
         date on which an appointing Agency submits a request for a Certification.
-        \_\\n\",\n                \"The hiring salary for a title.  \\n\",\n                \"The
-        date on which a Certification is scheduled to expire.     \_\\n\"\n              ],\n
-        \           \"columns_format\" :\n              [\n                { \"displayStyle\"
-        : \"plain\", \"align\" : \"left\" },\n                {\n                  \"precisionStyle\"
-        : \"standard\",\n                  \"noCommas\" : \"true\",\n                  \"precision\"
+        \_\\n\",\n                \"A four (4) digit number that identifies a civil
+        service examination. \",\n                \"An eligible candidate\u2019s middle
+        initial (MI) as it appears on their application.\\n\",\n                \"An
+        eligible candidate\u2019s placement on a given list as of the business day
+        that the data set is populated. \\n\",\n                \"An eligible candidate\u2019s
+        first name as it appears on their application.\\n\"\n              ],\n            \"columns_format\"
+        :\n              [\n                {\n                  \"precisionStyle\"
+        : \"standard\",\n                  \"noCommas\" : \"true\",\n                  \"align\"
+        : \"left\"\n                },\n                { \"displayStyle\" : \"plain\",
+        \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\"
+        : \"left\" },\n                { \"view\" : \"date\", \"align\" : \"left\"
+        },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               {\n                  \"precisionStyle\" : \"standard\",\n
+        \                 \"noCommas\" : \"true\",\n                  \"precision\"
         : \"3\",\n                  \"align\" : \"left\"\n                },\n                {\n
         \                 \"precisionStyle\" : \"standard\",\n                  \"noCommas\"
         : \"true\",\n                  \"align\" : \"left\"\n                },\n
-        \               {\n                  \"precisionStyle\" : \"standard\",\n
-        \                 \"noCommas\" : \"true\",\n                  \"align\" :
-        \"left\"\n                },\n                { \"displayStyle\" : \"plain\",
-        \"align\" : \"left\" },\n                { \"view\" : \"date\", \"align\"
-        : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
-        \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\"
-        },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
-        \               {\n                  \"precisionStyle\" : \"standard\",\n
-        \                 \"noCommas\" : \"true\",\n                  \"align\" :
-        \"left\"\n                },\n                { \"view\" : \"date\", \"align\"
-        : \"left\" },\n                {\n                  \"precisionStyle\" : \"standard\",\n
-        \                 \"noCommas\" : \"true\",\n                  \"align\" :
-        \"left\"\n                },\n                { \"displayStyle\" : \"plain\",
-        \"align\" : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\"
-        : \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" :
-        \"left\" },\n                { \"displayStyle\" : \"plain\", \"align\" : \"left\"
-        },\n                {\n                  \"precisionStyle\" : \"standard\",\n
-        \                 \"noCommas\" : \"true\",\n                  \"precision\"
+        \               { \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n
+        \               {\n                  \"precision\" : \"2\",\n                  \"align\"
+        : \"left\",\n                  \"currencyStyle\" : \"USD\",\n                  \"humane\"
+        : \"false\",\n                  \"precisionStyle\" : \"currency\"\n                },\n
+        \               { \"view\" : \"date\", \"align\" : \"left\" },\n                {
+        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                {\n
+        \                 \"precisionStyle\" : \"standard\",\n                  \"noCommas\"
+        : \"true\",\n                  \"align\" : \"left\"\n                },\n
+        \               { \"view\" : \"date\", \"align\" : \"left\" },\n                {
+        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                {\n
+        \                 \"precisionStyle\" : \"standard\",\n                  \"noCommas\"
+        : \"true\",\n                  \"align\" : \"left\"\n                },\n
+        \               { \"view\" : \"date\", \"align\" : \"left\" },\n                {
+        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                { \"displayStyle\"
+        : \"plain\", \"align\" : \"left\" },\n                {\n                  \"precisionStyle\"
+        : \"standard\",\n                  \"noCommas\" : \"true\",\n                  \"precision\"
         : \"3\",\n                  \"align\" : \"left\"\n                },\n                {
-        \"displayStyle\" : \"plain\", \"align\" : \"left\" },\n                { \"view\"
-        : \"date\", \"align\" : \"left\" },\n                {\n                  \"precision\"
-        : \"2\",\n                  \"align\" : \"left\",\n                  \"currencyStyle\"
-        : \"USD\",\n                  \"humane\" : \"false\",\n                  \"precisionStyle\"
-        : \"currency\"\n                },\n                { \"view\" : \"date\",
-        \"align\" : \"left\" }\n              ],\n            \"download_count\" :
-        24652,\n            \"provenance\" : \"official\",\n            \"lens_view_type\"
+        \"displayStyle\" : \"plain\", \"align\" : \"left\" }\n              ],\n            \"download_count\"
+        : 24749,\n            \"provenance\" : \"official\",\n            \"lens_view_type\"
         : \"tabular\",\n            \"lens_display_type\" : \"table\",\n            \"locked\"
         : false,\n            \"blob_mime_type\" : null,\n            \"hide_from_data_json\"
         : false,\n            \"publication_date\" : \"2021-04-22T15:38:30.000Z\"\n
         \         },\n        \"classification\" :\n          {\n            \"categories\"
         : [],\n            \"tags\" : [],\n            \"domain_category\" : \"City
-        Government\",\n            \"domain_tags\" :\n              [\n                \"admin\",\n
+        Government\",\n            \"domain_tags\" :\n              [\n                \"department
+        of citywide administrative services\",\n                \"title\",\n                \"res\",\n
+        \               \"ogc\",\n                \"facilities management\",\n                \"hc\",\n
+        \               \"fleet\",\n                \"office of general counsel\",\n
+        \               \"office of citywide procurement\",\n                \"eal
+        estate services\",\n                \"fiscal and business management\",\n
+        \               \"department of energy management\",\n                \"admin\",\n
         \               \"cei\",\n                \"certification\",\n                \"citywide
         equity and inclusion\",\n                \"civil service\",\n                \"construction
-        and technical services\",\n                \"cts\",\n                \"dcas\",\n
-        \               \"dem\",\n                \"department of citywide administrative
-        services\",\n                \"department of energy management\",\n                \"eal
-        estate services\",\n                \"facilities management\",\n                \"fbm\",\n
-        \               \"fiscal and business management\",\n                \"fleet\",\n
-        \               \"fm\",\n                \"hc\",\n                \"human
-        capital\",\n                \"list\",\n                \"ocp\",\n                \"office
-        of citywide procurement\",\n                \"office of general counsel\",\n
-        \               \"ogc\",\n                \"res\",\n                \"title\"\n
+        and technical services\",\n                \"cts\",\n                \"ocp\",\n
+        \               \"list\",\n                \"fbm\",\n                \"human
+        capital\",\n                \"dem\",\n                \"dcas\",\n                \"fm\"\n
         \             ],\n            \"domain_metadata\" :\n              [\n                {
         \"key\" : \"Update_Automation\", \"value\" : \"Yes\" },\n                {
         \"key\" : \"Update_Date-Made-Public\", \"value\" : \"12/1/2016\" },\n                {
@@ -1071,7 +1070,7 @@ interactions:
         \       \"creator\" :\n          {\n            \"id\" : \"5fuc-pqz2\",\n
         \           \"user_type\" : \"interactive\",\n            \"display_name\"
         : \"NYC OpenData\"\n          }\n      }\n    ],\n  \"resultSetSize\" : 3207,\n
-        \ \"timings\" : { \"serviceMillis\" : 24, \"searchMillis\" : [ 3, 6 ] },\n
+        \ \"timings\" : { \"serviceMillis\" : 35, \"searchMillis\" : [ 3, 17 ] },\n
         \ \"warnings\" : []\n}"
     headers:
       Access-Control-Allow-Origin:
@@ -1083,7 +1082,7 @@ interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 27 Apr 2025 21:59:22 GMT
+      - Sun, 04 May 2025 17:20:01 GMT
       Server:
       - nginx
       Strict-Transport-Security:
@@ -1095,7 +1094,7 @@ interactions:
       X-Socrata-Region:
       - aws-us-east-1-fedramp-prod
       X-Socrata-RequestId:
-      - d5994344007d7d1f0f2716e0d19a5eda
+      - a0c4749233e07a7c96b40f33241e37cd
     status:
       code: 200
       message: OK
