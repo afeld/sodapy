@@ -30,9 +30,8 @@ def vcr_config():
 
 @pytest.fixture
 def real_client():
-    client = Socrata(REAL_DOMAIN, None)
-    yield client
-    client.close()
+    with Socrata(REAL_DOMAIN, None) as client:
+        yield client
 
 
 def test_client():
