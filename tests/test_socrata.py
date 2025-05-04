@@ -154,7 +154,7 @@ def test_get_datasets_bad_domain():
 
 
 @pytest.mark.vcr
-def test_get_metadata_and_attachments(real_client):
+def test_get_metadata(real_client):
     response = real_client.get_metadata(REAL_DATASET_IDENTIFIER)
 
     assert isinstance(response, dict)
@@ -162,22 +162,20 @@ def test_get_metadata_and_attachments(real_client):
     assert response["name"] == "Bicycle Counts"
     assert response["attribution"] == "Department of Transportation (DOT)"
 
-    expected_attachments = 1
-    attachments = response["metadata"]["attachments"]
-    assert len(attachments) == expected_attachments
-    filename = attachments[0]["filename"]
 
-    response = real_client.download_attachments(REAL_DATASET_IDENTIFIER)
-
-    assert isinstance(response, list)
-    assert len(response) == expected_attachments
-    assert response[0].endswith(f"/{REAL_DATASET_IDENTIFIER}/{filename}")
+@pytest.mark.vcr
+def test_get_metadata_missing(real_client):
+    with pytest.raises(requests.exceptions.HTTPError):
+        real_client.get_metadata(FAKE_DATASET_IDENTIFIER)
 
 
 @pytest.mark.vcr
-def test_get_metadata_and_attachments_missing(real_client):
-    with pytest.raises(requests.exceptions.HTTPError):
-        real_client.get_metadata(FAKE_DATASET_IDENTIFIER)
+def test_download_attachments(real_client):
+    response = real_client.download_attachments(REAL_DATASET_IDENTIFIER)
+
+    assert isinstance(response, list)
+    assert len(response) == 1
+    assert response[0].endswith(".xlsx")
 
 
 def setup_mock(

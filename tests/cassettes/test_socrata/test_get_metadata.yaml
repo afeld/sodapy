@@ -1,0 +1,216 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://data.cityofnewyork.us/api/views/uczf-rk3c.json
+  response:
+    body:
+      string: "{\n  \"id\" : \"uczf-rk3c\",\n  \"name\" : \"Bicycle Counts\",\n  \"assetType\"
+        : \"dataset\",\n  \"attribution\" : \"Department of Transportation (DOT)\",\n
+        \ \"averageRating\" : 0,\n  \"category\" : \"Transportation\",\n  \"createdAt\"
+        : 1577463488,\n  \"description\" : \"Bicycle counts conducted around New York
+        City at key locations. For the counter locations, please refer to the <a href=\\\"https://data.cityofnewyork.us/d/smn3-rzf9/\\\">Bicycle
+        Counters dataset</a>. \\n\\nThe data may have lapses due to transmission issues
+        cause by weather, connection interruptions, equipment malfunctions, vandalism,
+        etc. The data will update as soon as it is feasible. The City makes no presentation
+        as to the accuracy of the content and assumes no liability for omissions or
+        errors in information contains on the website. Time is captured in GMT/UTC
+        timezone.\",\n  \"diciBackend\" : false,\n  \"displayType\" : \"table\",\n
+        \ \"downloadCount\" : 3964,\n  \"hideFromCatalog\" : false,\n  \"hideFromDataJson\"
+        : false,\n  \"locale\" : \"en_US\",\n  \"locked\" : false,\n  \"newBackend\"
+        : true,\n  \"numberOfComments\" : 0,\n  \"oid\" : 38616938,\n  \"provenance\"
+        : \"official\",\n  \"publicationAppendEnabled\" : true,\n  \"publicationDate\"
+        : 1656102251,\n  \"publicationGroup\" : 16798379,\n  \"publicationStage\"
+        : \"published\",\n  \"rowClass\" : \"\",\n  \"rowIdentifierColumnId\" : 562412106,\n
+        \ \"rowsUpdatedAt\" : 1746198703,\n  \"rowsUpdatedBy\" : \"5fuc-pqz2\",\n
+        \ \"tableId\" : 18757817,\n  \"totalTimesRated\" : 0,\n  \"viewCount\" : 15532,\n
+        \ \"viewLastModified\" : 1746371045,\n  \"viewType\" : \"tabular\",\n  \"approvals\"
+        : [ {\n    \"reviewedAt\" : 1577804227,\n    \"reviewedAutomatically\" : true,\n
+        \   \"state\" : \"approved\",\n    \"submissionId\" : 4792823,\n    \"submissionObject\"
+        : \"public_audience_request\",\n    \"submissionOutcome\" : \"change_audience\",\n
+        \   \"submittedAt\" : 1577804227,\n    \"targetAudience\" : \"public\",\n
+        \   \"workflowId\" : 2285,\n    \"submissionDetails\" : {\n      \"permissionType\"
+        : \"READ\"\n    },\n    \"submissionOutcomeApplication\" : {\n      \"endedAt\"
+        : 1577804227,\n      \"failureCount\" : 0,\n      \"startedAt\" : 1577804227,\n
+        \     \"status\" : \"success\"\n    },\n    \"submitter\" : {\n      \"id\"
+        : \"d5dp-fses\",\n      \"displayName\" : \"afinkel\"\n    }\n  } ],\n  \"clientContext\"
+        : {\n    \"clientContextVariables\" : [ ],\n    \"inheritedVariables\" : {
+        }\n  },\n  \"columns\" : [ {\n    \"id\" : 562412106,\n    \"name\" : \"countid\",\n
+        \   \"dataTypeName\" : \"number\",\n    \"description\" : \"\",\n    \"fieldName\"
+        : \"countid\",\n    \"position\" : 1,\n    \"renderTypeName\" : \"number\",\n
+        \   \"tableColumnId\" : 142756388,\n    \"cachedContents\" : {\n      \"non_null\"
+        : \"6590403\",\n      \"largest\" : \"133984185\",\n      \"null\" : \"0\",\n
+        \     \"top\" : [ {\n        \"item\" : \"10089359\",\n        \"count\" :
+        \"1\"\n      }, {\n        \"item\" : \"10089360\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089361\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089362\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089363\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089364\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089365\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089366\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089367\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089368\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089369\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089370\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089371\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089372\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089373\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089374\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089375\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089376\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089377\",\n        \"count\" : \"1\"\n
+        \     }, {\n        \"item\" : \"10089378\",\n        \"count\" : \"1\"\n
+        \     } ],\n      \"smallest\" : \"10089358\",\n      \"count\" : \"6590403\",\n
+        \     \"cardinality\" : \"6590403\"\n    },\n    \"format\" : {\n      \"precisionStyle\"
+        : \"standard\",\n      \"noCommas\" : \"true\"\n    }\n  }, {\n    \"id\"
+        : 562412107,\n    \"name\" : \"id\",\n    \"dataTypeName\" : \"number\",\n
+        \   \"description\" : \"\",\n    \"fieldName\" : \"id\",\n    \"position\"
+        : 2,\n    \"renderTypeName\" : \"number\",\n    \"tableColumnId\" : 142756387,\n
+        \   \"cachedContents\" : {\n      \"non_null\" : \"6590403\",\n      \"largest\"
+        : \"300043078\",\n      \"null\" : \"0\",\n      \"top\" : [ {\n        \"item\"
+        : \"100062893\",\n        \"count\" : \"407860\"\n      }, {\n        \"item\"
+        : \"100047029\",\n        \"count\" : \"407860\"\n      }, {\n        \"item\"
+        : \"100009426\",\n        \"count\" : \"399572\"\n      }, {\n        \"item\"
+        : \"100009427\",\n        \"count\" : \"399227\"\n      }, {\n        \"item\"
+        : \"100009428\",\n        \"count\" : \"397840\"\n      }, {\n        \"item\"
+        : \"100010022\",\n        \"count\" : \"397019\"\n      }, {\n        \"item\"
+        : \"300020904\",\n        \"count\" : \"396856\"\n      }, {\n        \"item\"
+        : \"100010017\",\n        \"count\" : \"318005\"\n      }, {\n        \"item\"
+        : \"100009425\",\n        \"count\" : \"296595\"\n      }, {\n        \"item\"
+        : \"100010019\",\n        \"count\" : \"295323\"\n      }, {\n        \"item\"
+        : \"100010018\",\n        \"count\" : \"274564\"\n      }, {\n        \"item\"
+        : \"100057316\",\n        \"count\" : \"226828\"\n      }, {\n        \"item\"
+        : \"100010020\",\n        \"count\" : \"218169\"\n      }, {\n        \"item\"
+        : \"100051865\",\n        \"count\" : \"202785\"\n      }, {\n        \"item\"
+        : \"100057320\",\n        \"count\" : \"193272\"\n      }, {\n        \"item\"
+        : \"100057319\",\n        \"count\" : \"193066\"\n      }, {\n        \"item\"
+        : \"100009429\",\n        \"count\" : \"165505\"\n      }, {\n        \"item\"
+        : \"100009424\",\n        \"count\" : \"136388\"\n      }, {\n        \"item\"
+        : \"300020241\",\n        \"count\" : \"126863\"\n      }, {\n        \"item\"
+        : \"300024007\",\n        \"count\" : \"103543\"\n      } ],\n      \"smallest\"
+        : \"100005020\",\n      \"count\" : \"6590403\",\n      \"cardinality\" :
+        \"40\"\n    },\n    \"format\" : {\n      \"noCommas\" : \"true\"\n    }\n
+        \ }, {\n    \"id\" : 562412108,\n    \"name\" : \"date\",\n    \"dataTypeName\"
+        : \"calendar_date\",\n    \"description\" : \"\",\n    \"fieldName\" : \"date\",\n
+        \   \"position\" : 3,\n    \"renderTypeName\" : \"calendar_date\",\n    \"tableColumnId\"
+        : 92663312,\n    \"width\" : 148,\n    \"cachedContents\" : {\n      \"non_null\"
+        : \"6590403\",\n      \"largest\" : \"2025-05-01T23:45:00.000\",\n      \"null\"
+        : \"0\",\n      \"top\" : [ {\n        \"item\" : \"2024-05-06T12:15:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-12-26T05:00:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-07-20T11:15:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2025-01-18T06:00:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-08-16T20:45:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-05-05T16:00:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-11-03T04:15:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2025-04-18T10:15:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-04-18T06:45:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-05-29T19:00:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-12-11T22:45:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-11-22T20:15:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2025-04-26T03:00:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-04-15T11:00:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-12-23T02:45:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-08-21T06:00:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-10-04T22:15:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2025-04-25T05:45:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2025-04-23T04:15:00.000\",\n
+        \       \"count\" : \"31\"\n      }, {\n        \"item\" : \"2024-04-06T23:15:00.000\",\n
+        \       \"count\" : \"31\"\n      } ],\n      \"smallest\" : \"2012-08-31T00:00:00.000\",\n
+        \     \"count\" : \"6590403\",\n      \"cardinality\" : \"444107\"\n    },\n
+        \   \"format\" : {\n      \"view\" : \"date_time\"\n    }\n  }, {\n    \"id\"
+        : 562412109,\n    \"name\" : \"counts\",\n    \"dataTypeName\" : \"number\",\n
+        \   \"description\" : \"\",\n    \"fieldName\" : \"counts\",\n    \"position\"
+        : 4,\n    \"renderTypeName\" : \"number\",\n    \"tableColumnId\" : 92663313,\n
+        \   \"width\" : 172,\n    \"cachedContents\" : {\n      \"non_null\" : \"6590403\",\n
+        \     \"largest\" : \"1133\",\n      \"null\" : \"0\",\n      \"top\" : [
+        {\n        \"item\" : \"0\",\n        \"count\" : \"1068973\"\n      }, {\n
+        \       \"item\" : \"1\",\n        \"count\" : \"463635\"\n      }, {\n        \"item\"
+        : \"2\",\n        \"count\" : \"343835\"\n      }, {\n        \"item\" : \"3\",\n
+        \       \"count\" : \"265703\"\n      }, {\n        \"item\" : \"4\",\n        \"count\"
+        : \"216234\"\n      }, {\n        \"item\" : \"5\",\n        \"count\" : \"183130\"\n
+        \     }, {\n        \"item\" : \"6\",\n        \"count\" : \"158241\"\n      },
+        {\n        \"item\" : \"7\",\n        \"count\" : \"140778\"\n      }, {\n
+        \       \"item\" : \"8\",\n        \"count\" : \"127253\"\n      }, {\n        \"item\"
+        : \"9\",\n        \"count\" : \"116972\"\n      }, {\n        \"item\" : \"10\",\n
+        \       \"count\" : \"109184\"\n      }, {\n        \"item\" : \"11\",\n        \"count\"
+        : \"102242\"\n      }, {\n        \"item\" : \"12\",\n        \"count\" :
+        \"96678\"\n      }, {\n        \"item\" : \"13\",\n        \"count\" : \"91599\"\n
+        \     }, {\n        \"item\" : \"14\",\n        \"count\" : \"87558\"\n      },
+        {\n        \"item\" : \"15\",\n        \"count\" : \"84139\"\n      }, {\n
+        \       \"item\" : \"16\",\n        \"count\" : \"81606\"\n      }, {\n        \"item\"
+        : \"17\",\n        \"count\" : \"78370\"\n      }, {\n        \"item\" : \"18\",\n
+        \       \"count\" : \"75942\"\n      }, {\n        \"item\" : \"19\",\n        \"count\"
+        : \"73716\"\n      } ],\n      \"smallest\" : \"0\",\n      \"count\" : \"6590403\",\n
+        \     \"cardinality\" : \"897\"\n    },\n    \"format\" : { }\n  }, {\n    \"id\"
+        : 562412110,\n    \"name\" : \"status\",\n    \"dataTypeName\" : \"number\",\n
+        \   \"description\" : \"\",\n    \"fieldName\" : \"status\",\n    \"position\"
+        : 5,\n    \"renderTypeName\" : \"number\",\n    \"tableColumnId\" : 92663314,\n
+        \   \"width\" : 172,\n    \"cachedContents\" : {\n      \"non_null\" : \"6590403\",\n
+        \     \"largest\" : \"4\",\n      \"null\" : \"0\",\n      \"top\" : [ {\n
+        \       \"item\" : \"0\",\n        \"count\" : \"5289263\"\n      }, {\n        \"item\"
+        : \"4\",\n        \"count\" : \"1301140\"\n      } ],\n      \"smallest\"
+        : \"0\",\n      \"count\" : \"6590403\",\n      \"cardinality\" : \"2\"\n
+        \   },\n    \"format\" : { }\n  } ],\n  \"grants\" : [ {\n    \"inherited\"
+        : false,\n    \"type\" : \"viewer\",\n    \"flags\" : [ \"public\" ]\n  }
+        ],\n  \"metadata\" : {\n    \"rdfSubject\" : \"0\",\n    \"rdfClass\" : \"\",\n
+        \   \"attachments\" : [ {\n      \"filename\" : \"Data-Dictionary-Bicycle_Counts.xlsx\",\n
+        \     \"assetId\" : \"6ed2f73d-961f-4200-830e-9fed494e9515\",\n      \"name\"
+        : \"Data-Dictionary-Bicycle_Counts.xlsx\"\n    } ],\n    \"custom_fields\"
+        : {\n      \"Update\" : {\n        \"Automation\" : \"Yes\",\n        \"Date
+        Made Public\" : \"12/31/2019\",\n        \"Update Frequency\" : \"Daily\"\n
+        \     },\n      \"Dataset Information\" : {\n        \"Agency\" : \"Department
+        of Transportation (DOT)\"\n      }\n    },\n    \"rowIdentifier\" : 562412106,\n
+        \   \"availableDisplayTypes\" : [ \"table\", \"fatrow\", \"page\" ]\n  },\n
+        \ \"owner\" : {\n    \"id\" : \"5fuc-pqz2\",\n    \"displayName\" : \"NYC
+        OpenData\",\n    \"profileImageUrlLarge\" : \"/api/users/5fuc-pqz2/profile_images/LARGE\",\n
+        \   \"profileImageUrlMedium\" : \"/api/users/5fuc-pqz2/profile_images/THUMB\",\n
+        \   \"profileImageUrlSmall\" : \"/api/users/5fuc-pqz2/profile_images/TINY\",\n
+        \   \"screenName\" : \"NYC OpenData\",\n    \"type\" : \"interactive\",\n
+        \   \"flags\" : [ \"acceptedEula\", \"mayBeStoriesCoOwner\" ]\n  },\n  \"query\"
+        : { },\n  \"rights\" : [ \"read\" ],\n  \"tableAuthor\" : {\n    \"id\" :
+        \"5fuc-pqz2\",\n    \"displayName\" : \"NYC OpenData\",\n    \"profileImageUrlLarge\"
+        : \"/api/users/5fuc-pqz2/profile_images/LARGE\",\n    \"profileImageUrlMedium\"
+        : \"/api/users/5fuc-pqz2/profile_images/THUMB\",\n    \"profileImageUrlSmall\"
+        : \"/api/users/5fuc-pqz2/profile_images/TINY\",\n    \"screenName\" : \"NYC
+        OpenData\",\n    \"type\" : \"interactive\",\n    \"flags\" : [ \"acceptedEula\",
+        \"mayBeStoriesCoOwner\" ]\n  },\n  \"tags\" : [ \"bicycle\", \"count\", \"eco-counter\",
+        \"midtown\", \"east river\", \"uptown\", \"bike\" ],\n  \"flags\" : [ \"default\",
+        \"ownerMayBeContacted\", \"restorable\", \"restorePossibleForType\" ]\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 04 May 2025 15:09:11 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Socrata-Region:
+      - aws-us-east-1-fedramp-prod
+      X-Socrata-RequestId:
+      - d8ee695f0adf62898fbca73e81c32f76
+    status:
+      code: 200
+      message: OK
+version: 1
