@@ -1,9 +1,6 @@
-import csv
-from io import StringIO
-import json
 import logging
 import os
-import re
+
 import requests
 
 from sodapy.constants import (
@@ -273,21 +270,7 @@ class Socrata:
             return response
 
         # for other request types, return most useful data
-        content_type = response.headers.get("content-type").strip().lower()
-        if re.match(r"application\/(vnd\.geo\+)?json", content_type):
-            return response.json()
-        if re.match(r"text\/csv", content_type):
-            csv_stream = StringIO(response.text)
-            return list(csv.reader(csv_stream))
-        if "xml" in content_type:
-            return response.content
-        if re.match(r"text\/plain", content_type):
-            try:
-                return json.loads(response.text)
-            except ValueError:
-                return response.text
-
-        raise Exception("Unknown response format: {}".format(content_type))
+        return utils.format_response(response)
 
     def close(self):
         """

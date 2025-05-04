@@ -1,5 +1,9 @@
 from collections.abc import Iterable
 from typing import Any
+import csv
+from io import StringIO
+import json
+import re
 import requests
 
 from .constants import DEFAULT_API_PATH, OLD_API_PATH
@@ -94,3 +98,21 @@ def download_file(url, local_filename):
         for chunk in response.iter_content(chunk_size=1024):
             if chunk:  # filter out keep-alive new chunks
                 outfile.write(chunk)
+
+
+def format_response(response):
+    content_type = response.headers.get("content-type", "").strip().lower()
+    if re.match(r"application\/(vnd\.geo\+)?json", content_type):
+        return response.json()
+    if re.match(r"text\/csv", content_type):
+        csv_stream = StringIO(response.text)
+        return list(csv.reader(csv_stream))
+    if "xml" in content_type:
+        return response.content
+    if re.match(r"text\/plain", content_type):
+        try:
+            return json.loads(response.text)
+        except ValueError:
+            return response.text
+
+    raise Exception("Unknown response format: {}".format(content_type))
