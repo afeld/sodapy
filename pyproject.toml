@@ -53,6 +53,7 @@ version = { attr = "sodapy.__version__" }
 
 [tool.vulture]
 ignore_names = [
+    "_content",
     "LOGGER",
     "auth",
     # https://github.com/jendrikseipp/vulture/issues/382

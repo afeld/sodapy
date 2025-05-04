@@ -101,3 +101,52 @@ def test_download_file(tmp_path):
         mock.get(url, text=text)
         utils.download_file(url, str(path))
     assert path.read_text() == text
+
+
+@pytest.mark.parametrize(
+    ("content_type", "body", "expected"),
+    [
+        (
+            "application/json",
+            '{"foo":"bar"}',
+            {"foo": "bar"},
+        ),
+        (
+            "text/csv",
+            "h1,h2\nv1,v2",
+            [
+                ["h1", "h2"],
+                ["v1", "v2"],
+            ],
+        ),
+        (
+            "application/xml",
+            """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <note>hello world</note>
+            """,
+            b"""
+            <?xml version="1.0" encoding="UTF-8"?>
+            <note>hello world</note>
+            """,
+        ),
+        (
+            # lying!
+            "text/plain",
+            '{"foo":"bar"}',
+            {"foo": "bar"},
+        ),
+        (
+            "text/plain",
+            "hello world",
+            "hello world",
+        ),
+    ],
+)
+def test_format_response(content_type, body, expected):
+    response = requests.Response()
+    response._content = bytes(body, "utf-8")
+    response.headers["Content-Type"] = content_type
+
+    actual = utils.format_response(response)
+    assert actual == expected
