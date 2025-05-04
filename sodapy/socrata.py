@@ -6,7 +6,12 @@ import os
 import re
 import requests
 
-from sodapy.constants import DATASETS_PATH
+from sodapy.constants import (
+    DATASETS_PATH,
+    DEFAULT_DATASETS_LIMIT,
+    DEFAULT_OFFSET,
+    DEFAULT_ROW_LIMIT,
+)
 import sodapy.utils as utils
 
 
@@ -16,15 +21,6 @@ class Socrata:
         from sodapy import Socrata
         client = Socrata("opendata.socrata.com", None)
     """
-
-    DEFAULT_ROW_LIMIT = 1000
-    """[Docs](https://dev.socrata.com/docs/paging.html#2.1)"""
-
-    DEFAULT_DATASETS_LIMIT = 100
-    """[Docs](https://dev.socrata.com/docs/other/discovery#?route=cmp--parameters-limit)"""
-
-    DEFAULT_OFFSET = 0
-    """Docs: [SODA](https://dev.socrata.com/docs/paging) and [Discovery](https://dev.socrata.com/docs/other/discovery#?route=cmp--parameters-offset)"""
 
     def __init__(
         self,
@@ -119,8 +115,8 @@ class Socrata:
 
         params = kwargs.copy()
 
-        limit = params.get("limit", self.DEFAULT_DATASETS_LIMIT)
-        params["offset"] = params.get("offset", self.DEFAULT_OFFSET)
+        limit = params.get("limit", DEFAULT_DATASETS_LIMIT)
+        params["offset"] = params.get("offset", DEFAULT_OFFSET)
 
         while True:
             results = self.datasets(**params)
@@ -242,8 +238,8 @@ class Socrata:
 
         params = kwargs.copy()
         if "offset" not in params:
-            params["offset"] = self.DEFAULT_OFFSET
-        limit = params.get("limit", self.DEFAULT_ROW_LIMIT)
+            params["offset"] = DEFAULT_OFFSET
+        limit = params.get("limit", DEFAULT_ROW_LIMIT)
 
         while True:
             response = self.get(*args, **params)

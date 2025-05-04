@@ -8,7 +8,7 @@ import requests_mock
 import pytest
 
 from sodapy import Socrata
-from sodapy.constants import DEFAULT_API_PATH
+from sodapy.constants import DEFAULT_API_PATH, DEFAULT_DATASETS_LIMIT, DEFAULT_ROW_LIMIT
 
 
 PREFIX = "https://"
@@ -74,7 +74,7 @@ def test_client_oauth():
 def test_get(real_client):
     response = real_client.get(REAL_DATASET_IDENTIFIER)
     assert isinstance(response, list)
-    assert len(response) == real_client.DEFAULT_ROW_LIMIT
+    assert len(response) == DEFAULT_ROW_LIMIT
 
 
 @pytest.mark.vcr
@@ -82,7 +82,7 @@ def test_get_csv(real_client):
     response = real_client.get(REAL_DATASET_IDENTIFIER, content_type="csv")
     assert isinstance(response, list)
     # has a header row
-    assert len(response) == real_client.DEFAULT_ROW_LIMIT + 1
+    assert len(response) == DEFAULT_ROW_LIMIT + 1
 
 
 @pytest.mark.vcr
@@ -102,7 +102,7 @@ def test_get_all(real_client):
     response = real_client.get_all(REAL_DATASET_IDENTIFIER)
     assert inspect.isgenerator(response)
 
-    desired_count = real_client.DEFAULT_ROW_LIMIT + 1
+    desired_count = DEFAULT_ROW_LIMIT + 1
     list_responses = [item for _, item in zip(range(desired_count), response)]
     assert len(list_responses) == desired_count
 
@@ -153,7 +153,7 @@ def test_all_datasets(real_client):
 
     datasets = list(response)
     num_datasets = len(datasets)
-    assert num_datasets > real_client.DEFAULT_DATASETS_LIMIT
+    assert num_datasets > DEFAULT_DATASETS_LIMIT
 
     ids = [dataset["resource"]["id"] for dataset in datasets]
     # https://stackoverflow.com/questions/5278122/checking-if-all-elements-in-a-list-are-unique
