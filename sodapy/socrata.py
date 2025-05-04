@@ -111,31 +111,26 @@ class Socrata:
         # strange behavior: calling the Discovery API under a particular domain without the `domains` parameter returns results from all domains
         params["domains"] = params.get("domains", [self.domain])
 
+        response = self._perform_request(DATASETS_PATH, params=params)
+        return response["results"]
+
+    def all_datasets(self, **kwargs):
+        """Returns the datasets associated with a particular domain as a Generator. [API documentation.](https://dev.socrata.com/docs/other/discovery) Note that the `limit` is treated as the page size, not a limit on the number of items that are yielded."""
+
+        params = kwargs.copy()
+
         limit = params.get("limit", self.DEFAULT_DATASETS_LIMIT)
-        offset = params.get("offset", self.DEFAULT_OFFSET)
+        params["offset"] = params.get("offset", self.DEFAULT_OFFSET)
 
-        results = self._perform_request(DATASETS_PATH, params=params)
-        num_results = results["resultSetSize"]
-        result_set = results["results"]
-        # no more results to fetch, or limit reached
-        if limit >= num_results or limit == len(result_set) or num_results == len(result_set):
-            return result_set
+        while True:
+            results = self.datasets(**params)
+            for item in results:
+                yield item
 
-        if limit != 0:
-            raise Exception(
-                "Unexpected number of results returned from endpoint.\
-                    Expected {}, got {}.".format(limit, len(result_set))
-            )
+            if len(results) < limit:
+                return
 
-        # get all remaining results
-        all_results = result_set
-        while len(all_results) != num_results:
-            offset += len(result_set)
-            params["offset"] = offset
-            results = self._perform_request(DATASETS_PATH, params=params)
-            all_results.extend(result_set)
-
-        return all_results
+            params["offset"] += limit
 
     def get_metadata(self, dataset_identifier):
         """
@@ -241,9 +236,11 @@ class Socrata:
         """
         Read data from the requested resource, paginating over all results.
         Accepts the same arguments as get(). Returns a generator.
+
+        Note that the `limit` is treated as the page size, not a limit on the number of items that are yielded.
         """
-        params = {}
-        params.update(kwargs)
+
+        params = kwargs.copy()
         if "offset" not in params:
             params["offset"] = self.DEFAULT_OFFSET
         limit = params.get("limit", self.DEFAULT_ROW_LIMIT)

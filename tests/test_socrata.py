@@ -1,3 +1,4 @@
+from collections.abc import Generator
 import inspect
 import json
 import logging
@@ -146,11 +147,17 @@ def test_get_datasets(real_client):
 
 
 @pytest.mark.vcr
-def test_get_datasets_paginate(real_client):
-    desired_count = real_client.DEFAULT_DATASETS_LIMIT * 2 + 1
-    response = real_client.datasets(limit=desired_count)
-    assert isinstance(response, list)
-    assert len(response) == desired_count
+def test_all_datasets(real_client):
+    response = real_client.all_datasets(attribution="Department of Transportation (DOT)")
+    assert isinstance(response, Generator)
+
+    datasets = list(response)
+    num_datasets = len(datasets)
+    assert num_datasets > real_client.DEFAULT_DATASETS_LIMIT
+
+    ids = [dataset["resource"]["id"] for dataset in datasets]
+    # https://stackoverflow.com/questions/5278122/checking-if-all-elements-in-a-list-are-unique
+    assert num_datasets == len(set(ids)), "IDs should be unique"
 
 
 @pytest.mark.vcr
