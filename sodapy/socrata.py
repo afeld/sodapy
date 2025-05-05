@@ -1,8 +1,14 @@
 import logging
 import os
+from pathlib import Path
 from urllib.parse import urlencode
 
+
+# use Union instead of `|`s for Python 3.9 compatability
+from typing import Any, TypedDict, Union
+
 import requests
+import requests.adapters
 
 from sodapy.constants import (
     DATASETS_PATH,
@@ -10,7 +16,12 @@ from sodapy.constants import (
     DEFAULT_OFFSET,
     DEFAULT_ROW_LIMIT,
 )
-import sodapy.utils as utils
+from sodapy import utils
+
+
+class SessionAdapter(TypedDict):
+    prefix: str
+    adapter: requests.adapters.BaseAdapter
 
 
 class Socrata:
@@ -22,12 +33,12 @@ class Socrata:
 
     def __init__(
         self,
-        domain,
-        app_token,
-        username=None,
-        password=None,
-        access_token=None,
-        session_adapter=None,
+        domain: str,
+        app_token: Union[str, None],
+        username: Union[str, None] = None,
+        password: Union[str, None] = None,
+        access_token: Union[str, None] = None,
+        session_adapter: Union[SessionAdapter, None] = None,
         timeout=10,
     ):
         """
@@ -106,7 +117,8 @@ class Socrata:
         params["domains"] = params.get("domains", [self.domain])
 
         response = self._perform_request(DATASETS_PATH, params=params)
-        return response["results"]
+        results: list[dict[str, Any]] = response["results"]  # type: ignore
+        return results
 
     def all_datasets(self, **kwargs):
         """Returns the datasets associated with a particular domain as a Generator. [API documentation.](https://dev.socrata.com/docs/other/discovery) Note that the `limit` is treated as the page size, not a limit on the number of items that are yielded."""
@@ -125,14 +137,14 @@ class Socrata:
 
             kwargs["offset"] += limit
 
-    def get_metadata(self, dataset_identifier):
+    def get_metadata(self, dataset_identifier: str):
         """
         Retrieve the metadata for a particular dataset. While there is a [Metadata API](https://dev.socrata.com/docs/other/metadata.html), this uses the [Discovery API](https://dev.socrata.com/docs/other/discovery#?route=get-/catalog/v1-ids--4x4-), as that returns more information.
         """
         response = self.datasets(ids=[dataset_identifier])
         return response[0]
 
-    def _download_url(self, dataset_identifier, attachment):
+    def _download_url(self, dataset_identifier: str, attachment: dict[str, str]):
         params = {"download": "true"}
 
         if "assetId" in attachment:
@@ -150,20 +162,20 @@ class Socrata:
         return "".join((self.uri_prefix, self.domain, resource))
 
     def download_attachments(
-        self, dataset_identifier, content_type="json", download_dir="~/sodapy_downloads"
+        self,
+        dataset_identifier: str,
+        download_dir="~/sodapy_downloads",
     ):
         """
         Download all of the attachments associated with a dataset. Return the paths of downloaded
         files.
         """
 
-        resource = utils.format_old_api_request(
-            dataid=dataset_identifier, content_type=content_type
-        )
+        resource = utils.format_old_api_request(dataid=dataset_identifier, content_type="json")
         metadata = self._perform_request(resource)
 
-        files = []
-        attachments = metadata["metadata"].get("attachments")
+        files: list[str] = []
+        attachments: list[dict[str, Any]] = metadata["metadata"].get("attachments", [])  # type: ignore
         if not attachments:
             logging.info("No attachments were found or downloaded.")
             return files
@@ -174,14 +186,14 @@ class Socrata:
 
         for attachment in attachments:
             uri = self._download_url(dataset_identifier, attachment)
-            file_path = os.path.join(download_dir, attachment["filename"])
+            file_path = Path(download_dir) / attachment["filename"]
             utils.download_file(uri, file_path)
-            files.append(file_path)
+            files.append(str(file_path))
 
         logging.info("The following files were downloaded:\n\t%s", "\n\t".join(files))
         return files
 
-    def get(self, dataset_identifier, content_type="json", **kwargs):
+    def get(self, dataset_identifier: str, content_type: utils.ContentTypes = "json", **kwargs):
         """
         Read data from the requested resource. Options for content_type are json,
         csv, and xml. Optionally, specify a keyword arg to filter results:
@@ -251,7 +263,7 @@ class Socrata:
                 return
             kwargs["offset"] += limit
 
-    def _perform_request(self, resource, **kwargs):
+    def _perform_request(self, resource: str, **kwargs):
         """
         Utility method that performs GET requests.
         """

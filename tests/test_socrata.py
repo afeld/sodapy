@@ -9,6 +9,7 @@ import pytest
 
 from sodapy import Socrata
 from sodapy.constants import DEFAULT_API_PATH, DEFAULT_DATASETS_LIMIT, DEFAULT_ROW_LIMIT
+from sodapy.socrata import SessionAdapter
 
 
 PREFIX = "https://"
@@ -55,13 +56,13 @@ def test_context_manager():
 
 def test_context_manager_no_domain_exception():
     with pytest.raises(Exception):
-        with Socrata(None, APPTOKEN):
+        with Socrata(None, APPTOKEN):  # type: ignore
             pass
 
 
 def test_context_manager_timeout_exception():
     with pytest.raises(TypeError):
-        with Socrata(FAKE_DOMAIN, APPTOKEN, timeout="fail"):
+        with Socrata(FAKE_DOMAIN, APPTOKEN, timeout="fail"):  # type: ignore
             pass
 
 
@@ -119,10 +120,11 @@ def test_get_all_hit_limit(real_client):
 
 
 def test_get_unicode():
-    mock_adapter = {}
-    mock_adapter["prefix"] = PREFIX
     adapter = requests_mock.Adapter()
-    mock_adapter["adapter"] = adapter
+    mock_adapter: SessionAdapter = {
+        "prefix": PREFIX,
+        "adapter": adapter,
+    }
     client = Socrata(FAKE_DOMAIN, APPTOKEN, session_adapter=mock_adapter)
 
     response_data = "get_songs_unicode.txt"

@@ -1,16 +1,22 @@
 from collections.abc import Iterable
-from typing import Any
+from pathlib import Path
 import csv
 from io import StringIO
 import json
 import re
+from typing import Literal
 import requests
+
+# use Union instead of `|`s for Python 3.9 compatability
+from typing import Any, Union
 
 from .constants import DEFAULT_API_PATH, OLD_API_PATH
 
+ContentTypes = Literal["json", "csv", "xml"]
+
 
 # Utility methods
-def raise_for_status(response):
+def raise_for_status(response: requests.Response):
     """
     Custom raise_for_status with more appropriate error message.
     """
@@ -52,7 +58,7 @@ def clear_empty_values(args):
     return result
 
 
-def format_old_api_request(dataid=None, content_type=None):
+def format_old_api_request(dataid=None, content_type: Union[ContentTypes, None] = None):
     if dataid is not None:
         if content_type is not None:
             return f"{OLD_API_PATH}/{dataid}.{content_type}"
@@ -64,7 +70,9 @@ def format_old_api_request(dataid=None, content_type=None):
     raise Exception("This method requires at least a dataset_id or content_type.")
 
 
-def format_new_api_request(dataid=None, row_id=None, content_type=None):
+def format_new_api_request(
+    dataid=None, row_id=None, content_type: Union[ContentTypes, None] = None
+):
     if dataid is not None:
         if content_type is not None:
             if row_id is not None:
@@ -74,7 +82,9 @@ def format_new_api_request(dataid=None, row_id=None, content_type=None):
     raise Exception("This method requires at least a dataset_id or content_type.")
 
 
-def authentication_validation(username, password, access_token):
+def authentication_validation(
+    username: Union[str, None], password: Union[str, None], access_token: Union[str, None]
+):
     """
     Only accept one form of authentication.
     """
@@ -88,7 +98,7 @@ def authentication_validation(username, password, access_token):
         )
 
 
-def download_file(url, local_filename):
+def download_file(url: str, local_filename: Path):
     """
     Utility function that downloads a chunked response from the specified url to a local path.
     This method is suitable for larger downloads.
@@ -100,7 +110,7 @@ def download_file(url, local_filename):
                 outfile.write(chunk)
 
 
-def format_response(response):
+def format_response(response: requests.Response):
     content_type = response.headers.get("content-type", "").strip().lower()
     if re.match(r"application\/(vnd\.geo\+)?json", content_type):
         return response.json()
