@@ -32,7 +32,7 @@ class Sodapy:
         username: Union[str, None] = None,
         password: Union[str, None] = None,
         access_token: Union[str, None] = None,
-        timeout: Union[int, float] = 10,
+        timeout: Union[int, float] = 20,
     ):
         """
         The required arguments are:
