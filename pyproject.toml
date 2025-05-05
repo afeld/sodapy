@@ -20,6 +20,8 @@ requires-python = ">=3.9"
 dependencies = [
     # verified Python 3.9+ compatibility
     "requests>=2.28.2",
+    # for warnings.deprecated
+    "typing_extensions; python_version < '3.13'",
 ]
 
 [project.urls]

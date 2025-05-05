@@ -8,7 +8,7 @@ import requests
 import requests_mock
 import pytest
 
-from sodapy import Socrata
+from sodapy import Sodapy
 from sodapy.constants import DEFAULT_DATASETS_LIMIT, DEFAULT_ROW_LIMIT
 
 
@@ -31,24 +31,24 @@ def vcr_config():
 
 @pytest.fixture
 def real_client():
-    with Socrata(REAL_DOMAIN) as client:
+    with Sodapy(REAL_DOMAIN) as client:
         yield client
 
 
 def test_client_warning(caplog):
     with caplog.at_level(logging.WARNING):
-        client = Socrata(FAKE_DOMAIN)
+        client = Sodapy(FAKE_DOMAIN)
     assert "strict throttling limits" in caplog.text
     client.close()
 
 
 def test_context_manager():
-    with Socrata(FAKE_DOMAIN, APPTOKEN) as client:
-        assert isinstance(client, Socrata)
+    with Sodapy(FAKE_DOMAIN, APPTOKEN) as client:
+        assert isinstance(client, Sodapy)
 
 
 def test_client_oauth():
-    client = Socrata(FAKE_DOMAIN, APPTOKEN, access_token="AAAAAAAAAAAA")
+    client = Sodapy(FAKE_DOMAIN, APPTOKEN, access_token="AAAAAAAAAAAA")
     assert client.session.headers.get("Authorization") == "OAuth AAAAAAAAAAAA"
 
 
@@ -101,7 +101,7 @@ def test_get_all_hit_limit(real_client):
 
 
 def test_get_unicode():
-    client = Socrata(FAKE_DOMAIN, APPTOKEN)
+    client = Sodapy(FAKE_DOMAIN, APPTOKEN)
 
     with open(TEST_DATA_PATH / "get_songs_unicode.json") as f:
         response_data = json.load(f)
@@ -147,7 +147,7 @@ def test_all_datasets(real_client):
 
 @pytest.mark.vcr
 def test_get_datasets_bad_domain():
-    client = Socrata("not-socrata.com")
+    client = Sodapy("not-socrata.com")
 
     with pytest.raises(requests.exceptions.ConnectionError):
         client.datasets()
