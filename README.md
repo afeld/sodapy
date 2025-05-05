@@ -39,9 +39,9 @@ There are some [Jupyter](https://jupyter.org/) notebooks in the [examples direct
 Import the library and set up a connection to get started.
 
 ```python
-from sodapy import Socrata
+from sodapy import Sodapy
 
-client = Socrata("sandbox.demo.socrata.com")
+client = Sodapy("sandbox.demo.socrata.com")
 ```
 
 An [application token](https://dev.socrata.com/docs/app-tokens) isn't strictly required, but queries executed from a client without an application token will be subjected to strict throttling limits. You may want to increase the `timeout` seconds when making large requests.
@@ -49,7 +49,7 @@ An [application token](https://dev.socrata.com/docs/app-tokens) isn't strictly r
 With an app token:
 
 ```python
-client = Socrata(
+client = Sodapy(
     "sandbox.demo.socrata.com",
     app_token="FakeAppToken",
     timeout=10
@@ -61,7 +61,7 @@ client = Socrata(
 A client can also be created with a context manager to obviate the need for teardown:
 
 ```python
-with Socrata("sandbox.demo.socrata.com") as client:
+with Sodapy("sandbox.demo.socrata.com") as client:
     # do some stuff
 ```
 
@@ -95,7 +95,7 @@ Retrieve data from the requested resources. Filter and query data by field name,
 Read data from the requested resource, paginating over all results. Accepts the same arguments as [`get()`](#getdataset_identifier-content_typejson-kwargs). Returns a generator.
 
     >>> client.get_all("nimj-3ivp")
-    <generator object Socrata.get_all at 0x7fa0dc8be7b0>
+    <generator object Sodapy.get_all at 0x7fa0dc8be7b0>
 
     >>> for item in client.get_all("nimj-3ivp"):
     ...     print(item)
