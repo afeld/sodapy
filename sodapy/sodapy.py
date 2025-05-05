@@ -22,7 +22,7 @@ class Sodapy:
     """
     The main class that interacts with the SODA API. Sample usage:
         from sodapy import Sodapy
-        client = Sodapy("opendata.socrata.com")
+        client = Sodapy("some.portal.gov")
     """
 
     def __init__(
