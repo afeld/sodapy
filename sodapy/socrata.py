@@ -8,7 +8,6 @@ from urllib.parse import urlencode
 from typing import Any, Union
 
 import requests
-import requests.adapters
 
 from sodapy.constants import (
     DATASETS_PATH,
