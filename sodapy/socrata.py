@@ -76,8 +76,6 @@ class Socrata:
         elif access_token:
             self.session.headers.update({"Authorization": f"OAuth {access_token}"})
 
-        self.uri_prefix = "https://"
-
         if not isinstance(timeout, (int, float)):
             raise TypeError("Timeout must be numeric.")
         self.timeout = timeout
@@ -146,9 +144,7 @@ class Socrata:
             assetid = attachment["blobId"]
             resource = f"/api/assets/{assetid}"
 
-        resource += "?" + urlencode(params)
-
-        return "".join((self.uri_prefix, self.domain, resource))
+        return f"https://{self.domain}{resource}?{urlencode(params)}"
 
     def download_attachments(
         self,
@@ -257,7 +253,7 @@ class Socrata:
         Utility method that performs GET requests.
         """
 
-        uri = "".join((self.uri_prefix, self.domain, resource))
+        uri = f"https://{self.domain}{resource}"
 
         # set a timeout, just to be safe
         kwargs["timeout"] = self.timeout
