@@ -28,13 +28,13 @@ class Socrata:
     """
     The main class that interacts with the SODA API. Sample usage:
         from sodapy import Socrata
-        client = Socrata("opendata.socrata.com", None)
+        client = Socrata("opendata.socrata.com")
     """
 
     def __init__(
         self,
         domain: str,
-        app_token: Union[str, None],
+        app_token: Union[str, None] = None,
         username: Union[str, None] = None,
         password: Union[str, None] = None,
         access_token: Union[str, None] = None,
@@ -44,7 +44,6 @@ class Socrata:
         """
         The required arguments are:
             domain: the domain you wish you to access
-            app_token: your Socrata application token
         Simple requests are possible without an app_token, though these
         requests will be rate-limited.
 
