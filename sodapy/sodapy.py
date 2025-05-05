@@ -22,7 +22,7 @@ class Sodapy:
     """
     The main class that interacts with the SODA API. Sample usage:
         from sodapy import Sodapy
-        client = Sodapy("opendata.socrata.com")
+        client = Sodapy("some.portal.gov")
     """
 
     def __init__(
@@ -32,7 +32,7 @@ class Sodapy:
         username: Union[str, None] = None,
         password: Union[str, None] = None,
         access_token: Union[str, None] = None,
-        timeout: Union[int, float] = 10,
+        timeout: Union[int, float] = 20,
     ):
         """
         The required arguments are:

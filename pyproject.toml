@@ -35,6 +35,8 @@ build-backend = "setuptools.build_meta"
 
 [dependency-groups]
 dev = [
+    "ipykernel",
+    "nbconvert==7.*",
     "pandas<3.0",
     "pyright",
     "pytest-cov",
@@ -50,8 +52,7 @@ dev = [
 check_untyped_defs = true
 
 [tool.pyright]
-# TODO include examples
-include = ["sodapy", "tests"]
+include = ["examples", "sodapy", "tests"]
 
 [tool.ruff]
 line-length = 100

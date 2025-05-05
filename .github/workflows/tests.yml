@@ -79,3 +79,28 @@ jobs:
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+  notebooks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        notebook:
+          - basic_queries
+          - soql_queries
+    continue-on-error: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Run notebooks
+        run: |
+          uv run jupyter nbconvert \
+            --execute --to notebook --inplace \
+            examples/${{ matrix.notebook }}.ipynb

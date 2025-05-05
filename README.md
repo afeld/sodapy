@@ -44,15 +44,12 @@ from sodapy import Sodapy
 client = Sodapy("sandbox.demo.socrata.com")
 ```
 
-An [application token](https://dev.socrata.com/docs/app-tokens) isn't strictly required, but queries executed from a client without an application token will be subjected to strict throttling limits. You may want to increase the `timeout` seconds when making large requests.
-
-With an app token:
+An [application token](https://dev.socrata.com/docs/app-tokens) isn't strictly required, but queries executed from a client without an application token will be subjected to strict throttling limits.
 
 ```python
 client = Sodapy(
     "sandbox.demo.socrata.com",
     app_token="FakeAppToken",
-    timeout=10
 )
 ```
 
