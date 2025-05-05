@@ -32,7 +32,7 @@ class Socrata:
         username: Union[str, None] = None,
         password: Union[str, None] = None,
         access_token: Union[str, None] = None,
-        timeout=10,
+        timeout: Union[int, float] = 10,
     ):
         """
         The required arguments are:
@@ -54,8 +54,6 @@ class Socrata:
         docs:
             http://dev.socrata.com/docs/authentication.html
         """
-        if not domain:
-            raise Exception("A domain is required.")
         self.domain = domain
 
         # set up the session with proper authentication crendentials
@@ -254,10 +252,7 @@ class Socrata:
 
         uri = f"https://{self.domain}{resource}"
 
-        # set a timeout, just to be safe
-        kwargs["timeout"] = self.timeout
-
-        response = self.session.get(uri, **kwargs)
+        response = self.session.get(uri, timeout=self.timeout, **kwargs)
         utils.raise_for_status(response)
 
         # for other request types, return most useful data

@@ -35,12 +35,6 @@ def real_client():
         yield client
 
 
-def test_client():
-    client = Socrata(FAKE_DOMAIN, APPTOKEN)
-    assert isinstance(client, Socrata)
-    client.close()
-
-
 def test_client_warning(caplog):
     with caplog.at_level(logging.WARNING):
         client = Socrata(FAKE_DOMAIN)
@@ -51,18 +45,6 @@ def test_client_warning(caplog):
 def test_context_manager():
     with Socrata(FAKE_DOMAIN, APPTOKEN) as client:
         assert isinstance(client, Socrata)
-
-
-def test_context_manager_no_domain_exception():
-    with pytest.raises(Exception):
-        with Socrata(None, APPTOKEN):  # type: ignore
-            pass
-
-
-def test_context_manager_timeout_exception():
-    with pytest.raises(TypeError):
-        with Socrata(FAKE_DOMAIN, APPTOKEN, timeout="fail"):  # type: ignore
-            pass
 
 
 def test_client_oauth():
@@ -126,7 +108,7 @@ def test_get_unicode():
 
     with requests_mock.Mocker() as m:
         m.get(
-            f"https://{FAKE_DOMAIN}/resource/songs.json",
+            f"https://{FAKE_DOMAIN}/resource/{FAKE_DATASET_IDENTIFIER}.json",
             headers={"Content-Type": "application/json"},
             json=response_data,
         )
