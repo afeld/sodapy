@@ -5,7 +5,7 @@ from urllib.parse import urlencode
 
 
 # use Union instead of `|`s for Python 3.9 compatability
-from typing import Any, TypedDict, Union
+from typing import Any, Union
 
 import requests
 import requests.adapters
@@ -17,11 +17,6 @@ from sodapy.constants import (
     DEFAULT_ROW_LIMIT,
 )
 from sodapy import utils
-
-
-class SessionAdapter(TypedDict):
-    prefix: str
-    adapter: requests.adapters.BaseAdapter
 
 
 class Socrata:
@@ -38,7 +33,6 @@ class Socrata:
         username: Union[str, None] = None,
         password: Union[str, None] = None,
         access_token: Union[str, None] = None,
-        session_adapter: Union[SessionAdapter, None] = None,
         timeout=10,
     ):
         """
@@ -82,11 +76,7 @@ class Socrata:
         elif access_token:
             self.session.headers.update({"Authorization": f"OAuth {access_token}"})
 
-        if session_adapter:
-            self.session.mount(session_adapter["prefix"], session_adapter["adapter"])
-            self.uri_prefix = session_adapter["prefix"]
-        else:
-            self.uri_prefix = "https://"
+        self.uri_prefix = "https://"
 
         if not isinstance(timeout, (int, float)):
             raise TypeError("Timeout must be numeric.")
