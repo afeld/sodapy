@@ -3,16 +3,15 @@ import inspect
 import json
 import logging
 import os.path
+from pathlib import Path
 import requests
 import requests_mock
 import pytest
 
 from sodapy import Socrata
-from sodapy.constants import DEFAULT_API_PATH, DEFAULT_DATASETS_LIMIT, DEFAULT_ROW_LIMIT
-from sodapy.socrata import SessionAdapter
+from sodapy.constants import DEFAULT_DATASETS_LIMIT, DEFAULT_ROW_LIMIT
 
 
-PREFIX = "https://"
 FAKE_DOMAIN = "fakedomain.com"
 FAKE_DATASET_IDENTIFIER = "songs"
 REAL_DOMAIN = "data.cityofnewyork.us"
@@ -20,7 +19,7 @@ REAL_DOMAIN = "data.cityofnewyork.us"
 REAL_DATASET_IDENTIFIER = "uczf-rk3c"
 
 APPTOKEN = "FakeAppToken"
-TEST_DATA_PATH = os.path.join(os.path.dirname(__file__), "test_data")
+TEST_DATA_PATH = Path(os.path.dirname(__file__)) / "test_data"
 LOGGER = logging.getLogger(__name__)
 
 
@@ -120,17 +119,19 @@ def test_get_all_hit_limit(real_client):
 
 
 def test_get_unicode():
-    adapter = requests_mock.Adapter()
-    mock_adapter: SessionAdapter = {
-        "prefix": PREFIX,
-        "adapter": adapter,
-    }
-    client = Socrata(FAKE_DOMAIN, APPTOKEN, session_adapter=mock_adapter)
+    client = Socrata(FAKE_DOMAIN, APPTOKEN)
 
-    response_data = "get_songs_unicode.txt"
-    setup_mock(adapter, "GET", response_data, 200)
+    with open(TEST_DATA_PATH / "get_songs_unicode.json") as f:
+        response_data = json.load(f)
 
-    response = client.get(FAKE_DATASET_IDENTIFIER)
+    with requests_mock.Mocker() as m:
+        m.get(
+            f"https://{FAKE_DOMAIN}/resource/songs.json",
+            headers={"Content-Type": "application/json"},
+            json=response_data,
+        )
+
+        response = client.get(FAKE_DATASET_IDENTIFIER)
 
     assert isinstance(response, list)
     assert len(response) == 10
@@ -195,34 +196,3 @@ def test_download_attachments(real_client):
     assert isinstance(response, list)
     assert len(response) == 1
     assert response[0].endswith(".xlsx")
-
-
-def setup_mock(
-    adapter,
-    method,
-    response,
-    response_code,
-    reason="OK",
-    dataset_identifier=FAKE_DATASET_IDENTIFIER,
-    content_type="json",
-    query=None,
-):
-    path = os.path.join(TEST_DATA_PATH, response)
-    with open(path, "r") as response_body:
-        body = json.load(response_body)
-
-    uri = f"{PREFIX}{FAKE_DOMAIN}{DEFAULT_API_PATH}{dataset_identifier}.{content_type}"
-
-    if query:
-        uri += "?" + query
-
-    headers = {"content-type": "application/json; charset=utf-8"}
-    adapter.register_uri(
-        method,
-        uri,
-        status_code=response_code,
-        json=body,
-        reason=reason,
-        headers=headers,
-        complete_qs=True,
-    )

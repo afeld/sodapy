@@ -5,7 +5,7 @@ from urllib.parse import urlencode
 
 
 # use Union instead of `|`s for Python 3.9 compatability
-from typing import Any, TypedDict, Union
+from typing import Any, Union
 
 import requests
 import requests.adapters
@@ -17,11 +17,6 @@ from sodapy.constants import (
     DEFAULT_ROW_LIMIT,
 )
 from sodapy import utils
-
-
-class SessionAdapter(TypedDict):
-    prefix: str
-    adapter: requests.adapters.BaseAdapter
 
 
 class Socrata:
@@ -38,7 +33,6 @@ class Socrata:
         username: Union[str, None] = None,
         password: Union[str, None] = None,
         access_token: Union[str, None] = None,
-        session_adapter: Union[SessionAdapter, None] = None,
         timeout=10,
     ):
         """
@@ -81,12 +75,6 @@ class Socrata:
             self.session.auth = (username, password)
         elif access_token:
             self.session.headers.update({"Authorization": f"OAuth {access_token}"})
-
-        if session_adapter:
-            self.session.mount(session_adapter["prefix"], session_adapter["adapter"])
-            self.uri_prefix = session_adapter["prefix"]
-        else:
-            self.uri_prefix = "https://"
 
         if not isinstance(timeout, (int, float)):
             raise TypeError("Timeout must be numeric.")
@@ -156,9 +144,7 @@ class Socrata:
             assetid = attachment["blobId"]
             resource = f"/api/assets/{assetid}"
 
-        resource += "?" + urlencode(params)
-
-        return "".join((self.uri_prefix, self.domain, resource))
+        return f"https://{self.domain}{resource}?{urlencode(params)}"
 
     def download_attachments(
         self,
@@ -267,7 +253,7 @@ class Socrata:
         Utility method that performs GET requests.
         """
 
-        uri = "".join((self.uri_prefix, self.domain, resource))
+        uri = f"https://{self.domain}{resource}"
 
         # set a timeout, just to be safe
         kwargs["timeout"] = self.timeout
