@@ -35,6 +35,8 @@ build-backend = "setuptools.build_meta"
 
 [dependency-groups]
 dev = [
+    "ipykernel",
+    "nbconvert==7.*",
     "pandas<3.0",
     "pyright",
     "pytest-cov",
