@@ -32,7 +32,7 @@ def vcr_config():
 
 @pytest.fixture
 def real_client():
-    with Socrata(REAL_DOMAIN, None) as client:
+    with Socrata(REAL_DOMAIN) as client:
         yield client
 
 
@@ -44,7 +44,7 @@ def test_client():
 
 def test_client_warning(caplog):
     with caplog.at_level(logging.WARNING):
-        client = Socrata(FAKE_DOMAIN, None)
+        client = Socrata(FAKE_DOMAIN)
     assert "strict throttling limits" in caplog.text
     client.close()
 
@@ -164,7 +164,7 @@ def test_all_datasets(real_client):
 
 @pytest.mark.vcr
 def test_get_datasets_bad_domain():
-    client = Socrata("not-socrata.com", None)
+    client = Socrata("not-socrata.com")
 
     with pytest.raises(requests.exceptions.ConnectionError):
         client.datasets()
