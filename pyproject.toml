@@ -36,7 +36,7 @@ dev = [
     "pytest-cov",
     "pytest-recording>=0.13.3",
     "pytest>=7.1.2",
-    "requests-mock>=1.9.3",
+    "requests-mock>=1.12.1",
     "types-requests",
     "vulture",
 ]
