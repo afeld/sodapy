@@ -19,7 +19,7 @@ license-files = ["LICENSE"]
 requires-python = ">=3.9"
 dependencies = [
     # verified Python 3.9+ compatibility
-    "requests>=2.28.2",
+    "requests>=2.32.5",
 ]
 
 [project.urls]
