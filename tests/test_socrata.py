@@ -51,6 +51,20 @@ def test_client_warning(caplog):
     client.close()
 
 
+def test_client_no_warning_with_username(caplog):
+    with caplog.at_level(logging.WARNING):
+        client = Socrata(FAKE_DOMAIN, None, username=USERNAME, password=PASSWORD)
+    assert "strict throttling limits" not in caplog.text
+    client.close()
+
+
+def test_client_no_warning_with_access_token(caplog):
+    with caplog.at_level(logging.WARNING):
+        client = Socrata(FAKE_DOMAIN, None, access_token="AAAAAAAAAAAA")
+    assert "strict throttling limits" not in caplog.text
+    client.close()
+
+
 def test_context_manager():
     with Socrata(FAKE_DOMAIN, APPTOKEN) as client:
         assert isinstance(client, Socrata)
