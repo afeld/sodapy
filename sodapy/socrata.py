@@ -59,11 +59,11 @@ class Socrata:
 
         # set up the session with proper authentication crendentials
         self.session = requests.Session()
-        if not app_token:
+        if not app_token and not username and not access_token:
             logging.warning(
                 "Requests made without an app_token will be subject to strict throttling limits."
             )
-        else:
+        elif app_token:
             self.session.headers.update({"X-App-token": app_token})
 
         utils.authentication_validation(username, password, access_token)
