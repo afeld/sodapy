@@ -35,7 +35,7 @@ build-backend = "setuptools.build_meta"
 dev = [
     "pytest-cov",
     "pytest-recording>=0.13.3",
-    "pytest>=7.1.2",
+    "pytest>=9.1.1",
     "requests-mock>=1.9.3",
     "types-requests",
     "vulture",
